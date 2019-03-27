@@ -19,8 +19,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ## Install 
  Make command:
  
- ``` composer install``` for generate vendor
- ``` php artisan key:generate --show ``` for generate the key 
+ ``` composer install```
+ 
+ ``` php artisan key:generate --show ```
+ 
  ``` php artisan jwt:secret  ```
  
 ## Database 
