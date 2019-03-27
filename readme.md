@@ -20,10 +20,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
  Make command:
  
  ``` composer install```
- 
  ``` php artisan key:generate --show ```
- 
  ``` php artisan jwt:secret  ```
+ ``` npm install  ```
+ ``` npm run watch  ```
  
 ## Database 
 copy paste file envexemple and rename env. 
