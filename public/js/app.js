@@ -61432,7 +61432,7 @@ function (_Component) {
   _createClass(Sheep, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Example.js says : ", this.props.message);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Example.js says : ", this.props.message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\"You're god damn right !\""));
     }
   }]);
 

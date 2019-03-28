@@ -5,6 +5,7 @@ export default class Sheep extends Component {
     return(
       <div>
         Example.js says : {this.props.message}
+        <p>"You're god damn right !"</p>
       </div>
     )
   }
