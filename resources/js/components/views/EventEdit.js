@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
+//import components
+import ConfirmModalContainer from '../ConfirmModalContainer';
+
 export default class EventEdit extends Component {
   render() {
     return(
@@ -12,6 +15,12 @@ export default class EventEdit extends Component {
             <Button variant="secondary">Return</Button>
           </Link>
         </div>
+        <div><ConfirmModalContainer
+            variant="info"
+            label="Submit change"
+            message="Do you want to change this event ?"/>
+        </div>
+
       </React.Fragment>
     )
   }
