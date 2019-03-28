@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-//import components
-import Sheep from './Sheep';
-
 export default class Example extends Component {
     render() {
         return (
@@ -14,7 +11,7 @@ export default class Example extends Component {
                             <div className="card-header">Example Component</div>
 
                             <div className="card-body">
-                                <Sheep message="Coucou Patricia" />
+                                I'm an example component!
                             </div>
                         </div>
                     </div>
