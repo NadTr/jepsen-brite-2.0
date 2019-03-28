@@ -17,7 +17,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'ApiAuthController@logout');
     Route::post('refresh', 'ApiAuthController@refresh');
     Route::get('user', 'ApiAuthController@user');
-    Route::post('event/create', 'EventController@store')->name('events.store');
+    Route::post('events/create', 'EventController@store')->name('events.store');
     Route::get('events/search', 'EventController@search');
     Route::get('events', 'EventController@index')->name('events.index');
     Route::delete('events/{event}', 'EventController@destroy')->name('events.destroy');
