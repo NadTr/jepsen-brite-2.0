@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 //import components
-import Sheep from './Sheep'; //garbage to test the page
+import EventListContainer from './EventListContainer';
+import EventDisplayContainer from './EventDisplayContainer';
+import EventCreateContainer from './EventCreateContainer';
 
 export const App = () => {
   return (
   <Switch>
-    <Route exact path="/" component={Sheep} />
+    <Route exact path="/" component={EventListContainer} />
+    <Route exact path="/event-display" component={EventDisplayContainer} />
+    <Route exact path="/event-create" component={EventCreateContainer} />
+
   </Switch>
   )
 }
