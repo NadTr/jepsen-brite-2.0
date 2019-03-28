@@ -14,7 +14,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $event = Event::all();
+
+        return response()->json($event);
     }
 
     /**
@@ -22,10 +24,10 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +37,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'date' => 'required',
+            'description' => 'required'
+        ]);
+
+        $event = Event::create($request->all());
+
+        return response()->json([
+            'message' => 'Great success! New event created',
+            'Event' => $event
+        ]);
     }
 
     /**
@@ -46,7 +59,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return $event;
     }
 
     /**
@@ -55,10 +68,11 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
-    {
-        //
-    }
+    // public function edit(Event $event, $id)
+    // {
+    //     $event = Event::find($id);
+    //     return view('event.edit', compact('albums'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +83,18 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $request->validate([
+            'name'       => 'nullable',
+            'date' => 'nullable',
+            'description' => 'nullable'
+         ]);
+ 
+         $event->update($request->all());
+ 
+         return response()->json([
+             'message' => 'Great success! Event updated',
+             'Event' => $event
+         ]);
     }
 
     /**
@@ -80,6 +105,10 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return response()->json([
+            'message' => 'Successfully deleted event!'
+        ]);
     }
 }
