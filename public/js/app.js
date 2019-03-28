@@ -50872,7 +50872,7 @@ function insertNonHydratedInstance(returnFiber, fiber) {
               didNotFindHydratableContainerTextInstance(parentContainer, text);
               break;
             case SuspenseComponent:
-              
+
               break;
           }
           break;
@@ -61399,8 +61399,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/romain/Documents/Laravel/jepsen-brite/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/romain/Documents/Laravel/jepsen-brite/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/matth/Desktop/jepsen-brite/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/matth/Desktop/jepsen-brite/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
