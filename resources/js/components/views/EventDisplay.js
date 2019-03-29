@@ -11,9 +11,6 @@ export default class EventDisplay extends Component {
       <React.Fragment>
         <div>
           <p>Event description</p>
-          <Link to={"/"}>
-            <Button variant="secondary">Return</Button>
-          </Link>
           <Link to={"/event-edit"}>
             <Button variant="secondary">Edit Event</Button>
           </Link>

@@ -11,9 +11,6 @@ export default class EventCreate extends Component {
       <React.Fragment>
         <div>
           <p>Create a new Event.</p>
-          <Link to={"/"}>
-            <Button variant="secondary">Return</Button>
-          </Link>
         </div>
         <div><ConfirmModalContainer
           variant="success"

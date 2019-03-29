@@ -11,9 +11,6 @@ export default class EventEdit extends Component {
       <React.Fragment>
         <div>
           <p>Edit this event.</p>
-          <Link to={"/"}>
-            <Button variant="secondary">Return</Button>
-          </Link>
         </div>
         <div><ConfirmModalContainer
             variant="info"
