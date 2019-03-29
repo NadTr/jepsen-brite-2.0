@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 //import components
 import EventList from './views/EventList';
@@ -12,9 +13,14 @@ export default class EventListContainer extends Component {
     }
   }
 
-  componentDidMount(){
-      getAllEvents()
+ async componentDidMount() {
+     const events = await getAllEvents();
+     this.setState({
+      events: events
+    })
   }
+
+  
 
   render() {
     return(
