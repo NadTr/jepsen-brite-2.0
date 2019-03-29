@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\User;
+use App\User_Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -110,5 +112,17 @@ class EventController extends Controller
         return response()->json([
             'message' => 'Successfully deleted event!'
         ]);
+    }
+
+    public function inscription (Request $request, Event $event){
+
+        $userEvent = new User_Event;
+        $userEvent['events_id'] = $event->id;
+        $userEvent['users_id'] = auth('api')->user()->id;
+
+        $userEvent->save();
+
+        return 'Success';
+
     }
 }
