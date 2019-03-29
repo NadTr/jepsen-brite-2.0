@@ -65,7 +65,8 @@ class EventController extends Controller
         elseif ($request->has('string')) {
             
             $res = Event::where(
-                'name', 'LIKE', '%'.$request->input('string').'%')->skip($offset*$limit)->take($limit)->get();
+                'name', 'LIKE', '%'.$request->input('string').'%')->orWhere(
+                'date', '<=', $request->input('string'))->skip($offset*$limit)->take($limit)->get();
                 
             return $res ? $res : 'raté.';
          } 
