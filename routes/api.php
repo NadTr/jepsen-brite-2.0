@@ -13,26 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->group(function () {
+//Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'ApiAuthController@logout');
     Route::post('refresh', 'ApiAuthController@refresh');
     Route::get('user', 'ApiAuthController@user');
     Route::post('events/create', 'EventController@store')->name('events.store');
     //Route::get('events/search', 'EventController@search');
+    Route::put('events/{event}/inscription', 'EventController@inscription')->name('events.inscription');
     Route::get('events', 'EventController@index')->name('events.index');
     Route::delete('events/{event}', 'EventController@destroy')->name('events.destroy');
     Route::put('events/{event}', 'EventController@update')->name('events.update');
     Route::get('events/{event}', 'EventController@show')->name('events.show');
-});
+//});
 Route::post('login', 'ApiAuthController@login');
 
 
-// Route::get('/tasks', 'TaskController@all')->name('tasks.all');
-
-// Route::post('/tasks', 'TaskController@store')->name('tasks.store');
-
-// Route::get('/tasks/{task}', 'TaskController@show')->name('tasks.show');
-
-// Route::put('/tasks/{task}', 'TaskController@update')->name('tasks.update');
-
-// Route::delete('/tasks/{task}', 'TaskController@destory')->name('tasks.destroy');
