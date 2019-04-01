@@ -18,27 +18,19 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Event::all();
+        $event = Event::take(5)->orderBy('date', 'DESC')->get();
 
         return response()->json($event);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function create()
-    // {
-    //     //
-    // }
+    public function pastEvent($offset, $limit) {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+        $event = Event::where('date', '<=', now())->skip($offset*$limit)->take($limit)->orderBy('date', 'DESC')->get();
+
+        return response()->json($event);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
