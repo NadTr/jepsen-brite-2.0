@@ -37,6 +37,9 @@ export default class NavBar extends Component{
            <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
            <Button type="submit">Submit</Button>
          </Form>
+         <Link to={"/user-register"}>
+            <Button variant="primary">Register</Button>
+          </Link>
       </Navbar>
       </>
     )
