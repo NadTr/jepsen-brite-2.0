@@ -10,7 +10,7 @@ export const createEvent = (obj) => {
 
 export const getAllEvents = () => {
   return axios
-    .get('/api/events')
+    .get('/api/events/')
     .then(response => response.data)
     .catch(err => console.log(err))
 }

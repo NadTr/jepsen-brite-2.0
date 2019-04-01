@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->group(function () {
+// Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'ApiAuthController@logout');
     Route::post('refresh', 'ApiAuthController@refresh');
     Route::get('user', 'ApiAuthController@user');
@@ -26,7 +26,5 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('events/{event}', 'EventController@destroy')->name('events.destroy');
     Route::put('events/{event}', 'EventController@update')->name('events.update');
     Route::get('events/{event}', 'EventController@show')->name('events.show');
-});
+// });
 Route::post('login', 'ApiAuthController@login');
-
-
