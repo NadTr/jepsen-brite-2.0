@@ -40,7 +40,7 @@ export default class EventDisplay extends Component {
         </div>
         <CardDeck>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img variant="top" src="#" />
             <Card.Body>
               <Card.Title>Card title</Card.Title>
               <Card.Text>
@@ -53,7 +53,7 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img variant="top" src="#" />
             <Card.Body>
               <Card.Title>Card title</Card.Title>
               <Card.Text>
@@ -66,7 +66,7 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
           <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img variant="top" src="#" />
             <Card.Body>
               <Card.Title>Card title</Card.Title>
               <Card.Text>
