@@ -10,7 +10,9 @@ export default class EventDisplay extends Component {
     return(
       <React.Fragment>
         <div>
-          <p>Event description</p>
+          {this.props.package.name}
+            {this.props.package.date}
+              {this.props.package.description}
           <Link to={"/event-edit"}>
             <Button variant="secondary">Edit Event</Button>
           </Link>

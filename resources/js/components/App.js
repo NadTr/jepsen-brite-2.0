@@ -15,7 +15,7 @@ export const App = () => {
       <NavBar />
       <Switch>
         <Route exact path="/" component={EventListContainer} />
-        <Route exact path="/event-display" component={EventDisplayContainer} />
+        <Route exact path="/event-display-:id" component={EventDisplayContainer} />
         <Route exact path="/event-create" component={EventCreateContainer} />
         <Route exact path="/event-history" component={EventHistoryContainer} />
         <Route exact path="/event-edit" component={EventEditContainer} />

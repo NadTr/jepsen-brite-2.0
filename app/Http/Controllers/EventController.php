@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\User;
 use App\User_Event;
+use App\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Console\EventMakeCommand;
 
 class EventController extends Controller
 {
@@ -53,6 +55,25 @@ class EventController extends Controller
         ]);
     }
 
+    public function search(Request $request, $offset, $limit){
+
+        if ($request->has('id')) {
+            
+            $res = Event::find($request->input('id'));
+            return $res ? $res : 'raté.';
+        }
+        
+        elseif ($request->has('string')) {
+            
+            $res = Event::where(
+                'name', 'LIKE', '%'.$request->input('string').'%')->orWhere(
+                'date', '<=', $request->input('string'))->skip($offset*$limit)->take($limit)->get();
+                
+            return $res ? $res : 'raté.';
+         } 
+       
+        return 'coucou';
+    }
     /**
      * Display the specified resource.
      *

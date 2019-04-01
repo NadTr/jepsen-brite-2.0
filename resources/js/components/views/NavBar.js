@@ -9,7 +9,7 @@ export default class NavBar extends Component{
   render() {
     return(
       <>
-      <Navbar bg="primary" variant="dark">
+      <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
         <Link to={"/"}>
           <Button variant="primary">Home</Button>
         </Link>
