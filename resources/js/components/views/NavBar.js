@@ -5,7 +5,43 @@ import { Button } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
 
+//importcomponents
+import { logUser } from '../Api';
+
 export default class NavBar extends Component{
+  constructor(props){
+    super(props);
+
+    this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {
+      emailAdress: "",
+      password: ""
+    }
+  }
+  onChangeEmailAdress(input) {
+    this.setState({
+      emailAdress: input.target.value
+    })
+  }
+
+  onChangePassword(input) {
+    this.setState({
+      password: input.target.value
+    })
+  }
+
+  onSubmit(data) {
+    data.preventDefault();
+    let obj = {
+      "email": this.state.emailAdress,
+      "password": this.state.password
+    };
+    logUser(obj);
+  }
+
   render() {
     return(
       <>
@@ -22,24 +58,13 @@ export default class NavBar extends Component{
           </Link>
         </Nav>
         <Form inline>
-           <InputGroup>
-             <InputGroup.Prepend>
-               <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-             </InputGroup.Prepend>
-             <FormControl
-               placeholder="Username"
-               aria-label="Username"
-               aria-describedby="basic-addon1"
-             />
-           </InputGroup>
-         </Form>
-         <Form inline>
-           <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-           <Button type="submit">Submit</Button>
-         </Form>
-         <Link to={"/user-register"}>
-            <Button variant="primary">Register</Button>
-          </Link>
+          <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
+          <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
+          <Button type="submit" onClick={this.onSubmit}>Login</Button>
+        </Form>
+        <Link to={"/user-register"}>
+          <Button variant="primary">Register</Button>
+        </Link>
       </Navbar>
       </>
     )
