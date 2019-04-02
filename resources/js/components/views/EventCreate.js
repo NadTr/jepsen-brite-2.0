@@ -28,7 +28,7 @@ export default class EventCreate extends Component {
           variant="success"
           label="Submit"
           message="Do you want to create this event ?"
-          onClick={this.props.onSubmit}/>
+          onClick={this.props.onClick}/>
         </div>
       </>
     )

@@ -13,7 +13,6 @@ export const logUser = (obj) => {
 
 //crud
 export const createEvent = (obj) => {
-  console.log('creating event');
   return axios
     .post('/api/events/create', obj)
     // .then(this.props.history.push('/'))

@@ -41,11 +41,12 @@ export default class EventCreateContainer extends Component {
   onSubmit(data){
     data.preventDefault();
     const obj = {
-      "name": this.state.charName,
+      "name": this.state.name,
       "date": this.state.date,
       "description": this.state.description
     }
     createEvent(obj)
+    this.props.history.push('/')
   }
 
   render() {
@@ -54,7 +55,7 @@ export default class EventCreateContainer extends Component {
         onChangeName={this.onChangeName}
         onChangeDate={this.onChangeDate}
         onChangeDescription={this.onChangeDescription}
-        onSubmit={this.onSubmit}
+        onClick={this.onSubmit}
       />
     )
   }
