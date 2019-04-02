@@ -1,4 +1,3 @@
-
 version: '3.1'
 
 services:
@@ -8,7 +7,7 @@ services:
   #
   # Utilisateur: becode
   # Mot de passe: becode
-  # Base de données par défault: becode
+  # Base de données par défault: blogDb
 
   db:
     image: postgres:11.2

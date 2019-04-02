@@ -12,7 +12,8 @@ export default class EventEdit extends Component {
         <div>
           <p>Edit this event.</p>
         </div>
-        <div><ConfirmModalContainer
+        <div>
+          <ConfirmModalContainer
             variant="info"
             label="Submit change"
             message="Do you want to change this event ?"/>
