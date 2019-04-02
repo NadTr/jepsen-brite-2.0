@@ -19,7 +19,7 @@ export default class ConfirmModal extends Component {
             <Button variant="secondary" onClick={this.props.handleClose}>
               No
             </Button>
-            <Button variant="primary" onClick={this.props.handleClose}>
+            <Button variant="primary" onClick={this.props.onClick}>
               Yes
             </Button>
           </Modal.Footer>

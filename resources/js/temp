@@ -49,10 +49,3 @@ return (
         </div>
     </div>
 );
-
-async componentDidMount() {
-    const event = await getOneEvent(this.props.match.params.id);
-    this.setState({
-     event: event
-   })
- }
