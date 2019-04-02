@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 export default class EventList extends Component {
   render() {
     return(
-      <React.Fragment>
+      <>
         <div>
           {this.props.package.map(event =>
             <Card bg="light" style={{ width: '100%', marginBottom: '0.5rem' }} key={event.id}>
@@ -30,7 +30,7 @@ export default class EventList extends Component {
             </Card>
           )}
         </div>
-      </React.Fragment>
+      </>
     )
   }
 }

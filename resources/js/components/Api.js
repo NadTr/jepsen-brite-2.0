@@ -26,6 +26,13 @@ export const getAllEvents = () => {
     .catch(err => console.log(err))
 }
 
+export const getOldEvents = () => {
+  return axios
+    .get('/api/events/1/5')
+    .then(response => response.data)
+    .catch(err => console.log(err))
+}
+
 export const getOneEvent = (eventId) => {
   return axios
     .get('/api/events/'+eventId)
