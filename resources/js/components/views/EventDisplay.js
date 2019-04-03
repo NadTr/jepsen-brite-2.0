@@ -33,7 +33,7 @@ export default class EventDisplay extends Component {
               <div><ConfirmModalContainer
                 variant="danger"
                 label="Erase"
-                message="Do you want to delete this event ?" 
+                message="Do you want to delete this event ?"
                 onClick={this.props.onClick}/>
               </div>
             </Card.Footer>

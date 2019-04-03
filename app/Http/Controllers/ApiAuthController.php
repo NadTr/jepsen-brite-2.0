@@ -1,6 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use Illuminate\Http\Request;
+
+
+
+
 class ApiAuthController extends Controller
 {
     /**
@@ -11,6 +18,7 @@ class ApiAuthController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login']]);
+        
     }
     /**
      * Get a JWT via given credentials.
@@ -68,4 +76,8 @@ class ApiAuthController extends Controller
             'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
     }
+
+
+
+      
 }

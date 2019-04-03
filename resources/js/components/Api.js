@@ -44,6 +44,7 @@ export const getOldEvents = () => {
 }
 
 export const getOneEvent = (eventId) => {
+  console.log("getOne");
   return axios
     .get('/api/events/'+eventId)
     .then(response => response.data)

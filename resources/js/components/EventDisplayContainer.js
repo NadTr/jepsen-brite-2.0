@@ -19,10 +19,14 @@ export default class EventDisplayContainer extends Component {
   }
 
   async componentDidMount() {
+    console.log("awaiting getOne");
+    console.log(this.props.match.params.id);
       const event = await getOneEvent(this.props.match.params.id);
+
       this.setState({
        event: event
      })
+     console.log(event);
    }
 
   render() {
