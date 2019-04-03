@@ -27,7 +27,7 @@ export default class EventDisplay extends Component {
               <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             <Card.Footer className="text-muted">
-              <Link to={"/event-edit"}>
+              <Link to={"/event-edit-"+this.props.package.id}>
                 <Button variant="secondary">Edit Event</Button>
               </Link>
               <div><ConfirmModalContainer
