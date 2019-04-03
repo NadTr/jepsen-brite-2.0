@@ -21,6 +21,7 @@ export default class NavBar extends Component{
       password: ""
     }
   }
+  
   onChangeEmailAdress(input) {
     this.setState({
       emailAdress: input.target.value

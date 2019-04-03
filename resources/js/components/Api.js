@@ -11,6 +11,16 @@ export const logUser = (obj) => {
     .catch(err => console.log(err))
 }
 
+export const registerUser = (obj) => {
+  return axios({
+    method: 'post',
+    url:'/api/register',
+    config : {headers:{'Content-Type' : "application/json"}},
+    data:obj
+  })
+    .catch(err => console.log(err))
+}
+
 //crud
 export const createEvent = (obj) => {
   return axios
