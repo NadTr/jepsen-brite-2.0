@@ -44,16 +44,16 @@ export const getOldEvents = () => {
 }
 
 export const getOneEvent = (eventId) => {
-  console.log("getOne");
   return axios
     .get('/api/events/'+eventId)
     .then(response => response.data)
     .catch(err => console.log(err))
 }
 
-export const editEvent = (obj) => {
+export const editEvent = (eventId, obj) => {
+  console.log(obj);
   return axios
-    .put('/api/events/', obj)
+    .put('/api/events/'+eventId, obj)
     // .then(this.props.history.push('/'))
     .catch(err => console.log(err))
 }
