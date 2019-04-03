@@ -19,9 +19,16 @@ export default class ConfirmModalContainer extends Component {
    this.setState({ show: false });
  }
 
+ handleSubmit() {
+   this.setState({ show: false });
+
+ }
+
  handleShow() {
    this.setState({ show: true });
+   console.log(this);
  }
+
   render() {
     return(
       <ConfirmModal
@@ -31,6 +38,7 @@ export default class ConfirmModalContainer extends Component {
       variant={this.props.variant}
       label={this.props.label}
       message={this.props.message}
+      onClick={this.props.onClick}
       />
     )
   }

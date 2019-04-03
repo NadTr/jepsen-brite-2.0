@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 
 //import components
 import EventDisplay from './views/EventDisplay';
-import { getOneEvent } from './Api';
+import { getOneEvent, deleteEvent } from './Api';
 
 export default class EventDisplayContainer extends Component {
   constructor (props) {
     super (props);
+    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       event: []
     }
+  }
+
+  handleDelete() {
+    deleteEvent(this.state.id)
+    this.props.history.push('/')
   }
 
   async componentDidMount() {
@@ -19,13 +25,10 @@ export default class EventDisplayContainer extends Component {
      })
    }
 
-   // componentDidUpdate() {
-   //     console.log(this.state.event);
-   // }
-
   render() {
     return(
-    <EventDisplay package={this.state.event}/>
+    <EventDisplay package={this.state.event} onClick={this.handleDelete}/>
+
     )
   }
 }
