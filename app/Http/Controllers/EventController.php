@@ -73,14 +73,25 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
-    {
+    public function usersList(Event $event) {
+
         $res = DB::table('user__events')
                     ->join('users', 'users_id', '=','users.id')
                     ->select('pseudo')
                     ->where('events_id', '=', $event->id)
                     ->get();
         return $res;
+
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Event $event)
+    {
+       return $event;
     }
 
     /**
@@ -133,17 +144,17 @@ class EventController extends Controller
         ]);
     }
 
-    public function inscription (Request $request, Event $event){
+    public function inscription (Event $event){
 
         $userEvent = new User_Event;
-       
-
-        if (json_decode(DB::table('user__events')
+        $test = json_decode(DB::table('user__events')
         ->select('users_id')
         ->where('events_id', '=', $event->id)
-        ->take(1)->get())[0]->users_id === auth('api')->user()->id) {
+        ->get());
+
+        if ($test != NULL && ($test[0]->users_id === auth('api')->user()->id)) {
             return response()->json([
-                'message' => 'Your are already subscride!']);
+                'message' => 'You are already suscribed!']);
         }
         $userEvent['events_id'] = $event->id;
         $userEvent['users_id'] = auth('api')->user()->id;
