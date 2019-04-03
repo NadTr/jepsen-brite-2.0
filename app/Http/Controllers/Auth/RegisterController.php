@@ -10,6 +10,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\Auth\Mail;
 
 
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+
 class RegisterController extends Controller
 {
     /*
@@ -63,17 +67,21 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\User
+
      */
-    protected function create(array $data)
+
+     protected function register(Request $request)
     {
 
-
-
-        return User::create([
-            'name' => $data['name'],
-            'pseudo' => $data['pseudo'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $user =  User::create([
+            'name'  => $request->name,
+            'pseudo'=> $request->pseudo,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
+        
+        Mail::to($request->email)->send(new WelcomeMail($user));
+
+        return $user;
     }
 }
