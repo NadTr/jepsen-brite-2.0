@@ -24,11 +24,12 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
     Route::put('/events/{event}', 'EventController@update')->name('events.update');
     Route::get('/events/{event}', 'EventController@show')->name('events.show');
+    Route::get('/events/userslist/{event}', 'EventController@usersList')->name('events.userlist');
     Route::get('/events/{offset}/{limit}', 'EventController@pastEvent')->name('events.pastevent');
 });
 
-//Route::post('/register','Auth\RegisterController@register');
+Route::post('/register','Auth\RegisterController@register');
 
 Route::post('/login','ApiAuthController@login')->name('events.login');
 Route::get('/user','ApiAuthController@user')->name('app.user');
-Auth::routes();
+// Auth::routes();
