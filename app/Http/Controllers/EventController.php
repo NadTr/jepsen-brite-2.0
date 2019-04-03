@@ -147,12 +147,12 @@ class EventController extends Controller
     public function inscription (Event $event){
 
         $userEvent = new User_Event;
-       
-
-        if (json_decode(DB::table('user__events')
+        $test = json_decode(DB::table('user__events')
         ->select('users_id')
         ->where('events_id', '=', $event->id)
-        ->take(1)->get())[0]->users_id === auth('api')->user()->id) {
+        ->get());
+
+        if ($test != NULL && ($test[0]->users_id === auth('api')->user()->id)) {
             return response()->json([
                 'message' => 'You are already suscribed!']);
         }

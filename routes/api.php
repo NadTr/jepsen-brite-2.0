@@ -18,8 +18,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/logout', 'ApiAuthController@logout');
     Route::post('/refresh', 'ApiAuthController@refresh'); 
     Route::post('/events/create', 'EventController@store')->name('events.store');
-    Route::put('/events/{event}/inscription', 'EventController@inscription')->name('events.inscription');
     Route::get('/events', 'EventController@index')->name('events.index');
+    Route::put('/events/{event}/inscription', 'EventController@inscription')->name('events.inscription');
     Route::get('/events/search/{offset}/{limit}', 'EventController@search')->name('events.search');
     Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
     Route::put('/events/{event}', 'EventController@update')->name('events.update');
