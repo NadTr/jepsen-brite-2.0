@@ -6,6 +6,7 @@ use App\Event;
 use App\User;
 use App\User_Event;
 use App\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Console\EventMakeCommand;
 
@@ -74,7 +75,12 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return $event;
+        $res = DB::table('user__events')
+                    ->join('users', 'users_id', '=','users.id')
+                    ->select('pseudo')
+                    ->where('events_id', '=', $event->id)
+                    ->get();
+        return $res;
     }
 
     /**
@@ -130,6 +136,15 @@ class EventController extends Controller
     public function inscription (Request $request, Event $event){
 
         $userEvent = new User_Event;
+       
+
+        if (json_decode(DB::table('user__events')
+        ->select('users_id')
+        ->where('events_id', '=', $event->id)
+        ->take(1)->get())[0]->users_id === auth('api')->user()->id) {
+            return response()->json([
+                'message' => 'Your are already subscride!']);
+        }
         $userEvent['events_id'] = $event->id;
         $userEvent['users_id'] = auth('api')->user()->id;
 
