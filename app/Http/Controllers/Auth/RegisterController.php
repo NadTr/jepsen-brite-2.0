@@ -11,7 +11,6 @@ use App\Http\Controllers\Auth\Mail;
 
 
 use App\Mail\WelcomeMail;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
