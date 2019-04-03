@@ -27,8 +27,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/events/{offset}/{limit}', 'EventController@pastEvent')->name('events.pastevent');
 });
 
-Route::post('/register','Auth\RegisterController@register');
+//Route::post('/register','Auth\RegisterController@register');
 
 Route::post('/login','ApiAuthController@login')->name('events.login');
 Route::get('/user','ApiAuthController@user')->name('app.user');
-
+Auth::routes();
