@@ -14,7 +14,6 @@ export default class UserRegisterContainer extends Component{
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangePseudo = this.onChangePseudo.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-    
         this.state = {
           email: "",
           name : "",
@@ -22,46 +21,40 @@ export default class UserRegisterContainer extends Component{
           password: ""
         }
     }
-    
     onChangeEmailAdress(input) {
       console.log("changeEmail");
       this.setState({
         emailAdress: input.target.value
       })
     }
-    
     onChangePassword(input) {
       this.setState({
         password: input.target.value
       })
     }
-    
     onChangeName(input) {
       console.log("changeName");
       this.setState({
         name: input.target.value
       })
     }
-    
     onChangePseudo(input) {
       this.setState({
         pseudo: input.target.value
       })
     }
-    
     onSubmit(data) {
       console.log("1000");
       data.preventDefault();
       let obj = {
         "email": this.state.emailAdress,
-        "name" : this.state.name,
-        "pseudo": this.state.pseudo,
-        "password": this.state.password
+      	"name" : this.state.name,
+      	"pseudo": this.state.pseudo,
+      	"password": this.state.password
       };
       registerUser(JSON.stringify(obj));
       console.log(obj);
     }
-    
     render(){
         return(
             <UserRegister

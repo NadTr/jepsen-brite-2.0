@@ -50,9 +50,11 @@ export const getOneEvent = (eventId) => {
     .catch(err => console.log(err))
 }
 
-export const editEvent = (obj) => {
+export const editEvent = (eventId, obj) => {
+  console.log(obj);
+  console.log(eventId);
   return axios
-    .put('/api/events/', obj)
+    .put('/api/events/'+eventId, obj)
     // .then(this.props.history.push('/'))
     .catch(err => console.log(err))
 }

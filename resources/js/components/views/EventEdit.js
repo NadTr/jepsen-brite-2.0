@@ -26,7 +26,8 @@ export default class EventEdit extends Component {
           <ConfirmModalContainer
             variant="info"
             label="Submit change"
-            message="Do you want to change this event ?"/>
+            message="Do you want to change this event ?"
+            onClick={this.props.onClick}/>
         </div>
 
       </>
