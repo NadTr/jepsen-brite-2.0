@@ -29,6 +29,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
  
  ``` npm run watch  ```
  
+ ``` npm install react-axios  ```
+ 
+ ``` npm install react-bootstrap bootstrap  ```
+ 
  
 ## Database 
 copy paste file envexemple and rename env. 
