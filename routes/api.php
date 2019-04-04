@@ -24,7 +24,7 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
     Route::put('/events/{event}', 'EventController@update')->name('events.update');
     Route::get('/events/{event}', 'EventController@show')->name('events.show');
-    Route::get('/events/userslist/{event}', 'EventController@usersList')->name('events.userlist');
+    //Route::get('/events/userslist/{event}', 'EventController@usersList')->name('events.userlist');
     Route::get('/events/{offset}/{limit}', 'EventController@pastEvent')->name('events.pastevent');
 });
 
