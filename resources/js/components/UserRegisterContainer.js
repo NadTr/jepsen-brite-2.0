@@ -22,7 +22,6 @@ export default class UserRegisterContainer extends Component{
         }
     }
     onChangeEmailAdress(input) {
-      console.log("changeEmail");
       this.setState({
         emailAdress: input.target.value
       })
@@ -33,7 +32,6 @@ export default class UserRegisterContainer extends Component{
       })
     }
     onChangeName(input) {
-      console.log("changeName");
       this.setState({
         name: input.target.value
       })
@@ -44,7 +42,6 @@ export default class UserRegisterContainer extends Component{
       })
     }
     onSubmit(data) {
-      console.log("1000");
       data.preventDefault();
       let obj = {
         "email": this.state.emailAdress,
@@ -53,8 +50,8 @@ export default class UserRegisterContainer extends Component{
       	"password": this.state.password
       };
       registerUser(JSON.stringify(obj));
-      console.log(obj);
     }
+
     render(){
         return(
             <UserRegister
