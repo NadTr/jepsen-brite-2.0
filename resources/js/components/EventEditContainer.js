@@ -46,7 +46,6 @@ export default class EventEditContainer extends Component {
       "date": this.state.date,
       "description": this.state.description
     }
-    console.log(obj);
     editEvent(this.props.match.params.id, obj)
     this.props.history.push('/')
   }
@@ -54,7 +53,10 @@ export default class EventEditContainer extends Component {
   async componentDidMount() {
     const event= await getOneEvent(this.props.match.params.id);
     this.setState({
-      event:event
+      event:event,
+      name: event.name,
+      date: event.date,
+      description: event.description
     })
   }
 

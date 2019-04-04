@@ -52,6 +52,7 @@ export const getOneEvent = (eventId) => {
 
 export const editEvent = (eventId, obj) => {
   console.log(obj);
+  console.log(eventId);
   return axios
     .put('/api/events/'+eventId, obj)
     // .then(this.props.history.push('/'))
