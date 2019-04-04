@@ -49,7 +49,8 @@ export default class UserRegisterContainer extends Component{
       	"pseudo": this.state.pseudo,
       	"password": this.state.password
       };
-      registerUser(JSON.stringify(obj));
+      registerUser(obj);
+      this.props.history.push('/')
     }
 
     render(){

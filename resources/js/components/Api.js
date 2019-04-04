@@ -12,7 +12,6 @@ export const logUser = (obj) => {
 }
 
 export const registerUser = (obj) => {
-  console.log(obj);  
   return axios({
   method: 'post',
   url:'/api/register',
