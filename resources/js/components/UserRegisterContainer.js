@@ -8,14 +8,14 @@ import { registerUser } from './Api';
 export default class UserRegisterContainer extends Component{
     constructor(props){
     super(props);
-    
+
         this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangePseudo = this.onChangePseudo.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
-          email: "",
+          emailAdress: "",
           name : "",
           pseudo: "",
           password: ""
