@@ -34,13 +34,10 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'date' => 'required',
-            'description' => 'required'
-        ]);
-
-        $event = Event::create($request->all());
+        $params = $request->all(); 
+        $params['author'] = auth('api')->user()->id;
+        $event = Event::create($params);
+        $event['author'] = $event->author()->get()[0];
 
         return response()->json([
             'message' => 'Great success! New event created',
