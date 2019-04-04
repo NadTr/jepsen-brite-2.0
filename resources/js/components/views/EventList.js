@@ -16,6 +16,7 @@ export default class EventList extends Component {
               <Card.Body>
                 <Card.Title>
                   <h3>{event.name}</h3>
+                  <h4>{event.author}</h4>
                 </Card.Title>
                 <Card.Text>
                   {event.description}
