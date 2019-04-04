@@ -34,13 +34,10 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'date' => 'required',
-            'description' => 'required'
-        ]);
-
-        $event = Event::create($request->all());
+        $params = $request->all(); 
+        $params['author'] = auth('api')->user()->id;
+        $event = Event::create($params);
+        $event['author'] = $event->author()->get()[0];
 
         return response()->json([
             'message' => 'Great success! New event created',
@@ -67,22 +64,7 @@ class EventController extends Controller
        
         return 'coucou';
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function usersList(Event $event) {
 
-        $res = DB::table('user__events')
-                    ->join('users', 'users_id', '=','users.id')
-                    ->select('pseudo')
-                    ->where('events_id', '=', $event->id)
-                    ->get();
-        return $res;
-
-    }
     /**
      * Display the specified resource.
      *
@@ -91,20 +73,21 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-       return $event;
-    }
+         $ev = DB::table('events')
+                    ->select('events.id', 'events.name','events.description', 'events.date')
+                    ->join('users' , 'events.author', '=','users.id' )
+                    ->where('events.id', '=', $event->id)
+                    ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    // public function edit(Event $event, $id)
-    // {
-    //     $event = Event::find($id);
-    //     return view('event.edit', compact('albums'));
-    // }
+         $res = DB::table('user__events')
+                    ->select('pseudo')
+                    ->join('users', 'user__events.users_id', '=','users.id')
+                    ->where('events_id', '=', $event->id)
+                    ->get();
+
+        $ev['participants'] = $res;
+       return $ev;
+    }
 
     /**
      * Update the specified resource in storage.
