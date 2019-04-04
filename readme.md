@@ -33,6 +33,8 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
  
  ``` npm install react-bootstrap bootstrap  ```
  
+  ``` npm install --save react-router-dom  ```
+ 
  
 ## Database 
 copy paste file envexemple and rename env. 
