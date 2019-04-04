@@ -1,7 +1,7 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Bree+Serif|Gloria+Hallelujah");
 
+// @import url("https://fonts.googleapis.com/css?family=Cabin+Sketch");
 // Variables
 @import 'variables';
 
@@ -9,5 +9,9 @@
 @import '~bootstrap/scss/bootstrap';
 
 #root {
-  font-family: 'Gloria Hallelujah', cursive;
+  //font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Eater', cursive;
+  text-shadow: darkmagenta 5px 0 10px;
+  border: solid 24px greenyellow;
 }
+

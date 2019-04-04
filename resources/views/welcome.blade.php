@@ -7,8 +7,7 @@
         <title>EventFood</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Gloria+Hallelujah" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Eater" rel="stylesheet">
         <link href="./css/app.css" rel="stylesheet">
         <!-- Styles -->
         
