@@ -8,21 +8,20 @@ import { registerUser } from './Api';
 export default class UserRegisterContainer extends Component{
     constructor(props){
     super(props);
-    
+
         this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangePseudo = this.onChangePseudo.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
-          email: "",
+          emailAdress: "",
           name : "",
           pseudo: "",
           password: ""
         }
     }
     onChangeEmailAdress(input) {
-      console.log("changeEmail");
       this.setState({
         emailAdress: input.target.value
       })
@@ -33,7 +32,6 @@ export default class UserRegisterContainer extends Component{
       })
     }
     onChangeName(input) {
-      console.log("changeName");
       this.setState({
         name: input.target.value
       })
@@ -44,7 +42,6 @@ export default class UserRegisterContainer extends Component{
       })
     }
     onSubmit(data) {
-      console.log("1000");
       data.preventDefault();
       let obj = {
         "email": this.state.emailAdress,
@@ -52,9 +49,10 @@ export default class UserRegisterContainer extends Component{
       	"pseudo": this.state.pseudo,
       	"password": this.state.password
       };
-      registerUser(JSON.stringify(obj));
-      console.log(obj);
+      registerUser(obj);
+      this.props.history.push('/')
     }
+
     render(){
         return(
             <UserRegister

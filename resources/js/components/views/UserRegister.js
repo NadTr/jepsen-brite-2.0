@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 
+// import components
+import ConfirmModalContainer from '../ConfirmModalContainer';
 
 export default class UserRegister extends Component{
     render(){
         return(
-            <Form>
+           <>
+             <Form>
                 <Form.Group controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="name" placeholder="Name" onChange={this.props.onChangeName}/>
@@ -31,10 +34,14 @@ export default class UserRegister extends Component{
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={this.props.onSubmit}>
-                    Submit
-                </Button>
             </Form>
+            <div><ConfirmModalContainer
+                variant="primary"
+                label="Submit"
+                message="Do you want to edit this event ?"
+                onClick={this.props.onSubmit}/>
+            </div>
+           </>
         );
     }
 }
