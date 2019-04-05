@@ -90,7 +90,8 @@ class EventController extends Controller
             'participants' => $res
         ];
        
-       return $ret;
+     
+       return response()->json($ret);
     }
 
     /**
