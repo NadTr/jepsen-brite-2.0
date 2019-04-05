@@ -12,25 +12,19 @@ export default class EventDisplay extends Component {
     console.log("render", this.props.package);
   }
   render() {
+    console.log("render", this.props);
     return(
-      <React.Fragment>
+      <>
         <div>
           <Card className="text-center">
-            <Card.Header> {this.props.package.name} {this.props.package.author} {this.props.package.date}</Card.Header>
+            <Card.Header> {this.props.name} {this.props.author} {this.props.date}</Card.Header>
             <Card.Body>
-              <Card.Text>
-              L’idée est d’avoir une interaction intuitive, facile, accueillante, qui ne fasse pas peur, dans laquelle le visiteur se lance sans appréhension au niveau du temps que ça va prendre et de la difficulté imaginée du bazar.
-              Le fonctionnement de base: comprendre quel est le problème du visiteur.
-              On part de questions généralistes qui permettent de définir un premier cadre de possibilités et les questions suivantes permettent de rétrécir ce cadre pour arriver à quelque chose de plus précis et concret.
-              On passe à un autre mode d'interaction quand cela est considéré souhaitable, dans un ordre logique, pour arriver à un vrai humain le plus tard possible (si possible régler le problème avant cette étape). Si un humain est disponible, cela peut-être un chat, un appel (comme avec les banques et autres), si un humain n’est pas disponible, les messages différés (emails) sont la seule option.
-              On guide le visiteur avec ce système, mais dès que l’on peut, on lui propose automatiquement des options de canal de communication. Après quelques questions-réponses, on l’emmène au ChatBot, mais on peut lui proposer de passer directement au mail par exemple.
-              L’idée est de récolter un maximum de données de manière automatisées, avec le minimum d’intervention humaine.
-              {this.props.package.description}
+              <Card.Text>{this.props.description}
               </Card.Text>
               <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             <Card.Footer className="text-muted">
-              <Link to={"/event-edit-"+this.props.package.id}>
+              <Link to={"/event-edit-"+this.props.id}>
                 <Button variant="secondary">Edit Event</Button>
               </Link>
               <div><ConfirmModalContainer
@@ -84,7 +78,7 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </CardDeck>
-      </React.Fragment>
+      </>
     )
   }
 }

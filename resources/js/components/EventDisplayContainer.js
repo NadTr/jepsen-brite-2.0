@@ -20,6 +20,7 @@ export default class EventDisplayContainer extends Component {
 
   async componentDidMount() {
       const event = await getOneEvent(this.props.match.params.id);
+      console.log("api", event);
       this.setState({
        event: event
      })
@@ -28,7 +29,7 @@ export default class EventDisplayContainer extends Component {
 
   render() {
     return(
-    <EventDisplay package={this.state.event} onClick={this.handleDelete}/>
+    <EventDisplay package={this.state.event.event} onClick={this.handleDelete}/>
 
     )
   }
