@@ -73,8 +73,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-         $ev = DB::table('events')
-                    ->select('events.id', 'events.name','events.description', 'events.date', 'events.author')
+         $ev = DB::table('events', 'users')
+                    ->select('events.id', 'events.name','events.description', 'events.date', 'events.author', 'users.name AS username')
                     ->join('users' , 'events.author', '=','users.id' )
                     ->where('events.id', '=', $event->id)
                     ->get();
@@ -85,8 +85,12 @@ class EventController extends Controller
                     ->where('events_id', '=', $event->id)
                     ->get();
 
-        $ev['participants'] = $res;
-       return $ev;
+        $ret = [
+            'event' => $ev,
+            'participants' => $res
+        ];
+       
+       return $ret;
     }
 
     /**
