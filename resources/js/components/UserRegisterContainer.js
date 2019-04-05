@@ -7,46 +7,40 @@ import { registerUser } from './Api';
 
 export default class UserRegisterContainer extends Component{
     constructor(props){
-        super(props);
+    super(props);
 
         this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangePseudo = this.onChangePseudo.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
         this.state = {
-          email: "",
+          emailAdress: "",
           name : "",
           pseudo: "",
           password: ""
         }
     }
-
     onChangeEmailAdress(input) {
       this.setState({
         emailAdress: input.target.value
       })
     }
-
     onChangePassword(input) {
       this.setState({
         password: input.target.value
       })
     }
-
     onChangeName(input) {
       this.setState({
         name: input.target.value
       })
     }
-
     onChangePseudo(input) {
       this.setState({
         pseudo: input.target.value
       })
     }
-
     onSubmit(data) {
       data.preventDefault();
       let obj = {
@@ -55,7 +49,8 @@ export default class UserRegisterContainer extends Component{
       	"pseudo": this.state.pseudo,
       	"password": this.state.password
       };
-      logUser(obj);
+      registerUser(obj);
+      this.props.history.push('/')
     }
 
     render(){
@@ -65,7 +60,7 @@ export default class UserRegisterContainer extends Component{
             onChangePassword={this.onChangePassword}
             onChangeName={this.onChangeName}
             onChangePseudo={this.onChangePseudo}
-            onClick={this.onSubmit}
+            onSubmit={this.onSubmit}
             />
         );
     }

@@ -13,7 +13,7 @@ export default class EventDisplay extends Component {
       <React.Fragment>
         <div>
           <Card className="text-center">
-            <Card.Header> {this.props.package.name} {this.props.package.date}</Card.Header>
+            <Card.Header> {this.props.package.name} {this.props.package.author} {this.props.package.date}</Card.Header>
             <Card.Body>
               <Card.Text>
               L’idée est d’avoir une interaction intuitive, facile, accueillante, qui ne fasse pas peur, dans laquelle le visiteur se lance sans appréhension au niveau du temps que ça va prendre et de la difficulté imaginée du bazar.
@@ -27,13 +27,13 @@ export default class EventDisplay extends Component {
               <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             <Card.Footer className="text-muted">
-              <Link to={"/event-edit"}>
+              <Link to={"/event-edit-"+this.props.package.id}>
                 <Button variant="secondary">Edit Event</Button>
               </Link>
               <div><ConfirmModalContainer
                 variant="danger"
                 label="Erase"
-                message="Do you want to delete this event ?" 
+                message="Do you want to delete this event ?"
                 onClick={this.props.onClick}/>
               </div>
             </Card.Footer>

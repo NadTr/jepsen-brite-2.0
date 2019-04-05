@@ -18,7 +18,7 @@ export const App = () => {
         <Route exact path="/event-display-:id" component={EventDisplayContainer} />
         <Route exact path="/event-create" component={EventCreateContainer} />
         <Route exact path="/event-history" component={EventHistoryContainer} />
-        <Route exact path="/event-edit" component={EventEditContainer} />
+        <Route exact path="/event-edit-:id" component={EventEditContainer} />
         <Route exact path="/user-register" component={UserRegisterContainer} />
 
       </Switch>

@@ -26,7 +26,7 @@ export default class ConfirmModalContainer extends Component {
 
  handleShow() {
    this.setState({ show: true });
-   console.log(this);
+   // console.log(this);
  }
 
   render() {
