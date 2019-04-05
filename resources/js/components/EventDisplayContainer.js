@@ -23,6 +23,7 @@ export default class EventDisplayContainer extends Component {
       this.setState({
        event: event
      })
+     console.log("container", this.state.event);
    }
 
   render() {

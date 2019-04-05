@@ -8,6 +8,9 @@ import { Card } from 'react-bootstrap';
 import ConfirmModalContainer from '../ConfirmModalContainer'
 
 export default class EventDisplay extends Component {
+  componentDidUpdate(){
+    console.log("render", this.props.package);
+  }
   render() {
     return(
       <React.Fragment>
