@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-//gestion Users
+//Users
 export const logUser = (obj) => {
   return axios({
     method: 'post',
@@ -21,7 +21,7 @@ export const registerUser = (obj) => {
   .catch(err => console.log(err))
 }
 
-//crud
+//crud events
 export const createEvent = (obj) => {
   return axios
     .post('/api/events/create', obj)
