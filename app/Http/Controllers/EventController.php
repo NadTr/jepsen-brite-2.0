@@ -6,6 +6,7 @@ use App\Event;
 use App\User;
 use App\User_Event;
 use App\Auth;
+use Illuminate\Database\Eloquent\collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Console\EventMakeCommand;
@@ -73,25 +74,34 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-         $ev = DB::table('events', 'users')
+        $ev = DB::table('events', 'users')
                     ->select('events.id', 'events.name','events.description', 'events.date', 'events.author', 'users.name AS username')
                     ->join('users' , 'events.author', '=','users.id' )
                     ->where('events.id', '=', $event->id)
-                    ->get();
-
-         $res = DB::table('user__events')
+                     ->first();
+        var_dump($ev->event_to_array());exit();
+       
+        $res = DB::table('user__events')
                     ->select('pseudo')
                     ->join('users', 'user__events.users_id', '=','users.id')
                     ->where('events_id', '=', $event->id)
                     ->get();
+/*"id": 6,
+        "name": "create",
+        "description": "desciption",
+        "date": "1993-04-30",
+        "author": 2,
+        "username": "moi"*/
 
-        $ret = [
-            'event' => $ev,
-            'participants' => $res
-        ];
-       
-     
-       return response()->json($ret);
+       /* $result= array('eventName'=>$ev->name,
+                       'eventDescr'=>$ev->description,
+                       'eventDate'=>$ev->date,
+                       'eventAuthor'=>$ev->author,
+                       'eventUsername'=>$ev->username,
+                       'eventId'=>$ev->id,
+                       'participants'=> $res);//('event'=>$ev, 'participants'=>$res);*/
+                       
+       return response()->json($result);
     }
 
     /**
