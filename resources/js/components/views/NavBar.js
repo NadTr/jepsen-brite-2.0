@@ -42,11 +42,10 @@ class NavBar extends Component{
       "email": this.state.emailAdress,
       "password": this.state.password
     };
-    logUser(JSON.stringify(obj));
+    logUser(obj);
   }
 
   render() {
-    console.log("navbar", this.context)
     return(
       <>
 
@@ -62,10 +61,6 @@ class NavBar extends Component{
                 <Button variant="primary">Past Events</Button>
               </Link>
             </Nav>
-
-                <div>
-                  <p>{this.context.state.contextBS}</p>
-                </div>
             <Form inline>
               <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
               <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>

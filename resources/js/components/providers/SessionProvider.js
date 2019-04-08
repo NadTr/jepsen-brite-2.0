@@ -9,15 +9,16 @@ export default class SessionProvider extends Component {
     super(props)
 
     this.state= {
-      session: [],
-      contextBS: "Romain code tellement mal"
+      id: 13,
+      name: "Steph",
+      pseudo: "Patou",
+      email: "stephsteph@becodemail.com"
     }
   }
 
 
 
   render() {
-    console.log("provider", this.state)
     return(
       <SessionContext.Provider value={{state : this.state}}>
         {this.props.children}

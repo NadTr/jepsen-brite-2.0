@@ -6,8 +6,9 @@ export const logUser = (obj) => {
     method: 'post',
     url:'/api/login',
     config : {headers:{'Content-Type' : "application/json"}},
-    data:obj
+    data: obj
   })
+    .then(console.log('Logged in'))
     .catch(err => console.log(err))
 }
 
@@ -28,7 +29,7 @@ export const registerUser = (obj) => {
   method: 'post',
   url:'/api/register',
   config : {headers:{'Content-Type' : "application/json"}},
-  data:obj
+  data: obj
   })
   .catch(err => console.log(err))
 }
