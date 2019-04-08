@@ -148,4 +148,24 @@ class EventController extends Controller
                 'message' => 'Succes']);
 
     }
+     public function desinscription (Event $event){
+
+        $userEvent = new User_Event;
+        $test = json_decode(DB::table('user__events')
+        ->select('users_id')
+        ->where('events_id', '=', $event->id)
+        ->get());
+
+        if ($test != NULL && ($test[0]->users_id === auth('api')->user()->id)) {
+            DB::table('user__events')->select('users_id')
+                ->where('events_id', '=', $event->id)->delete();
+
+            return response()->json([
+                'message' => 'Succes']);
+        }
+        
+        return response()->json([
+                'message' => 'You are not suscribed']);
+
+    }
 }
