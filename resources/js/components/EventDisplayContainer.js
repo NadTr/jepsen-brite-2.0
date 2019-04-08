@@ -9,9 +9,8 @@ export default class EventDisplayContainer extends Component {
     super (props);
     this.handleDelete = this.handleDelete.bind(this);
     this.state = {
-      event: {
-        participants: []
-      }
+      event: [],
+      participants: []
     }
   }
 
@@ -22,14 +21,19 @@ export default class EventDisplayContainer extends Component {
 
   async componentDidMount() {
       const event = await getOneEvent(this.props.match.params.id);
+      console.log(event);
       this.setState({
-       event: event
+       event: event.event,
+       participants: event.participants
+
      })
+     console.log(this.state.event);
+     console.log(this.state.participants);
    }
 
   render() {
     return(
-    <EventDisplay package={this.state.event} participants={this.state.event.participants} onClick={this.handleDelete}/>
+    <EventDisplay package={this.state.event} participants={this.state.participants} onClick={this.handleDelete}/>
 
     )
   }
