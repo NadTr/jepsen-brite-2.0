@@ -36,40 +36,47 @@ class NavBar extends Component{
     })
   }
 
-  onSubmit(data) {
+  async onSubmit(data) {
     data.preventDefault();
     let obj = {
       "email": this.state.emailAdress,
       "password": this.state.password
     };
-    logUser(obj);
+    let token = await logUser(obj);
+    console.log(token.data);
+    // faire un setState du contexte avec token.data;
   }
 
   render() {
     return(
       <>
-
-          <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
-            <Link to={"/"}>
-              <Button variant="primary">Home</Button>
+        <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
+          <Link to={"/"}>
+            <Button variant="primary">Home</Button>
+          </Link>
+          <Nav className="mr-auto">
+            <Link to={"/event-create"}>
+              <Button variant="primary">Create Event</Button>
             </Link>
-            <Nav className="mr-auto">
-              <Link to={"/event-create"}>
-                <Button variant="primary">Create Event</Button>
-              </Link>
-              <Link to={"/event-history"}>
-                <Button variant="primary">Past Events</Button>
-              </Link>
-            </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
-              <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-              <Button type="submit" onClick={this.onSubmit}>Login</Button>
-            </Form>
+            <Link to={"/event-history"}>
+              <Button variant="primary">Past Events</Button>
+            </Link>
+          </Nav>
+            <div>
+              {this.context.id ? (
+                <Form inline>
+                  <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
+                  <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
+                  <Button type="submit" onClick={this.onSubmit}>Login</Button>
+                </Form>
+              ) : (
+                <Button variant="primary">Log out</Button>
+              )}
+            </div>
             <Link to={"/user-register"}>
               <Button variant="primary">Register</Button>
             </Link>
-          </Navbar>
+        </Navbar>
       </>
     )
   }

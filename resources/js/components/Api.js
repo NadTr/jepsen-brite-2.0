@@ -51,7 +51,6 @@ export const unregisterEvent = (eventId) => {
 export const createEvent = (obj) => {
   return axios
     .post('/api/events/create', obj)
-    // .then(this.props.history.push('/'))
     .catch(err => console.log(err))
 }
 
@@ -81,13 +80,11 @@ export const editEvent = (eventId, obj) => {
   console.log(eventId);
   return axios
     .put('/api/events/'+eventId, obj)
-    // .then(this.props.history.push('/'))
     .catch(err => console.log(err))
 }
 
 export const deleteEvent = (eventId) => {
   return axios
   .delete('/api/events/'+eventId)
-  // .then(this.props.history.push('/'))
   .catch(err => console.log(err))
 }
