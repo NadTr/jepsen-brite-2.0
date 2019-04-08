@@ -74,34 +74,19 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $ev = DB::table('events', 'users')
+        $ev['event'] = DB::table('events', 'users')
                     ->select('events.id', 'events.name','events.description', 'events.date', 'events.author', 'users.name AS username')
                     ->join('users' , 'events.author', '=','users.id' )
                     ->where('events.id', '=', $event->id)
                      ->first();
-        var_dump($ev->event_to_array());exit();
+   
        
-        $res = DB::table('user__events')
+        $ev['participants'] = DB::table('user__events')
                     ->select('pseudo')
                     ->join('users', 'user__events.users_id', '=','users.id')
                     ->where('events_id', '=', $event->id)
                     ->get();
-/*"id": 6,
-        "name": "create",
-        "description": "desciption",
-        "date": "1993-04-30",
-        "author": 2,
-        "username": "moi"*/
-
-       /* $result= array('eventName'=>$ev->name,
-                       'eventDescr'=>$ev->description,
-                       'eventDate'=>$ev->date,
-                       'eventAuthor'=>$ev->author,
-                       'eventUsername'=>$ev->username,
-                       'eventId'=>$ev->id,
-                       'participants'=> $res);//('event'=>$ev, 'participants'=>$res);*/
-                       
-       return response()->json($result);
+       return $ev;
     }
 
     /**
@@ -159,7 +144,8 @@ class EventController extends Controller
 
         $userEvent->save();
 
-        return 'Success';
+        return response()->json([
+                'message' => 'Succes']);
 
     }
 }
