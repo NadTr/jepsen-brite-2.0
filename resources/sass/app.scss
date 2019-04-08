@@ -4,14 +4,63 @@
 // @import url("https://fonts.googleapis.com/css?family=Cabin+Sketch");
 // Variables
 @import 'variables';
+// @import './assets/campagne.jpg';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-#root {
-  //font-family: 'Gloria Hallelujah', cursive;
-  font-family: 'Eater', cursive;
-  text-shadow: darkmagenta 5px 0 10px;
-  border: solid 24px greenyellow;
+#root{
+  font-family: 'IBM Plex Sans', sans-serif;
+  
 }
 
+body{
+  overflow-x: hidden;
+}
+
+#navbar{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  font-family: 'Luckiest Guy', cursive;
+  background-color: #207A8E;
+  color: #CFFCFF;
+  z-index: 2;
+
+
+}
+.navButton{
+ border: solid 1px #EA8425;
+}
+
+.logoContainer{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 60px;
+  background-image: url('./assets/campagne.jpg');
+  background-position: bottom;
+  background-size: 100% 350px;
+  width: 100%;
+  object-fit: scale-down;
+   z-index: 1;
+}
+
+
+img{
+  margin-top: 10px;
+  width: auto;
+  height: 120px;
+  position: relative;
+}
+ 
+
+@keyframes slidein {
+  from {
+    margin-left: -15%;
+  }
+
+  to {
+    margin-left: 80%;
+  }
+}

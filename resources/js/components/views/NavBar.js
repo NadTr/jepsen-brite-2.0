@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
@@ -46,25 +46,27 @@ export default class NavBar extends Component{
   render() {
     return(
       <>
-      <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
-        <Link to={"/"}>
-          <Button variant="primary">Home</Button>
-        </Link>
+      <Navbar id="navbar">
+        <Navbar.Brand>
+          <Link to={"/"}>
+            <Button className="navButton" variant="#207A8E">Event Food</Button>
+          </Link>
+        </Navbar.Brand>
         <Nav className="mr-auto">
           <Link to={"/event-create"}>
-            <Button variant="primary">Create Event</Button>
+            <Button className="navButton" variant="#207A8E">Create Event</Button>
           </Link>
           <Link to={"/event-history"}>
-            <Button variant="primary">Past Events</Button>
+            <Button className="navButton" variant="#207A8E">Past Events</Button>
           </Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
           <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-          <Button type="submit" onClick={this.onSubmit}>Login</Button>
+          <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
         </Form>
         <Link to={"/user-register"}>
-          <Button variant="primary">Register</Button>
+          <Button className="navButton" variant="#207A8E">Register</Button>
         </Link>
       </Navbar>
       </>
