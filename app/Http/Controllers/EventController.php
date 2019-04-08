@@ -6,6 +6,7 @@ use App\Event;
 use App\User;
 use App\User_Event;
 use App\Auth;
+use Illuminate\Database\Eloquent\collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Console\EventMakeCommand;
@@ -34,7 +35,7 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        $params = $request->all(); 
+        $params = $request->all();
         $params['author'] = auth('api')->user()->id;
         $event = Event::create($params);
         $event['author'] = $event->author()->get()[0];
@@ -48,20 +49,20 @@ class EventController extends Controller
     public function search(Request $request, $offset, $limit){
 
         if ($request->has('id')) {
-            
+
             $res = Event::find($request->input('id'));
             return $res ? $res : 'raté.';
         }
-        
+
         elseif ($request->has('string')) {
-            
+
             $res = Event::where(
                 'name', 'LIKE', '%'.$request->input('string').'%')->orWhere(
                 'date', '<=', $request->input('string'))->skip($offset*$limit)->take($limit)->get();
-                
+
             return $res ? $res : 'raté.';
-         } 
-       
+         }
+
         return 'coucou';
     }
 
@@ -73,25 +74,27 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-         $ev = DB::table('events', 'users')
+        $ev = DB::table('events', 'users')
                     ->select('events.id', 'events.name','events.description', 'events.date', 'events.author', 'users.name AS username')
                     ->join('users' , 'events.author', '=','users.id' )
                     ->where('events.id', '=', $event->id)
-                    ->get();
+                     ->first();
+        // var_dump($ev->event_to_array());exit();
 
-         $res = DB::table('user__events')
+        $res = DB::table('user__events')
                     ->select('pseudo')
                     ->join('users', 'user__events.users_id', '=','users.id')
                     ->where('events_id', '=', $event->id)
                     ->get();
+       $result= array('eventName'=>$ev->name,
+                       'eventDescr'=>$ev->description,
+                       'eventDate'=>$ev->date,
+                       'eventAuthor'=>$ev->author,
+                       'eventUsername'=>$ev->username,
+                       'eventId'=>$ev->id,
+                       'participants'=> $res);
 
-        $ret = [
-            'event' => $ev,
-            'participants' => $res
-        ];
-       
-     
-       return response()->json($ret);
+       return response()->json($result);
     }
 
     /**
@@ -108,9 +111,9 @@ class EventController extends Controller
             'date' => 'nullable',
             'description' => 'nullable'
          ]);
- 
+
          $event->update($request->all());
- 
+
          return response()->json([
              'message' => 'Great success! Event updated',
              'Event' => $event

@@ -21,4 +21,18 @@ class Event extends Model
 
         return $this->belongsTo(User::class, 'author');
     }
+
+    function event_to_array()
+    {
+        if (is_array($this) || is_object($this))
+        {
+            $result = array();
+            foreach ($this as $key => $value)
+            {
+                   $resultat[$key] = $this -> $key;
+            }
+            return $result;
+        }
+        return $this;
+    }
 }
