@@ -27,8 +27,6 @@ export default class EventDisplayContainer extends Component {
        participants: event.participants
 
      })
-     console.log(this.state.event);
-     console.log(this.state.participants);
    }
 
   render() {
