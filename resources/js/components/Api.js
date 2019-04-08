@@ -11,6 +11,12 @@ export const logUser = (obj) => {
     .catch(err => console.log(err))
 }
 
+export const unLogUser = () => {
+  return axios
+    .post('/api/logout')
+    .catch(err => console.log(err))
+}
+
 export const registerUser = (obj) => {
   return axios({
   method: 'post',
@@ -18,6 +24,24 @@ export const registerUser = (obj) => {
   config : {headers:{'Content-Type' : "application/json"}},
   data:obj
   })
+  .catch(err => console.log(err))
+}
+export const userSession = () => {
+  return axios
+    .get('/api/user')
+    .catch(err => console.log(err))
+}
+
+//Events participation
+export const registerEvent = (eventId) => {
+  return axios
+  .get('/api/events/'+eventId+'/inscription')
+  .catch(err => console.log(err))
+}
+
+export const unregisterEvent = (eventId) => {
+  return axios
+  .get('/api/events/'+eventId+'/desinscription')
   .catch(err => console.log(err))
 }
 
