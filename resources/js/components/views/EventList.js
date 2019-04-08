@@ -8,7 +8,6 @@ import { Button } from 'react-bootstrap';
 
 export default class EventList extends Component {
   render() {
-    console.log(this.props.package);
     return(
       <>
         <div>

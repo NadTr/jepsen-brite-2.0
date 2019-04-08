@@ -34,7 +34,6 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </div>
-        //Listing participants
         <CardDeck>
           {this.props.participants.map(participant =>
             <Card key={Math.random()}>
