@@ -17,6 +17,12 @@ export const unLogUser = () => {
     .catch(err => console.log(err))
 }
 
+export const userSession = () => {
+  return axios
+    .get('/api/user')
+    .catch(err => console.log(err))
+}
+
 export const registerUser = (obj) => {
   return axios({
   method: 'post',
@@ -25,11 +31,6 @@ export const registerUser = (obj) => {
   data:obj
   })
   .catch(err => console.log(err))
-}
-export const userSession = () => {
-  return axios
-    .get('/api/user')
-    .catch(err => console.log(err))
 }
 
 //Events participation

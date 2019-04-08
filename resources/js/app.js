@@ -7,6 +7,11 @@ import { HashRouter } from 'react-router-dom'
 
 //import components
 import App from './components/App';
+import SessionProvider from './components/providers/SessionProvider';
 
 
-ReactDOM.render(<HashRouter><App /></HashRouter>, document.getElementById('root'));
+ReactDOM.render(<SessionProvider>
+                  <HashRouter>
+                    <App />
+                  </HashRouter>
+                </SessionProvider>, document.getElementById('root'));

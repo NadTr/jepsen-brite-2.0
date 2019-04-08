@@ -49,3 +49,5 @@ return (
         </div>
     </div>
 );
+
+<SessionProvider><HashRouter><App /></HashRouter></SessionProvider>

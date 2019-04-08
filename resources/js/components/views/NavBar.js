@@ -7,10 +7,12 @@ import { InputGroup } from 'react-bootstrap';
 
 //importcomponents
 import { logUser } from '../Api';
+import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
-export default class NavBar extends Component{
-  constructor(props){
-    super(props);
+
+class NavBar extends Component{
+  constructor(props, context){
+    super(props, context);
 
     this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -44,30 +46,40 @@ export default class NavBar extends Component{
   }
 
   render() {
+    console.log("navbar", this.context)
     return(
       <>
-      <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
-        <Link to={"/"}>
-          <Button variant="primary">Home</Button>
-        </Link>
-        <Nav className="mr-auto">
-          <Link to={"/event-create"}>
-            <Button variant="primary">Create Event</Button>
-          </Link>
-          <Link to={"/event-history"}>
-            <Button variant="primary">Past Events</Button>
-          </Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
-          <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-          <Button type="submit" onClick={this.onSubmit}>Login</Button>
-        </Form>
-        <Link to={"/user-register"}>
-          <Button variant="primary">Register</Button>
-        </Link>
-      </Navbar>
+
+          <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
+            <Link to={"/"}>
+              <Button variant="primary">Home</Button>
+            </Link>
+            <Nav className="mr-auto">
+              <Link to={"/event-create"}>
+                <Button variant="primary">Create Event</Button>
+              </Link>
+              <Link to={"/event-history"}>
+                <Button variant="primary">Past Events</Button>
+              </Link>
+            </Nav>
+
+                <div>
+                  <p>{this.context.state.contextBS}</p>
+                </div>
+            <Form inline>
+              <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
+              <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
+              <Button type="submit" onClick={this.onSubmit}>Login</Button>
+            </Form>
+            <Link to={"/user-register"}>
+              <Button variant="primary">Register</Button>
+            </Link>
+          </Navbar>
       </>
     )
   }
 }
+
+NavBar.contextType=SessionContext
+
+export default NavBar
