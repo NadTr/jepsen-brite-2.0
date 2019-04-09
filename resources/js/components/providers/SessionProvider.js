@@ -16,25 +16,25 @@ export default class SessionProvider extends Component {
     this.state={
       logIn:false,
       token:"",
-      id: "",
-      name: "Steph",
-      pseudo: "Patou",
-      email: "stephsteph@becodemail.com"
+      session:""
     }
   }
 
-  toggleLogIn(token){
-  // async toggleLogIn(token){
-  //   let session = await userSession(token)
+  // toggleLogIn(token){
+  async toggleLogIn(token){
+    let session = await userSession(token)
     this.setState({
       logIn: true,
-      token: token
+      token: token,
+      session: session.data
     })
   }
 
   toggleLogOut(){
     this.setState({
-      logIn: false
+      logIn:false,
+      token:"",
+      session:""
     })
   }
 

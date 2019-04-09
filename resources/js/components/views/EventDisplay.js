@@ -8,6 +8,7 @@ import { Row, Col } from 'react-bootstrap';
 
 //import components
 import ConfirmModalContainer from '../ConfirmModalContainer'
+import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
 export default class EventDisplay extends Component {
   render() {
@@ -24,20 +25,14 @@ export default class EventDisplay extends Component {
               <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             <Card.Footer className="text-muted">
-              <Row>
-                <Col>
+          {(this.context.state.logIn === false ) ?
+                <div>Log in to register to this event.</div>
+            :
+              <Col>
+                <Row>
                   <p>I want to go !</p>
-                </Col>
-                <Col>
-                <Form>
-                  <Link to={"/event-edit-"+this.props.package.id}>
-                    <Button variant="secondary">Edit Event</Button>
-                  </Link>
-                </Form>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
+                </Row>
+                <Row>
                   <div className="mb-3">
                       <Form.Check
                         custom
@@ -46,16 +41,30 @@ export default class EventDisplay extends Component {
                         label="Register to this event"
                       />
                   </div>
-                </Col>
-                <Col>
+                </Row>
+              </Col>
+            }
+            {(this.context.state.session.id === this.props.author) ?
+              <div>Not the author, can't access edit or delete functionnalities</div>
+              :
+              <Col>
+                <Row>
+                  <Form>
+                    <Link to={"/event-edit-"+this.props.package.id}>
+                      <Button variant="secondary">Edit Event</Button>
+                    </Link>
+                  </Form>
+                </Row>
+                <Row>
                   <div><ConfirmModalContainer
                     variant="danger"
                     label="Erase"
                     message="Do you want to delete this event ?"
                     onClick={this.props.onClick}/>
                   </div>
-                </Col>
-              </Row>
+                </Row>
+              </Col>
+            }
             </Card.Footer>
           </Card>
         </div>
@@ -77,3 +86,5 @@ export default class EventDisplay extends Component {
     )
   }
 }
+
+EventDisplay.contextType=SessionContext

@@ -22,7 +22,6 @@ export const logUserOut = (token) => {
 }
 
 export const userSession = (token) => {
-  console.log("api " + token)
   return axios({
     method: 'get',
     url:'/api/user',
