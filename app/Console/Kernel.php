@@ -32,8 +32,8 @@ class Kernel extends ConsoleKernel
         $reminder = DB::table('events')
                         ->join('users' , 'events.author', '=','users.id' )
                         ->select('users.email', 'events.name', 'events.author')
-                        ->where('events.reminder', '<', NOW())
-                        ->where('u too late', '=', false)
+                        ->where('events.reminder', '<', 'NOW()')
+                        ->where('u too late', 'false')
                         ->get();
         $it = 0;
         foreach ($reminder as $reminders) {
