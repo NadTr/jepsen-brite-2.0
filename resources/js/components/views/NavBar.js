@@ -63,19 +63,23 @@ class NavBar extends Component{
             </Link>
           </Nav>
             <div>
-              {this.context.id ? (
-                <Form inline>
+              {(this.context.state.logIn === false ) ?
+                <Form inline onSubmit={this.onSubmit}>
                   <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
                   <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-                  <Button type="submit" onClick={this.onSubmit}>Login</Button>
+                  <Button type="submit" onClick={this.context.toggleLogIn}>Login</Button>
+                  <Link to={"/user-register"}>
+                    <Button variant="primary">Register</Button>
+                  </Link>
                 </Form>
-              ) : (
-                <Button variant="primary">Log out</Button>
-              )}
+               :
+               <div>
+                  {this.context.state.pseudo}
+                  <Button variant="primary" onClick={this.context.toggleLogOut}>Log out</Button>
+                </div>
+              }
             </div>
-            <Link to={"/user-register"}>
-              <Button variant="primary">Register</Button>
-            </Link>
+
         </Navbar>
       </>
     )
