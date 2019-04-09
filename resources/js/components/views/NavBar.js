@@ -6,7 +6,7 @@ import { Form, FormControl } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
 
 //importcomponents
-import { logUser } from '../Api';
+import { logUser, logUserOut } from '../Api';
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
 
@@ -17,6 +17,7 @@ class NavBar extends Component{
     this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.logOut = this.logOut.bind(this);
 
     this.state = {
       emailAdress: "",
@@ -48,6 +49,17 @@ class NavBar extends Component{
     this.context.toggleLogIn(token.data.access_token)
   }
 
+  // logOut(){
+  async logOut(){
+    this.setState({
+      emailAdress: "",
+      password: ""
+    })
+      await logUserOut(this.context.state.token)
+    this.context.toggleLogOut()
+
+  }
+
   render() {
     return(
       <>
@@ -76,7 +88,7 @@ class NavBar extends Component{
                :
                <div>
                   <h5>Greetings</h5>{this.context.state.pseudo}
-                  <Button variant="primary" onClick={this.context.toggleLogOut}>Log out</Button>
+                  <Button variant="primary" onClick={this.logOut}>Log out</Button>
                 </div>
               }
             </div>

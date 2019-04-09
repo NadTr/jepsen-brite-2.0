@@ -51,3 +51,7 @@ return (
 );
 
 <SessionProvider><HashRouter><App /></HashRouter></SessionProvider>
+
+from navBar
+// async logOut(){
+//   await unLogUser()
