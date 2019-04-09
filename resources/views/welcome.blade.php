@@ -7,7 +7,7 @@
         <title>EventFood</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
         <link href="./css/app.css" rel="stylesheet">
         <!-- Styles -->
@@ -15,7 +15,7 @@
     </head>
     <body>
       <div class="content" id="root">
-
+  
       </div>
       <script src="js/app.js"></script>
     </body>

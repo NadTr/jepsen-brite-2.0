@@ -47,9 +47,12 @@ export default class NavBar extends Component{
     return(
       <>
       <Navbar id="navbar">
+       <div className="navbar-brand">
+          <h1>Event Food</h1>
+       </div>
         <Navbar.Brand>
           <Link to={"/"}>
-            <Button className="navButton" variant="#207A8E">Event Food</Button>
+            <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
         </Navbar.Brand>
         <Nav className="mr-auto">

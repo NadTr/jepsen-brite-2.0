@@ -17,7 +17,7 @@ export default class EventListContainer extends Component {
         const events = await getAllEvents();
         this.setState({
             events: events
-        });
+        });                
     }
 
     componentWillUnmount() {
@@ -25,9 +25,7 @@ export default class EventListContainer extends Component {
     }
 
     handleScroll(event) {
-        console.log(window.scrollY);
         let img = document.getElementById("foodTruck");
-        console.log(img);
 
         img.style.left =
             (window.scrollY /
@@ -35,16 +33,7 @@ export default class EventListContainer extends Component {
                 (document.body.offsetWidth - img.offsetWidth) +
             "px";
         let scrollTop = event.srcElement.body.scrollTop;
-        console.log(
-            (window.scrollY /
-                (document.body.offsetHeight - window.innerHeight)) *
-                document.body.offsetWidth
-        );
-        console.log(event);
-
-        /*this.setState({
-        transform: itemTranslate
-      });*/
+        
     }
 
     render() {

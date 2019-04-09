@@ -12,10 +12,10 @@ export default class EventDisplay extends Component {
     return(
       <React.Fragment>
         <div>
-          <Card className="text-center">
+          <Card id="text-center" style={{border:"solid 1.50px #40C0DD"}}>
             <Card.Header> {this.props.package.name} {this.props.package.date}</Card.Header>
             <Card.Body>
-              <Card.Text>
+              <Card.Text >
               L’idée est d’avoir une interaction intuitive, facile, accueillante, qui ne fasse pas peur, dans laquelle le visiteur se lance sans appréhension au niveau du temps que ça va prendre et de la difficulté imaginée du bazar.
               Le fonctionnement de base: comprendre quel est le problème du visiteur.
               On part de questions généralistes qui permettent de définir un premier cadre de possibilités et les questions suivantes permettent de rétrécir ce cadre pour arriver à quelque chose de plus précis et concret.
@@ -28,7 +28,7 @@ export default class EventDisplay extends Component {
             </Card.Body>
             <Card.Footer className="text-muted">
               <Link to={"/event-edit-"+this.props.package.id}>
-                <Button variant="secondary">Edit Event</Button>
+                <Button id="buttonevent" style={{border:"solid 1.50px #40C0DD"}}>Edit</Button>
               </Link>
               <div><ConfirmModalContainer
                 variant="danger"
@@ -39,11 +39,11 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </div>
-        <CardDeck>
-          <Card>
+        <CardDeck id="deck" >
+          <Card style={{border:"solid 1.50px #40C0DD"}}>
             <Card.Img variant="top" src="#" />
             <Card.Body>
-              <Card.Title>Card title</Card.Title>
+              <Card.Title>Event Food</Card.Title>
               <Card.Text>
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This content is a little bit longer.
@@ -53,10 +53,10 @@ export default class EventDisplay extends Component {
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
           </Card>
-          <Card>
+          <Card style={{border:"solid 1.50px #40C0DD"}}>
             <Card.Img variant="top" src="#" />
             <Card.Body>
-              <Card.Title>Card title</Card.Title>
+              <Card.Title>Event Food</Card.Title>
               <Card.Text>
                 This card has supporting text below as a natural lead-in to additional
                 content.{' '}
@@ -66,10 +66,10 @@ export default class EventDisplay extends Component {
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
           </Card>
-          <Card>
+          <Card style={{border:"solid 1.50px #40C0DD"}}>
             <Card.Img variant="top" src="#" />
             <Card.Body>
-              <Card.Title>Card title</Card.Title>
+              <Card.Title>Event Food</Card.Title>
               <Card.Text>
                 This is a wider card with supporting text below as a natural lead-in to
                 additional content. This card has even longer content than the first to
