@@ -29,15 +29,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $reminder = DB::table('events', 'users')
-                        ->select('email', 'events.name', 'events.author')
+        $reminder = DB::table('events')
                         ->join('users' , 'events.author', '=','users.id' )
+                        ->select('users.email', 'events.name', 'events.author')
                         ->where('events.reminder', '<', NOW())
                         ->where('u too late', '=', false)
                         ->get();
         $it = 0;
         foreach ($reminder as $reminders) {
-            Mail::to($reminders['email'])->send(new Reminder());
+            Mail::to($reminders->email)->send(new Reminder());
             $it++;
         }
     }
