@@ -54,6 +54,7 @@ export const createEvent = (obj) => {
 }
 
 export const getAllEvents = () => {
+  console.log("test");
   return axios
     .get('/api/events')
     .then(response => response.data)
