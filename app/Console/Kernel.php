@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $reminder = DB::table('events')
+        $reminder = DB::table('events', 'users')
                         ->select('email', 'events.name')
                         ->join('users' , 'events.author', '=','users.id' )
                         ->where('reminder', '<=', NOW())
