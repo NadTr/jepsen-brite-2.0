@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { userSession }from '../Api';
+
 export const SessionContext = React.createContext()
 
 export const SessionConsumer = SessionContext.Consumer
@@ -11,8 +13,9 @@ export default class SessionProvider extends Component {
     this.toggleLogIn=this.toggleLogIn.bind(this)
     this.toggleLogOut=this.toggleLogOut.bind(this)
 
-    this.state= {
+    this.state={
       logIn:false,
+      token:"",
       id: "",
       name: "Steph",
       pseudo: "Patou",
@@ -20,9 +23,12 @@ export default class SessionProvider extends Component {
     }
   }
 
-  toggleLogIn(){
+  toggleLogIn(token){
+  // async toggleLogIn(token){
+  //   let session = await userSession(token)
     this.setState({
-      logIn: true
+      logIn: true,
+      token: token
     })
   }
 

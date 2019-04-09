@@ -43,8 +43,9 @@ class NavBar extends Component{
       "password": this.state.password
     };
     let token = await logUser(obj);
-    console.log(token.data);
-    // faire un setState du contexte avec token.data;
+    console.log(token.data.access_token);
+    if(token!==null){this.context.toggleLogIn()}
+    this.context.toggleLogIn(token.data.access_token)
   }
 
   render() {
@@ -64,17 +65,17 @@ class NavBar extends Component{
           </Nav>
             <div>
               {(this.context.state.logIn === false ) ?
-                <Form inline onSubmit={this.onSubmit}>
+                <Form inline>
                   <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
                   <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-                  <Button type="submit" onClick={this.context.toggleLogIn}>Login</Button>
+                  <Button type="submit" onClick={this.onSubmit}>Login</Button>
                   <Link to={"/user-register"}>
                     <Button variant="primary">Register</Button>
                   </Link>
                 </Form>
                :
                <div>
-                  {this.context.state.pseudo}
+                  <h5>Greetings</h5>{this.context.state.pseudo}
                   <Button variant="primary" onClick={this.context.toggleLogOut}>Log out</Button>
                 </div>
               }

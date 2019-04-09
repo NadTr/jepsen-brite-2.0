@@ -8,7 +8,6 @@ export const logUser = (obj) => {
     config : {headers:{'Content-Type' : "application/json"}},
     data: obj
   })
-    .then(console.log('Logged in'))
     .catch(err => console.log(err))
 }
 
@@ -18,8 +17,12 @@ export const unLogUser = () => {
     .catch(err => console.log(err))
 }
 
-export const userSession = () => {
-  return axios
+export const userSession = (token) => {
+  return axios({
+    method: 'get',
+    url:'/api/user',
+    headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
+  })
     .get('/api/user')
     .catch(err => console.log(err))
 }
