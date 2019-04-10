@@ -54,11 +54,10 @@ class EventController extends Controller
         elseif ($request->has('string')) {
 
             $res = Event::where(
-                'name', 'LIKE', '%'.$request->input('string').'%')->orWhere(
-                'date', '<=', $request->input('string'))->skip($offset*$limit)->take($limit)->get();
-
-            return $res ? $res : 'raté.';
-         }
+              'name', 'LIKE', '%'.$request->input('string').'%')->orWhere(
+              'description', 'LIKE', '%'.$request->input('string').'%')->orWhere(
+              'date', 'ILIKE', '%'.$request->input('string').'%')->skip($offset*$limit)->take($limit)->get();
+            return $res ? $res : 'raté.';}
 
         return 'coucou';
     }
@@ -160,7 +159,7 @@ class EventController extends Controller
             return response()->json([
                 'message' => 'Succes']);
         }
-        
+
         return response()->json([
                 'message' => 'You are not suscribed']);
 

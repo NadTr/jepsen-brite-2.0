@@ -90,6 +90,14 @@ export const getOneEvent = (eventId) => {
     .catch(err => console.log(err))
 }
 
+export const searchEvent = (string) => {
+  console.log("api "+string);
+  return axios
+    .get('/api/events/search/0/4?string='+string)
+    .then(response => response.data)
+    .catch(err => console.log(err))
+}
+
 export const editEvent = (eventId, obj, token) => {
     return axios({
     method: 'put',

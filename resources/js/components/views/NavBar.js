@@ -6,7 +6,7 @@ import { Form, FormControl } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 
 //importcomponents
-import { logUser, logUserOut } from '../Api';
+import { logUser, logUserOut, searchEvent } from '../Api';
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
 
@@ -16,12 +16,15 @@ export default class NavBar extends Component{
 
     this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeSearchItem = this.onChangeSearchItem.bind(this);
+    this.onSearch = this.onSearch.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.logOut = this.logOut.bind(this);
 
     this.state = {
       emailAdress: "",
-      password: ""
+      password: "",
+      searchItem:""
     }
   }
 
@@ -50,6 +53,17 @@ export default class NavBar extends Component{
     if(token!==null){this.context.toggleLogIn(token.data.access_token)}
   }
 
+  onChangeSearchItem(input) {
+    this.setState({
+      searchItem: input.target.value
+    })
+  }
+
+  async onSearch(){
+    const search = await searchEvent(this.state.searchItem)
+    console.log(search);
+
+  }
 
   async logOut(){
     // reset the login data from this.state
@@ -83,6 +97,10 @@ export default class NavBar extends Component{
             <Link to={"/event-history"}>
               <Button className="navButton" variant="#207A8E">Past Events</Button>
             </Link>
+            <Form inline>
+              <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
+              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+            </Form>
           </Nav>
         </Nav>
             <div>
