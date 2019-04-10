@@ -40,15 +40,25 @@ export const registerUser = (obj) => {
 }
 
 //Events participation
-export const registerEvent = (eventId) => {
-  return axios
-  .get('/api/events/'+eventId+'/inscription')
+export const registerEvent = (eventId, token) => {
+  // return axios
+  // .get('/api/events/'+eventId+'/inscription')
+  return axios({
+  method: 'get',
+  url:'/api/events/'+eventId+'/inscription',
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
+  })
   .catch(err => console.log(err))
 }
 
-export const unregisterEvent = (eventId) => {
-  return axios
-  .get('/api/events/'+eventId+'/desinscription')
+export const unregisterEvent = (eventId, token) => {
+  // return axios
+  // .get('/api/events/'+eventId+'/desinscription')
+  return axios({
+  method: 'get',
+  url:'/api/events/'+eventId+'/desinscription',
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
+  })
   .catch(err => console.log(err))
 }
 

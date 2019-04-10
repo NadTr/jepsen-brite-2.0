@@ -47240,13 +47240,31 @@ var registerUser = function registerUser(obj) {
   });
 }; //Events participation
 
-var registerEvent = function registerEvent(eventId) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/events/' + eventId + '/inscription').catch(function (err) {
+var registerEvent = function registerEvent(eventId, token) {
+  // return axios
+  // .get('/api/events/'+eventId+'/inscription')
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: 'get',
+    url: '/api/events/' + eventId + '/inscription',
+    headers: {
+      'Content-Type': "application/json",
+      "Authorization": "Bearer " + token
+    }
+  }).catch(function (err) {
     return console.log(err);
   });
 };
-var unregisterEvent = function unregisterEvent(eventId) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/events/' + eventId + '/desinscription').catch(function (err) {
+var unregisterEvent = function unregisterEvent(eventId, token) {
+  // return axios
+  // .get('/api/events/'+eventId+'/desinscription')
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: 'get',
+    url: '/api/events/' + eventId + '/desinscription',
+    headers: {
+      'Content-Type': "application/json",
+      "Authorization": "Bearer " + token
+    }
+  }).catch(function (err) {
     return console.log(err);
   });
 }; //crud events
@@ -47598,7 +47616,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _views_EventDisplay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/EventDisplay */ "./resources/js/components/views/EventDisplay.js");
-/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Api */ "./resources/js/components/Api.js");
+/* harmony import */ var _providers_SessionProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./providers/SessionProvider */ "./resources/js/components/providers/SessionProvider.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Api */ "./resources/js/components/Api.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -47628,6 +47647,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var EventDisplayContainer =
 /*#__PURE__*/
 function (_Component) {
@@ -47650,27 +47670,81 @@ function (_Component) {
   _createClass(EventDisplayContainer, [{
     key: "handleDelete",
     value: function handleDelete() {
-      Object(_Api__WEBPACK_IMPORTED_MODULE_3__["deleteEvent"])(this.state.event.id);
+      Object(_Api__WEBPACK_IMPORTED_MODULE_4__["deleteEvent"])(this.state.event.id);
       this.props.history.push('/');
     } // fct to subscribe to an events
-    // fct to unsubscribe to an events
 
   }, {
-    key: "componentDidMount",
+    key: "optInEvent",
     value: function () {
-      var _componentDidMount = _asyncToGenerator(
+      var _optInEvent = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var event;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return Object(_Api__WEBPACK_IMPORTED_MODULE_3__["getOneEvent"])(this.props.match.params.id);
+                return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["registerEvent"])(this.props.match.params.id, this.context.state.token);
 
               case 2:
-                event = _context.sent;
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function optInEvent() {
+        return _optInEvent.apply(this, arguments);
+      }
+
+      return optInEvent;
+    }() // fct to unsubscribe to an events
+
+  }, {
+    key: "optOutEvent",
+    value: function () {
+      var _optOutEvent = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["unregisterEvent"])(this.props.match.params.id, this.context.state.token);
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function optOutEvent() {
+        return _optOutEvent.apply(this, arguments);
+      }
+
+      return optOutEvent;
+    }()
+  }, {
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var event;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["getOneEvent"])(this.props.match.params.id);
+
+              case 2:
+                event = _context3.sent;
                 this.setState({
                   event: event.event,
                   participants: event.participants
@@ -47678,10 +47752,10 @@ function (_Component) {
 
               case 4:
               case "end":
-                return _context.stop();
+                return _context3.stop();
             }
           }
-        }, _callee, this);
+        }, _callee3, this);
       }));
 
       function componentDidMount() {
@@ -47693,6 +47767,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log("container", this.props.match.params.id, this.context.state.token);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_views_EventDisplay__WEBPACK_IMPORTED_MODULE_2__["default"], {
         package: this.state.event,
         participants: this.state.participants,
@@ -47705,6 +47780,7 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
+EventDisplayContainer.contextType = _providers_SessionProvider__WEBPACK_IMPORTED_MODULE_3__["SessionContext"];
 
 /***/ }),
 
