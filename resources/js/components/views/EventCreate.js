@@ -17,11 +17,15 @@ export default class EventCreate extends Component {
           </Form.Group>
           <Form.Group controlId="createForm.ControlInput2">
             <Form.Label>Date of the event:</Form.Label>
-            <Form.Control type="text" onChange={this.props.onChangeDate}/>
+            <Form.Control type="date" onChange={this.props.onChangeDate}/>
           </Form.Group>
-          <Form.Group controlId="createForm.ControlTextarea1">
+          <Form.Group controlId="createForm.ControlInput3">
+            <Form.Label>Set a reminder:</Form.Label>
+            <Form.Control type="date" onChange={this.props.onChangeReminder}/>
+          </Form.Group>
+          <Form.Group controlId="createForm.ControlInput4">
             <Form.Label>Description of the event:</Form.Label>
-            <Form.Control as="textarea" rows="8" onChange={this.props.onChangeDescription}/>
+            <Form.Control type="text" onChange={this.props.onChangeDescription}/>
           </Form.Group>
         </Form>
         <div><ConfirmModalContainer

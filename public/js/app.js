@@ -47501,12 +47501,13 @@ function (_Component) {
     _this.onChangeName = _this.onChangeName.bind(_assertThisInitialized(_this));
     _this.onChangeDate = _this.onChangeDate.bind(_assertThisInitialized(_this));
     _this.onChangeDescription = _this.onChangeDescription.bind(_assertThisInitialized(_this));
+    _this.onChangeReminder = _this.onChangeReminder.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       name: "",
       date: "",
       description: "",
-      author: ""
+      reminder: ""
     };
     return _this;
   }
@@ -47533,6 +47534,13 @@ function (_Component) {
       });
     }
   }, {
+    key: "onChangeReminder",
+    value: function onChangeReminder(input) {
+      this.setState({
+        reminder: input.target.value
+      });
+    }
+  }, {
     key: "onSubmit",
     value: function onSubmit(data) {
       data.preventDefault();
@@ -47540,7 +47548,7 @@ function (_Component) {
         "name": this.state.name,
         "date": this.state.date,
         "description": this.state.description,
-        "author": this.context.state.session.id
+        "reminder": this.state.reminder
       };
       console.log(obj);
     }
@@ -47551,6 +47559,7 @@ function (_Component) {
         onChangeName: this.onChangeName,
         onChangeDate: this.onChangeDate,
         onChangeDescription: this.onChangeDescription,
+        onChangeReminder: this.onChangeReminder,
         onClick: this.onSubmit
       });
     }
@@ -48463,13 +48472,17 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         controlId: "createForm.ControlInput2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Date of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
-        type: "text",
+        type: "date",
         onChange: this.props.onChangeDate
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        controlId: "createForm.ControlTextarea1"
+        controlId: "createForm.ControlInput3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Set a reminder:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
+        type: "date",
+        onChange: this.props.onChangeReminder
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        controlId: "createForm.ControlInput4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Description of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
-        as: "textarea",
-        rows: "8",
+        type: "text",
         onChange: this.props.onChangeDescription
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmModalContainer__WEBPACK_IMPORTED_MODULE_3__["default"], {
         variant: "success",

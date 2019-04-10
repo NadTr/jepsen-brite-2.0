@@ -12,13 +12,14 @@ export default class EventCreateContainer extends Component {
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeReminder = this.onChangeReminder.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       name: "",
       date: "",
       description: "",
-      author: ""
+      reminder: ""
     }
   }
 
@@ -40,13 +41,19 @@ export default class EventCreateContainer extends Component {
    });
   }
 
+  onChangeReminder(input){
+      this.setState({
+        reminder: input.target.value
+      });
+  }
+
   onSubmit(data){
     data.preventDefault();
     const obj = {
       "name": this.state.name,
       "date": this.state.date,
       "description": this.state.description,
-      "author": this.context.state.session.id
+      "reminder": this.state.reminder
     }
     console.log(obj);
   }
@@ -57,6 +64,7 @@ export default class EventCreateContainer extends Component {
         onChangeName={this.onChangeName}
         onChangeDate={this.onChangeDate}
         onChangeDescription={this.onChangeDescription}
+        onChangeReminder={this.onChangeReminder}
         onClick={this.onSubmit}
       />
     )
