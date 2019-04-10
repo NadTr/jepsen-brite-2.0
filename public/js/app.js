@@ -47312,6 +47312,7 @@ var getOneEvent = function getOneEvent(eventId) {
   });
 };
 var searchEvent = function searchEvent(string) {
+  console.log("api " + string);
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/events/search/0/4?string=' + string).then(function (response) {
     return response.data;
   }).catch(function (err) {
@@ -48663,6 +48664,12 @@ function (_Component) {
         controlId: "createForm.ControlInput3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Set a reminder:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         type: "text",
+        style: {
+          width: '100%',
+          marginBottom: '0.5rem',
+          background: "#D6E5E3",
+          border: "solid 1.50px #40C0DD"
+        },
         onChange: this.props.onChangeReminder,
         defaultValue: "yyyy-mm-dd hh:mm"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -48871,21 +48878,45 @@ function (_Component) {
         controlId: "createForm.ControlInput1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Name of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         type: "text",
+        style: {
+          width: '100%',
+          marginBottom: '0.5rem',
+          background: "#D6E5E3",
+          border: "solid 1.50px #40C0DD"
+        },
         defaultValue: this.props.package.name,
         onChange: this.props.onChangeName
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         controlId: "createForm.ControlInput2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Date of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        style: {
+          width: '100%',
+          marginBottom: '0.5rem',
+          background: "#D6E5E3",
+          border: "solid 1.50px #40C0DD"
+        },
         defaultValue: this.props.package.date,
         onChange: this.props.onChangeDate
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "createForm.ControlInput2"
+        controlId: "createForm.ControlInput3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Reminder:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        style: {
+          width: '100%',
+          marginBottom: '0.5rem',
+          background: "#D6E5E3",
+          border: "solid 1.50px #40C0DD"
+        },
         defaultValue: this.props.package.reminder,
         onChange: this.props.onChangeReminder
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "createForm.ControlTextarea1"
+        controlId: "createForm.ControlInput4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Description of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        style: {
+          width: '100%',
+          marginBottom: '0.5rem',
+          background: "#D6E5E3",
+          border: "solid 1.50px #40C0DD"
+        },
         type: "text",
         defaultValue: this.props.package.description,
         onChange: this.props.onChangeDescription
@@ -49159,6 +49190,7 @@ function (_Component) {
     _this.onChangeEmailAdress = _this.onChangeEmailAdress.bind(_assertThisInitialized(_this));
     _this.onChangePassword = _this.onChangePassword.bind(_assertThisInitialized(_this));
     _this.onChangeSearchItem = _this.onChangeSearchItem.bind(_assertThisInitialized(_this));
+    _this.onSearch = _this.onSearch.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     _this.logOut = _this.logOut.bind(_assertThisInitialized(_this));
     _this.state = {
@@ -49234,18 +49266,24 @@ function (_Component) {
       });
     }
   }, {
-    key: "search",
+    key: "onSearch",
     value: function () {
-      var _search = _asyncToGenerator(
+      var _onSearch = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var search;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                Object(_Api__WEBPACK_IMPORTED_MODULE_4__["searchEvent"])(this.state.searchItem);
+                _context2.next = 2;
+                return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["searchEvent"])(this.state.searchItem);
 
-              case 1:
+              case 2:
+                search = _context2.sent;
+                console.log(search);
+
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -49253,11 +49291,11 @@ function (_Component) {
         }, _callee2, this);
       }));
 
-      function search() {
-        return _search.apply(this, arguments);
+      function onSearch() {
+        return _onSearch.apply(this, arguments);
       }
 
-      return search;
+      return onSearch;
     }()
   }, {
     key: "logOut",
@@ -49329,7 +49367,7 @@ function (_Component) {
         className: "navButton",
         variant: "#207A8E",
         type: "submit",
-        onClick: this.onSubmit
+        onClick: this.onSearch
       }, "Search")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
         inline: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["FormControl"], {

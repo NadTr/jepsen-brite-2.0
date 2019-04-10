@@ -17,6 +17,7 @@ export default class NavBar extends Component{
     this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onChangeSearchItem = this.onChangeSearchItem.bind(this);
+    this.onSearch = this.onSearch.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.logOut = this.logOut.bind(this);
 
@@ -58,8 +59,10 @@ export default class NavBar extends Component{
     })
   }
 
-  async search(){
-    searchEvent(this.state.searchItem)
+  async onSearch(){
+    const search = await searchEvent(this.state.searchItem)
+    console.log(search);
+
   }
 
   async logOut(){
@@ -96,7 +99,7 @@ export default class NavBar extends Component{
             </Link>
             <Form inline>
               <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
-              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Search</Button>
+              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
             </Form>
           </Nav>
         </Nav>

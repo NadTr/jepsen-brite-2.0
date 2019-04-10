@@ -19,7 +19,7 @@ export default class EventCreate extends Component {
           </Form.Group>
           <Form.Group controlId="createForm.ControlInput3">
             <Form.Label>Set a reminder:</Form.Label>
-            <Form.Control type="text" onChange={this.props.onChangeReminder} defaultValue="yyyy-mm-dd hh:mm"/>
+            <Form.Control type="text" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3",border:"solid 1.50px #40C0DD" }} onChange={this.props.onChangeReminder} defaultValue="yyyy-mm-dd hh:mm"/>
           </Form.Group>
           <Form.Group controlId="createForm.ControlInput4">
             <Form.Label>Description of the event:</Form.Label>
