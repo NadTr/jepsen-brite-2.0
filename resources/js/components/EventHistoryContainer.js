@@ -13,11 +13,27 @@ export default class EventHistoryContainer extends Component {
   }
 
   async componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
     const events = await getOldEvents();
     this.setState({
      events: events
    })
  }
+ componentWillUnmount() {
+  window.removeEventListener("scroll", this.handleScroll);
+}
+
+handleScroll(event) {
+  let img = document.getElementById("foodTruck");
+
+  img.style.left =
+      (window.scrollY /
+          (document.body.offsetHeight - window.innerHeight)) *
+          (document.body.offsetWidth - img.offsetWidth) +
+      "px";
+  let scrollTop = event.srcElement.body.scrollTop;
+  
+}
 
   render() {
     return(

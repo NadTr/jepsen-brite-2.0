@@ -40,27 +40,36 @@ export const registerUser = (obj) => {
 }
 
 //Events participation
-export const registerEvent = (eventId) => {
-  return axios
-  .get('/api/events/'+eventId+'/inscription')
+export const registerEvent = (eventId, token) => {
+  return axios({
+  method: 'put',
+  url:'/api/events/'+eventId+'/inscription',
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
+  })
   .catch(err => console.log(err))
 }
 
-export const unregisterEvent = (eventId) => {
-  return axios
-  .get('/api/events/'+eventId+'/desinscription')
+export const unregisterEvent = (eventId, token) => {
+  return axios({
+  method: 'delete',
+  url:'/api/events/'+eventId+'/desinscription',
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
+  })
   .catch(err => console.log(err))
 }
 
 //crud events
-export const createEvent = (obj) => {
-  return axios
-    .post('/api/events/create', obj)
-    .catch(err => console.log(err))
+export const createEvent = (obj, token) => {
+  return axios({
+  method: 'post',
+  url:'/api/events/create',
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
+  data: obj
+  })
+  .catch(err => console.log(err))
 }
 
 export const getAllEvents = () => {
-  console.log("test");
   return axios
     .get('/api/events')
     .then(response => response.data)
@@ -81,16 +90,28 @@ export const getOneEvent = (eventId) => {
     .catch(err => console.log(err))
 }
 
-export const editEvent = (eventId, obj) => {
-  console.log(obj);
-  console.log(eventId);
+export const searchEvent = (string) => {
   return axios
-    .put('/api/events/'+eventId, obj)
+    .get('/api/events/search/0/4?string='+string)
+    .then(response => response.data)
     .catch(err => console.log(err))
 }
 
-export const deleteEvent = (eventId) => {
-  return axios
-  .delete('/api/events/'+eventId)
+export const editEvent = (eventId, obj, token) => {
+    return axios({
+    method: 'put',
+    url:'/api/events/'+eventId,
+    headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
+    data: obj
+    })
+    .catch(err => console.log(err))
+}
+
+export const deleteEvent = (eventId, token) => {
+  return axios({
+  method: 'delete',
+  url:'/api/events/'+eventId,
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
+  })
   .catch(err => console.log(err))
 }

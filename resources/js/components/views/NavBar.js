@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
-import { InputGroup } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 //importcomponents
-import { logUser, logUserOut } from '../Api';
+import { logUser, logUserOut, searchEvent } from '../Api';
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
 
@@ -16,12 +16,15 @@ export default class NavBar extends Component{
 
     this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeSearchItem = this.onChangeSearchItem.bind(this);
+    this.onSearch = this.onSearch.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.logOut = this.logOut.bind(this);
 
     this.state = {
       emailAdress: "",
-      password: ""
+      password: "",
+      searchItem:""
     }
   }
 
@@ -50,6 +53,17 @@ export default class NavBar extends Component{
     if(token!==null){this.context.toggleLogIn(token.data.access_token)}
   }
 
+  onChangeSearchItem(input) {
+    this.setState({
+      searchItem: input.target.value
+    })
+  }
+
+  async onSearch(){
+    const search = await searchEvent(this.state.searchItem)
+    console.log(search);
+
+  }
 
   async logOut(){
     // reset the login data from this.state
@@ -65,34 +79,52 @@ export default class NavBar extends Component{
   }
 
   render() {
-    return(
+    return (
       <>
-        <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
+        <Navbar id="navbar">
+        <Navbar.Brand>
           <Link to={"/"}>
-            <Button variant="primary">Home</Button>
+            <div className="navbar-brand">
+              <h1>Event Food</h1>
+            </div>
+          </Link>
+        </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Link to={"/"}>
+            <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
           <Nav className="mr-auto">
             <Link to={"/event-history"}>
-              <Button variant="primary">Past Events</Button>
+              <Button className="navButton" variant="#207A8E">Past Events</Button>
             </Link>
+            <Form inline>
+              <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
+              <Link to={"/event-search"}>
+                <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              </Link>
+            </Form>
           </Nav>
+        </Nav>
             <div>
               {(this.context.state.logIn === false ) ?
                 <Form inline>
                   <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
                   <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-                  <Button type="submit" onClick={this.onSubmit}>Login</Button>
+                  <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
                   <Link to={"/user-register"}>
-                    <Button variant="primary">Register</Button>
+                    <Button className="navButton" variant="#207A8E">Register</Button>
                   </Link>
                 </Form>
                :
                <Nav className="mr-auto">
                  <Link to={"/event-create"}>
-                   <Button variant="primary">Create Event</Button>
+                   <Button className="navButton" variant="#207A8E">Create Event</Button>
                  </Link>
-                  <h5>Greetings</h5>{this.context.state.session.pseudo}
-                  <Button variant="primary" onClick={this.logOut}>Log out</Button>
+                  <Col>
+                    <Row><h5>Greetings </h5></Row>
+                    <Row>{this.context.state.session.pseudo}</Row>
+                  </Col>
+                  <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
               }
             </div>

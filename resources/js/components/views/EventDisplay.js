@@ -15,14 +15,12 @@ export default class EventDisplay extends Component {
     return(
       <>
         <div>
-          <Card className="text-center">
-            <Card.Header> {this.props.package.name} {this.props.package.username} {this.props.package.date}</Card.Header>
+          <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
+            <Card.Header> {this.props.package.name} {this.props.package.date}</Card.Header>
             <Card.Body>
-              <Card.Text>
+              <Card.Text >
                 {this.props.package.description}
               </Card.Text>
-              <p>Lorem ipsum</p>
-              <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             <Card.Footer className="text-muted">
           {(this.context.state.logIn === false ) ?
@@ -30,28 +28,19 @@ export default class EventDisplay extends Component {
             :
               <Col>
                 <Row>
-                  <p>I want to go !</p>
+                  <Button style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}} onClick={this.props.optInEvent}>I want to participate</Button>
                 </Row>
                 <Row>
-                  <div className="mb-3">
-                      <Form.Check
-                        custom
-                        type='checkbox'
-                        id="custom-checkbox"
-                        label="Register to this event"
-                      />
-                  </div>
+                  <Button variant="danger" onClick={this.props.optOutEvent}>I no longer want to come</Button>
                 </Row>
               </Col>
             }
-            {(this.context.state.session.id === this.props.author) ?
-              <div>Not the author, can't access edit or delete functionnalities</div>
-              :
+            {(this.context.state.session.id === this.props.package.author) ?
               <Col>
                 <Row>
                   <Form>
                     <Link to={"/event-edit-"+this.props.package.id}>
-                      <Button variant="secondary">Edit Event</Button>
+                      <Button id="buttonevent" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Edit</Button>
                     </Link>
                   </Form>
                 </Row>
@@ -64,24 +53,23 @@ export default class EventDisplay extends Component {
                   </div>
                 </Row>
               </Col>
+              :
+              <div>Not the author, can't access edit or delete functionnalities</div>
             }
             </Card.Footer>
           </Card>
         </div>
-        <CardDeck>
+        <div className="row">
           {this.props.participants.map(participant =>
-            <Card key={Math.random()}>
-              <Card.Body>
-                <Card.Title>{participant.pseudo}</Card.Title>
-                <Card.Text>
-                  Lorem Ipsum
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-              </Card.Footer>
-            </Card>
+          <div className="card col-4" key={Math.random()}>
+          <div className="card-body" style={{border:"solid 1.50px #40C0DD"}}>
+            <h5 className="card-title">{participant.pseudo}</h5>
+            <h6 className="card-subtitle mb-2 text-muted"></h6>
+          </div>
+        </div>
+
           )}
-        </CardDeck>
+        </div>
       </>
     )
   }

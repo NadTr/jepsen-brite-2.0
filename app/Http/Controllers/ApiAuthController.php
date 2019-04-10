@@ -18,7 +18,7 @@ class ApiAuthController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login']]);
-        
+
     }
     /**
      * Get a JWT via given credentials.
@@ -41,6 +41,7 @@ class ApiAuthController extends Controller
     public function user()
     {
         return response()->json(auth()->user());
+
     }
     /**
      * Log the user out (Invalidate the token).
@@ -79,5 +80,5 @@ class ApiAuthController extends Controller
 
 
 
-      
+
 }
