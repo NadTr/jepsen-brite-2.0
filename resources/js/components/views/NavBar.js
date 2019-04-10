@@ -66,32 +66,41 @@ export default class NavBar extends Component{
   render() {
     return (
       <>
-        <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
+        <Navbar id="navbar">
+        <Navbar.Brand>
           <Link to={"/"}>
-            <Button variant="primary">Home</Button>
+            <div className="navbar-brand">
+              <h1>Event Food</h1>
+            </div>
+          </Link>
+        </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Link to={"/"}>
+            <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
           <Nav className="mr-auto">
             <Link to={"/event-history"}>
-              <Button variant="primary">Past Events</Button>
+              <Button className="navButton" variant="#207A8E">Past Events</Button>
             </Link>
           </Nav>
+        </Nav>
             <div>
               {(this.context.state.logIn === false ) ?
                 <Form inline>
                   <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
                   <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-                  <Button type="submit" onClick={this.onSubmit}>Login</Button>
+                  <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
                   <Link to={"/user-register"}>
-                    <Button variant="primary">Register</Button>
+                    <Button className="navButton" variant="#207A8E">Register</Button>
                   </Link>
                 </Form>
                :
                <Nav className="mr-auto">
                  <Link to={"/event-create"}>
-                   <Button variant="primary">Create Event</Button>
+                   <Button className="navButton" variant="#207A8E">Create Event</Button>
                  </Link>
                   <h5>Greetings</h5>{this.context.state.session.pseudo}
-                  <Button variant="primary" onClick={this.logOut}>Log out</Button>
+                  <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
               }
             </div>

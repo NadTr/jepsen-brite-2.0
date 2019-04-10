@@ -48756,9 +48756,7 @@ function (_Component) {
           background: "#D6E5E3",
           border: "solid 1.50px #40C0DD"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, " ", this.props.package.name, " ", this.props.package.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Text, null, "L\u2019id\xE9e est d\u2019avoir une interaction intuitive, facile, accueillante, qui ne fasse pas peur, dans laquelle le visiteur se lance sans appr\xE9hension au niveau du temps que \xE7a va prendre et de la difficult\xE9 imagin\xE9e du bazar. Le fonctionnement de base: comprendre quel est le probl\xE8me du visiteur. On part de questions g\xE9n\xE9ralistes qui permettent de d\xE9finir un premier cadre de possibilit\xE9s et les questions suivantes permettent de r\xE9tr\xE9cir ce cadre pour arriver \xE0 quelque chose de plus pr\xE9cis et concret. On passe \xE0 un autre mode d'interaction quand cela est consid\xE9r\xE9 souhaitable, dans un ordre logique, pour arriver \xE0 un vrai humain le plus tard possible (si possible r\xE9gler le probl\xE8me avant cette \xE9tape). Si un humain est disponible, cela peut-\xEAtre un chat, un appel (comme avec les banques et autres), si un humain n\u2019est pas disponible, les messages diff\xE9r\xE9s (emails) sont la seule option. On guide le visiteur avec ce syst\xE8me, mais d\xE8s que l\u2019on peut, on lui propose automatiquement des options de canal de communication. Apr\xE8s quelques questions-r\xE9ponses, on l\u2019emm\xE8ne au ChatBot, mais on peut lui proposer de passer directement au mail par exemple. L\u2019id\xE9e est de r\xE9colter un maximum de donn\xE9es de mani\xE8re automatis\xE9es, avec le minimum d\u2019intervention humaine.", this.props.package.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        variant: "primary"
-      }, "Go somewhere")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Footer, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, " ", this.props.package.name, " ", this.props.package.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Text, null, "L\u2019id\xE9e est d\u2019avoir une interaction intuitive, facile, accueillante, qui ne fasse pas peur, dans laquelle le visiteur se lance sans appr\xE9hension au niveau du temps que \xE7a va prendre et de la difficult\xE9 imagin\xE9e du bazar. Le fonctionnement de base: comprendre quel est le probl\xE8me du visiteur. On part de questions g\xE9n\xE9ralistes qui permettent de d\xE9finir un premier cadre de possibilit\xE9s et les questions suivantes permettent de r\xE9tr\xE9cir ce cadre pour arriver \xE0 quelque chose de plus pr\xE9cis et concret. On passe \xE0 un autre mode d'interaction quand cela est consid\xE9r\xE9 souhaitable, dans un ordre logique, pour arriver \xE0 un vrai humain le plus tard possible (si possible r\xE9gler le probl\xE8me avant cette \xE9tape). Si un humain est disponible, cela peut-\xEAtre un chat, un appel (comme avec les banques et autres), si un humain n\u2019est pas disponible, les messages diff\xE9r\xE9s (emails) sont la seule option. On guide le visiteur avec ce syst\xE8me, mais d\xE8s que l\u2019on peut, on lui propose automatiquement des options de canal de communication. Apr\xE8s quelques questions-r\xE9ponses, on l\u2019emm\xE8ne au ChatBot, mais on peut lui proposer de passer directement au mail par exemple. L\u2019id\xE9e est de r\xE9colter un maximum de donn\xE9es de mani\xE8re automatis\xE9es, avec le minimum d\u2019intervention humaine.", this.props.package.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Footer, {
         className: "text-muted"
       }, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Log in to register to this event.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         variant: "success",
@@ -49250,22 +49248,26 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"], {
-        bg: "primary",
-        variant: "dark",
-        style: {
-          marginBottom: '0.5rem'
-        }
+        id: "navbar"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Navbar"].Brand, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "navbar-brand"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Event Food")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
+        className: "mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        variant: "primary"
+        className: "navButton",
+        variant: "#207A8E"
       }, "Home")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
         className: "mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/event-history"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        variant: "primary"
-      }, "Past Events"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
+        className: "navButton",
+        variant: "#207A8E"
+      }, "Past Events")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
         inline: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["FormControl"], {
         type: "text",
@@ -49278,20 +49280,25 @@ function (_Component) {
         className: " mr-sm-2",
         onChange: this.onChangePassword
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        className: "navButton",
+        variant: "#207A8E",
         type: "submit",
         onClick: this.onSubmit
       }, "Login"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/user-register"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        variant: "primary"
+        className: "navButton",
+        variant: "#207A8E"
       }, "Register"))) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
         className: "mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/event-create"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        variant: "primary"
+        className: "navButton",
+        variant: "#207A8E"
       }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", null, "Greetings"), this.context.state.session.pseudo, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        variant: "primary",
+        className: "navButton",
+        variant: "#207A8E",
         onClick: this.logOut
       }, "Log out")))));
     }

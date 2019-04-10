@@ -27,7 +27,6 @@ export default class EventDisplay extends Component {
               L’idée est de récolter un maximum de données de manière automatisées, avec le minimum d’intervention humaine.
               {this.props.package.description}
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             <Card.Footer className="text-muted">
           {(this.context.state.logIn === false ) ?
