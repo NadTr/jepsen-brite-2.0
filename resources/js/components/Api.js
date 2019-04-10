@@ -91,7 +91,6 @@ export const getOneEvent = (eventId) => {
 }
 
 export const searchEvent = (string) => {
-  console.log("api "+string);
   return axios
     .get('/api/events/search/0/4?string='+string)
     .then(response => response.data)

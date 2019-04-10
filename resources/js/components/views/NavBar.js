@@ -99,7 +99,9 @@ export default class NavBar extends Component{
             </Link>
             <Form inline>
               <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
-              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              <Link to={"/event-search"}>
+                <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              </Link>
             </Form>
           </Nav>
         </Nav>
