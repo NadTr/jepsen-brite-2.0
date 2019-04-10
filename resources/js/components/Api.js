@@ -53,11 +53,15 @@ export const unregisterEvent = (eventId) => {
 }
 
 //crud events
-export const createEvent = (obj) => {
+export const createEvent = (obj, token) => {
   console.log(obj);
-  return axios
-    .post('/api/events/create', obj)
-    .catch(err => console.log(err))
+  return axios({
+  method: 'post',
+  url:'/api/events/create',
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
+  data: obj
+  })
+  .catch(err => console.log(err))
 }
 
 export const getAllEvents = () => {

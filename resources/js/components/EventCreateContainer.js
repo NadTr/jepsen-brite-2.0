@@ -56,10 +56,12 @@ export default class EventCreateContainer extends Component {
       "reminder": this.state.reminder,
       "u too late":"false"
     }
-    createEvent(obj);
+    createEvent(obj, this.context.state.token);
+    this.props.history.push('/');
   }
 
   render() {
+    console.log("context "+this.context.state.token);
     return(
       <EventCreate
         onChangeName={this.onChangeName}

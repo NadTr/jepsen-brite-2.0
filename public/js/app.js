@@ -47251,9 +47251,17 @@ var unregisterEvent = function unregisterEvent(eventId) {
   });
 }; //crud events
 
-var createEvent = function createEvent(obj) {
+var createEvent = function createEvent(obj, token) {
   console.log(obj);
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/events/create', obj).catch(function (err) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: 'post',
+    url: '/api/events/create',
+    headers: {
+      'Content-Type': "application/json",
+      "Authorization": "Bearer " + token
+    },
+    data: obj
+  }).catch(function (err) {
     return console.log(err);
   });
 };
@@ -47552,11 +47560,13 @@ function (_Component) {
         "reminder": this.state.reminder,
         "u too late": "false"
       };
-      Object(_Api__WEBPACK_IMPORTED_MODULE_2__["createEvent"])(obj);
+      Object(_Api__WEBPACK_IMPORTED_MODULE_2__["createEvent"])(obj, this.context.state.token);
+      this.props.history.push('/');
     }
   }, {
     key: "render",
     value: function render() {
+      console.log("context " + this.context.state.token);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_views_EventCreate__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onChangeName: this.onChangeName,
         onChangeDate: this.onChangeDate,
