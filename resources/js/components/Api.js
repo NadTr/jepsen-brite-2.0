@@ -54,6 +54,7 @@ export const unregisterEvent = (eventId) => {
 
 //crud events
 export const createEvent = (obj) => {
+  console.log(obj);
   return axios
     .post('/api/events/create', obj)
     .catch(err => console.log(err))

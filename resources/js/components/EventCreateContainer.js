@@ -53,9 +53,10 @@ export default class EventCreateContainer extends Component {
       "name": this.state.name,
       "date": this.state.date,
       "description": this.state.description,
-      "reminder": this.state.reminder
+      "reminder": this.state.reminder,
+      "u too late":"false"
     }
-    console.log(obj);
+    createEvent(obj);
   }
 
   render() {

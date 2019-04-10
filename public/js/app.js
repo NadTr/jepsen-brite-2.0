@@ -47252,6 +47252,7 @@ var unregisterEvent = function unregisterEvent(eventId) {
 }; //crud events
 
 var createEvent = function createEvent(obj) {
+  console.log(obj);
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/events/create', obj).catch(function (err) {
     return console.log(err);
   });
@@ -47548,9 +47549,10 @@ function (_Component) {
         "name": this.state.name,
         "date": this.state.date,
         "description": this.state.description,
-        "reminder": this.state.reminder
+        "reminder": this.state.reminder,
+        "u too late": "false"
       };
-      console.log(obj);
+      Object(_Api__WEBPACK_IMPORTED_MODULE_2__["createEvent"])(obj);
     }
   }, {
     key: "render",
@@ -48472,13 +48474,15 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         controlId: "createForm.ControlInput2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Date of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
-        type: "date",
-        onChange: this.props.onChangeDate
+        type: "text",
+        onChange: this.props.onChangeDate,
+        defaultValue: "yyyy-mm-dd hh:mm:ss"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         controlId: "createForm.ControlInput3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Set a reminder:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
-        type: "date",
-        onChange: this.props.onChangeReminder
+        type: "text",
+        onChange: this.props.onChangeReminder,
+        defaultValue: "yyyy-mm-dd hh:mm:ss"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         controlId: "createForm.ControlInput4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Description of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
