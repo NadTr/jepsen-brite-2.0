@@ -92,14 +92,25 @@ export const getOneEvent = (eventId) => {
     .catch(err => console.log(err))
 }
 
-export const editEvent = (eventId, obj) => {
-  return axios
-    .put('/api/events/'+eventId, obj)
+export const editEvent = (eventId, obj, token) => {
+  // return axios
+  //   .put('/api/events/'+eventId, obj)
+    return axios({
+    method: 'put',
+    url:'/api/events/'+eventId,
+    headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
+    data: obj
+    })
     .catch(err => console.log(err))
 }
 
-export const deleteEvent = (eventId) => {
-  return axios
-  .delete('/api/events/'+eventId)
+export const deleteEvent = (eventId, token) => {
+  // return axios
+  // .delete('/api/events/'+eventId)
+  return axios({
+  method: 'delete',
+  url:'/api/events/'+eventId,
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
+  })
   .catch(err => console.log(err))
 }

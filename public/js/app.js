@@ -47301,13 +47301,32 @@ var getOneEvent = function getOneEvent(eventId) {
     return console.log(err);
   });
 };
-var editEvent = function editEvent(eventId, obj) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put('/api/events/' + eventId, obj).catch(function (err) {
+var editEvent = function editEvent(eventId, obj, token) {
+  // return axios
+  //   .put('/api/events/'+eventId, obj)
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: 'put',
+    url: '/api/events/' + eventId,
+    headers: {
+      'Content-Type': "application/json",
+      "Authorization": "Bearer " + token
+    },
+    data: obj
+  }).catch(function (err) {
     return console.log(err);
   });
 };
-var deleteEvent = function deleteEvent(eventId) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete('/api/events/' + eventId).catch(function (err) {
+var deleteEvent = function deleteEvent(eventId, token) {
+  // return axios
+  // .delete('/api/events/'+eventId)
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: 'delete',
+    url: '/api/events/' + eventId,
+    headers: {
+      'Content-Type': "application/json",
+      "Authorization": "Bearer " + token
+    }
+  }).catch(function (err) {
     return console.log(err);
   });
 };
@@ -47670,7 +47689,7 @@ function (_Component) {
   _createClass(EventDisplayContainer, [{
     key: "handleDelete",
     value: function handleDelete() {
-      Object(_Api__WEBPACK_IMPORTED_MODULE_4__["deleteEvent"])(this.state.event.id);
+      Object(_Api__WEBPACK_IMPORTED_MODULE_4__["deleteEvent"])(this.state.event.id, this.context.state.token);
       this.props.history.push('/');
     } // fct to subscribe to an events
 
@@ -47806,7 +47825,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _views_EventEdit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/EventEdit */ "./resources/js/components/views/EventEdit.js");
-/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Api */ "./resources/js/components/Api.js");
+/* harmony import */ var _providers_SessionProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./providers/SessionProvider */ "./resources/js/components/providers/SessionProvider.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Api */ "./resources/js/components/Api.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -47832,6 +47852,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
  //import components
+
 
 
 
@@ -47900,7 +47921,7 @@ function (_Component) {
         "description": this.state.description,
         "reminder": this.state.reminder
       };
-      Object(_Api__WEBPACK_IMPORTED_MODULE_3__["editEvent"])(this.props.match.params.id, obj);
+      Object(_Api__WEBPACK_IMPORTED_MODULE_4__["editEvent"])(this.props.match.params.id, obj, this.context.state.token);
       this.props.history.push('/');
     }
   }, {
@@ -47915,7 +47936,7 @@ function (_Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return Object(_Api__WEBPACK_IMPORTED_MODULE_3__["getOneEvent"])(this.props.match.params.id);
+                return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["getOneEvent"])(this.props.match.params.id);
 
               case 2:
                 event = _context.sent;
@@ -47959,6 +47980,7 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
+EventEditContainer.contextType = _providers_SessionProvider__WEBPACK_IMPORTED_MODULE_3__["SessionContext"];
 
 /***/ }),
 

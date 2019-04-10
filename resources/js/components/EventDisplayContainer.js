@@ -20,7 +20,7 @@ export default class EventDisplayContainer extends Component {
   }
 
   handleDelete() {
-    deleteEvent(this.state.event.id)
+    deleteEvent(this.state.event.id, this.context.state.token)
     this.props.history.push('/')
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 //import components
 import EventEdit from './views/EventEdit';
+import {SessionProvider, SessionContext} from './providers/SessionProvider';
 import { getOneEvent, editEvent } from './Api';
 
 export default class EventEditContainer extends Component {
@@ -55,7 +56,7 @@ export default class EventEditContainer extends Component {
       "description": this.state.description,
       "reminder": this.state.reminder
     }
-    editEvent(this.props.match.params.id, obj)
+    editEvent(this.props.match.params.id, obj, this.context.state.token)
     this.props.history.push('/')
   }
 
@@ -83,3 +84,5 @@ export default class EventEditContainer extends Component {
     )
   }
 }
+
+EventEditContainer.contextType=SessionContext
