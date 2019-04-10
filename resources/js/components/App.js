@@ -9,6 +9,7 @@ import EventHistoryContainer from './EventHistoryContainer';
 import EventEditContainer from './EventEditContainer';
 import NavBar from './views/NavBar';
 import UserRegisterContainer from './UserRegisterContainer';
+import eventSearch from './eventSearch';
 
 export const App = () => {
   return (
@@ -21,7 +22,7 @@ export const App = () => {
         <Route exact path="/event-history" component={EventHistoryContainer} />
         <Route exact path="/event-edit-:id" component={EventEditContainer} />
         <Route exact path="/user-register" component={UserRegisterContainer} />
-
+        <Route exact path="/event-search" component={eventSearch} />
       </Switch>
     </React.Fragment>
   )
