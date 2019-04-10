@@ -49,3 +49,9 @@ return (
         </div>
     </div>
 );
+
+<SessionProvider><HashRouter><App /></HashRouter></SessionProvider>
+
+from CreateEvent
+// createEvent(obj)
+// this.props.history.push('/')

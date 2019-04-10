@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //import components
 import EventCreate from './views/EventCreate';
 import { createEvent } from './Api';
+import {SessionProvider, SessionContext} from './providers/SessionProvider';
 
 export default class EventCreateContainer extends Component {
   constructor(props){
@@ -16,7 +17,8 @@ export default class EventCreateContainer extends Component {
     this.state = {
       name: "",
       date: "",
-      description: ""
+      description: "",
+      author: ""
     }
   }
 
@@ -43,10 +45,10 @@ export default class EventCreateContainer extends Component {
     const obj = {
       "name": this.state.name,
       "date": this.state.date,
-      "description": this.state.description
+      "description": this.state.description,
+      "author": this.context.state.session.id
     }
-    createEvent(obj)
-    this.props.history.push('/')
+    console.log(obj);
   }
 
   render() {
@@ -60,3 +62,5 @@ export default class EventCreateContainer extends Component {
     )
   }
 }
+
+EventCreateContainer.contextType=SessionContext
