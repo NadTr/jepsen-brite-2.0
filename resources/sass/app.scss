@@ -14,9 +14,9 @@
   
 }
 body{
+  background: #BCD7DD;
   font-family: 'Noto Serif', serif;
   overflow-x: hidden;
-  //background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 
 #navbar{
@@ -28,6 +28,8 @@ body{
   background-color: #207A8E;
   color: #CFFCFF;
   z-index: 2;
+  filter: drop-shadow(0px 10px 2px #CFFCFF);
+
 }
 
 #btn{
@@ -39,19 +41,30 @@ body{
   margin: 0 auto;
 }
 .navButton{
+ background-color: #CFFCFF;
  border: solid 1.75px #40C0DD;
- margin: 10px;
+ margin: 5px;
 }
 
 .navbar-brand{
+  font-family: 'Fascinate Inline', cursive;
   z-index: 2;
-  text-shadow: #40C0DD 2px 0 10px;
+  text-shadow: #40C0DD 4px 0 10px;
+}
+
+#past{
+  text-align: center ;
+  font-family: 'IBM Plex Sans', sans-serif;
+  display: block;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin: 0 auto;
 }
 
 .logoContainer{
   position: -webkit-sticky;
   position: sticky;
-  top: 85px;
+  top: 87px;
   background-image: url('./assets/campagne.jpg');
   background-position: bottom;
   background-size: 100% 500px;
@@ -85,8 +98,14 @@ img{
   text-align: center ;
   font-family: 'IBM Plex Sans', sans-serif;
   display: block;
-  width: 150px;
   margin-bottom: 30px;
+  margin-top: 40px;
+  width: 850px;
+  margin: 15px auto;
+}
+
+#bntsubmit{
+  margin: 0 auto;
 }
 
 #text-center{
@@ -109,4 +128,18 @@ img{
 
 #modalBtn{
   width: 80px;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+}
+footer{
+  background: #D6E5E3;
+  border-top: 2.5px solid  #40C0DD;
+  text-Align: center;
+  position: fixed;
+  bottom: 0;
+  height: 130px;
+  width: 100%;
 }

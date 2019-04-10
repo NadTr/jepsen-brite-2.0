@@ -30,7 +30,7 @@ export default class EventList extends Component {
                     {event.date}
                   </Card.Text>
                   <Link to={"/event-display-"+event.id}>
-                    <Button id="btn" style={{background: "#207A8E" }}>More info</Button>
+                    <Button id="btn" style={{background:"#207A8E" }}>More</Button>
                   </Link>
                 </Card.Body>
               </Card>

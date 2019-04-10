@@ -14,7 +14,7 @@ export default class EventDisplay extends Component {
     return(
       <>
         <div>
-          <Card id="text-center" style={{border:"solid 1.50px #40C0DD"}}>
+          <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
             <Card.Header> {this.props.package.name} {this.props.package.date}</Card.Header>
             <Card.Body>
               <Card.Text >
@@ -27,7 +27,6 @@ export default class EventDisplay extends Component {
               {this.props.package.description}
               </Card.Text>
               <p>Lorem ipsum</p>
-              <Button variant="primary">Go somewhere</Button>
             </Card.Body>
             <Card.Footer className="text-muted">
               <Row>
@@ -65,20 +64,18 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </div>
-        <CardDeck>
+        <div className="row">
           {this.props.participants.map(participant =>
-            <Card Card style={{border:"solid 1.50px #40C0DD"}} key={Math.random()}>
-              <Card.Body>
-                <Card.Title>{participant.pseudo}</Card.Title>
-                <Card.Text>
-                  Lorem Ipsum
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-              </Card.Footer>
-            </Card>
+          <div className="card col-4" key={Math.random()}>
+          <div className="card-body" style={{border:"solid 1.50px #40C0DD"}}>
+            <h5 className="card-title">Card title</h5>
+            <h6 className="card-subtitle mb-2 text-muted">Lorem erigneriogn rz kgnzrkgn zirzr gpozr,po z,ôfzrpo,fzepof zpopoz z jfpizeropf,pozfpoz pofjop</h6>
+            <p className="card-text">{participant.pseudo}</p>
+          </div>
+        </div>
+            
           )}
-        </CardDeck>
+        </div>
       </>
     )
   }

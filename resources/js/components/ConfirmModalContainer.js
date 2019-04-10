@@ -39,6 +39,7 @@ export default class ConfirmModalContainer extends Component {
       label={this.props.label}
       message={this.props.message}
       onClick={this.props.onClick}
+      style={this.props.style}
       />
     )
   }
