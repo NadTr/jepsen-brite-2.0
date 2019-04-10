@@ -33,18 +33,20 @@ class Kernel extends ConsoleKernel
         $reminder = DB::table('events')
                         ->join('users' , 'events.author', '=','users.id' )
                         ->select('users.email AS email', 'events.name', 'events.author', 'u too late AS warning')
-                        ->where('events.reminder', '<', 'NOW()')
-                        ->where('u too late', 'false');
+                        ->where('events.reminder', '<=', 'NOW()')
+                        ->where('u too late', 'false')
+                        ->get();
 
-                       
-      //  \Log::info(print_r($reminder->{'u too late'}, true));
-        $reminder->update(['u too late' => 'true']);
-        //\Log::info($reminder);
-        $reminder = $reminder->get();
-        $it = 0;
+
+                    DB::table('events')
+                        ->select('u too late AS warning')
+                        ->where('events.reminder', '<=', 'NOW()')
+                        ->update(['u too late' => 'true']);
+
+       
         foreach ($reminder as $reminders) {
             Mail::to($reminders->email)->send(new Reminder());
-            $it++;
+            
         }
     }
 
