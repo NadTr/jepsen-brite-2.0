@@ -60,7 +60,6 @@ export const createEvent = (obj) => {
 }
 
 export const getAllEvents = () => {
-  console.log("test");
   return axios
     .get('/api/events')
     .then(response => response.data)
@@ -82,8 +81,6 @@ export const getOneEvent = (eventId) => {
 }
 
 export const editEvent = (eventId, obj) => {
-  console.log(obj);
-  console.log(eventId);
   return axios
     .put('/api/events/'+eventId, obj)
     .catch(err => console.log(err))

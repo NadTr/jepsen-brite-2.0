@@ -47257,7 +47257,6 @@ var createEvent = function createEvent(obj) {
   });
 };
 var getAllEvents = function getAllEvents() {
-  console.log("test");
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/events').then(function (response) {
     return response.data;
   }).catch(function (err) {
@@ -47279,8 +47278,6 @@ var getOneEvent = function getOneEvent(eventId) {
   });
 };
 var editEvent = function editEvent(eventId, obj) {
-  console.log(obj);
-  console.log(eventId);
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put('/api/events/' + eventId, obj).catch(function (err) {
     return console.log(err);
   });
@@ -48551,7 +48548,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
         className: "text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, " ", this.props.package.name, " ", this.props.package.username, " ", this.props.package.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Text, null, this.props.package.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lorem ipsum"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, " ", this.props.package.name, " ", this.props.package.username, " ", this.props.package.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Text, null, this.props.package.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         variant: "primary"
       }, "Go somewhere")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Footer, {
         className: "text-muted"
@@ -48562,7 +48559,7 @@ function (_Component) {
         type: "checkbox",
         id: "custom-checkbox",
         label: "Register to this event"
-      })))), this.context.state.session.id === this.props.author ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Not the author, can't access edit or delete functionnalities") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      })))), this.context.state.session.id === this.props.package.author ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/event-edit-" + this.props.package.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         variant: "secondary"
@@ -48571,7 +48568,7 @@ function (_Component) {
         label: "Erase",
         message: "Do you want to delete this event ?",
         onClick: this.props.onClick
-      }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["CardDeck"], null, this.props.participants.map(function (participant) {
+      })))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Not the author, can't access edit or delete functionnalities")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["CardDeck"], null, this.props.participants.map(function (participant) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
           key: Math.random()
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, null, participant.pseudo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Text, null, "Lorem Ipsum")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Footer, null));
@@ -49133,7 +49130,7 @@ function (_Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmModalContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
         variant: "primary",
         label: "Submit",
-        message: "Do you want to edit this event ?",
+        message: "Do you want to register ?",
         onClick: this.props.onSubmit
       })));
     }
