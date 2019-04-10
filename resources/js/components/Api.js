@@ -41,7 +41,6 @@ export const registerUser = (obj) => {
 
 //Events participation
 export const registerEvent = (eventId, token) => {
-  console.log("id ",eventId," token ", token);
   return axios({
   method: 'put',
   url:'/api/events/'+eventId+'/inscription',
@@ -51,7 +50,6 @@ export const registerEvent = (eventId, token) => {
 }
 
 export const unregisterEvent = (eventId, token) => {
-  console.log("id ",eventId," token ", token);
   return axios({
   method: 'delete',
   url:'/api/events/'+eventId+'/desinscription',
@@ -93,8 +91,6 @@ export const getOneEvent = (eventId) => {
 }
 
 export const editEvent = (eventId, obj, token) => {
-  // return axios
-  //   .put('/api/events/'+eventId, obj)
     return axios({
     method: 'put',
     url:'/api/events/'+eventId,
@@ -105,8 +101,6 @@ export const editEvent = (eventId, obj, token) => {
 }
 
 export const deleteEvent = (eventId, token) => {
-  // return axios
-  // .delete('/api/events/'+eventId)
   return axios({
   method: 'delete',
   url:'/api/events/'+eventId,

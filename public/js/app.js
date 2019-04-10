@@ -47241,7 +47241,6 @@ var registerUser = function registerUser(obj) {
 }; //Events participation
 
 var registerEvent = function registerEvent(eventId, token) {
-  console.log("id ", eventId, " token ", token);
   return axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'put',
     url: '/api/events/' + eventId + '/inscription',
@@ -47254,7 +47253,6 @@ var registerEvent = function registerEvent(eventId, token) {
   });
 };
 var unregisterEvent = function unregisterEvent(eventId, token) {
-  console.log("id ", eventId, " token ", token);
   return axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'delete',
     url: '/api/events/' + eventId + '/desinscription',
@@ -47302,8 +47300,6 @@ var getOneEvent = function getOneEvent(eventId) {
   });
 };
 var editEvent = function editEvent(eventId, obj, token) {
-  // return axios
-  //   .put('/api/events/'+eventId, obj)
   return axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'put',
     url: '/api/events/' + eventId,
@@ -47317,8 +47313,6 @@ var editEvent = function editEvent(eventId, obj, token) {
   });
 };
 var deleteEvent = function deleteEvent(eventId, token) {
-  // return axios
-  // .delete('/api/events/'+eventId)
   return axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'delete',
     url: '/api/events/' + eventId,
