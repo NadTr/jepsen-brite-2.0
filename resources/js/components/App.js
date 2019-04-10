@@ -9,6 +9,7 @@ import EventHistoryContainer from './EventHistoryContainer';
 import EventEditContainer from './EventEditContainer';
 import NavBar from './views/NavBar';
 import UserRegisterContainer from './UserRegisterContainer';
+
 export const App = () => {
   return (
     <React.Fragment>
