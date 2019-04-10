@@ -72,7 +72,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $ev['event'] = DB::table('events', 'users')
-                    ->select('events.id', 'events.name','events.description', 'events.date', 'events.author', 'users.name AS username', 'u too late')
+                    ->select('events.id', 'events.name','events.description', 'events.date', 'events.author', 'users.name AS username', 'events.reminder', 'u too late')
                     ->join('users' , 'events.author', '=','users.id' )
                     ->where('events.id', '=', $event->id)
                      ->first();

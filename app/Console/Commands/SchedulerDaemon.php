@@ -13,7 +13,7 @@ class SchedulerDaemon extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'schedule:daemon';
 
     /**
      * The console command description.
@@ -39,6 +39,7 @@ class SchedulerDaemon extends Command
      */
     public function handle()
     {
+        \Log::info('In scheduler daemon');
         while (true) {
             $this->line('Scheduler');
             $this->call('schedule:run');

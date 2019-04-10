@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        
     ];
 
     /**
@@ -29,12 +29,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        \Log::info('In Kernel schedule function');
         $reminder = DB::table('events')
                         ->join('users' , 'events.author', '=','users.id' )
-                        ->select('users.email', 'events.name', 'events.author')
+                        ->select('users.email AS email', 'events.name', 'events.author', 'u too late AS warning')
                         ->where('events.reminder', '<', 'NOW()')
-                        ->where('u too late', 'false')
-                        ->get();
+                        ->where('u too late', 'false');
+
+                       
+      //  \Log::info(print_r($reminder->{'u too late'}, true));
+        $reminder->update(['u too late' => 'true']);
+        //\Log::info($reminder);
+        $reminder = $reminder->get();
         $it = 0;
         foreach ($reminder as $reminders) {
             Mail::to($reminders->email)->send(new Reminder());
