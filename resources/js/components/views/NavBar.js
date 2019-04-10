@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
-import { InputGroup } from 'react-bootstrap';
 
 //importcomponents
 import { logUser, logUserOut } from '../Api';
@@ -65,7 +64,7 @@ export default class NavBar extends Component{
   }
 
   render() {
-    return(
+    return (
       <>
         <Navbar bg="primary" variant="dark" style={{ marginBottom: '0.5rem' }}>
           <Link to={"/"}>

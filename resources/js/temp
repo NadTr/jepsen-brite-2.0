@@ -1,57 +1,56 @@
-//Original content from app.js
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
+//content from csEsclaves navbar
+<Navbar id="navbar">
+  <Navbar.Brand>
+    <Link to={"/"}>
+      <div className="navbar-brand">
+        <h1>Event Food</h1>
+      </div>
+    </Link>
+  </Navbar.Brand>
+  <Nav className="mr-auto">
+    <Link to={"/"}>
+      <Button className="navButton" variant="#207A8E">Home</Button>
+    </Link>
+    <Link to={"/event-create"}>
+      <Button className="navButton" variant="#207A8E">Create Event</Button>
+    </Link>
+    <Link to={"/event-history"}>
+      <Button className="navButton" variant="#207A8E">Past Events</Button>
+    </Link>
+  </Nav>
+  <Form inline>
+    <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress} />
+    <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword} />
+    <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
+  </Form>
+  <Link to={"/user-register"}>
+    <Button className="navButton" variant="#207A8E">Register</Button>
+  </Link>
 
-require('./bootstrap');
-
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-require('./components/Example');
-
-//Original content from welcome.blades
-@if (Route::has('login'))
-    <div class="top-right links">
-        @auth
-            <a href="{{ url('/home') }}">Home</a>
-        @else
-            <a href="{{ route('login') }}">Login</a>
-
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}">Register</a>
-            @endif
-        @endauth
-    </div>
-@endif
-
-
-//Original content from App.js
-return (
-    <div className="container">
-        <div className="row justify-content-center">
-            <div className="col-md-8">
-                <div className="card">
-                    <div className="card-header">Example Component</div>
-
-                    <div className="card-body">
-                        I'm an example component!
-
-                        <Sheep message="Nous sommes la team gros porcs !" />
-                    </div>
-                </div>
-            </div>
+  //content from csEsclaves display.js
+  </Card.Body>
+  <Card.Footer className="text-muted">
+    <Row>
+      <Col>
+        <p>I want to go !</p>
+      </Col>
+      <Col>
+      <Form>
+        <Link to={"/event-edit-"+this.props.package.id}>
+          <Button  id="buttonevent" style={{border:"solid 1.50px #40C0DD"}}>Edit</Button>
+        </Link>
+      </Form>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <div className="mb-3">
+            <Form.Check
+              custom
+              type='checkbox'
+              id="custom-checkbox"
+              label="Register to this event"
+            />
         </div>
-    </div>
-);
-
-<SessionProvider><HashRouter><App /></HashRouter></SessionProvider>
-
-from CreateEvent
-// createEvent(obj)
-// this.props.history.push('/')
+      </Col>
+      <Col>
