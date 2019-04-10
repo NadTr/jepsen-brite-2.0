@@ -31,13 +31,14 @@ class Kernel extends ConsoleKernel
     {
         $reminder = DB::table('events')
                         ->join('users' , 'events.author', '=','users.id' )
-                        ->select('users.email', 'events.name', 'events.author')
+                        ->select('users.email', 'events.name', 'events.author', 'u too late')
                         ->where('events.reminder', '<', 'NOW()')
                         ->where('u too late', 'false')
                         ->get();
         $it = 0;
         foreach ($reminder as $reminders) {
-            Mail::to($reminders->email)->send(new Reminder());
+            Mail::to($reminders->users.email)->send(new Reminder());
+            $reminders->utoolate = 'false';
             $it++;
         }
     }
