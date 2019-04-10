@@ -38,14 +38,10 @@ export default class UserRegister extends Component{
             <div><ConfirmModalContainer
                 variant="primary"
                 label="Submit"
-                message="Do you want to edit this event ?"
+                message="Do you want to register ?"
                 onClick={this.props.onSubmit}/>
             </div>
            </>
         );
     }
 }
-    
-    
-    
-    
