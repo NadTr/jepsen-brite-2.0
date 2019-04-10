@@ -47241,10 +47241,9 @@ var registerUser = function registerUser(obj) {
 }; //Events participation
 
 var registerEvent = function registerEvent(eventId, token) {
-  // return axios
-  // .get('/api/events/'+eventId+'/inscription')
+  console.log("id ", eventId, " token ", token);
   return axios__WEBPACK_IMPORTED_MODULE_0___default()({
-    method: 'get',
+    method: 'put',
     url: '/api/events/' + eventId + '/inscription',
     headers: {
       'Content-Type': "application/json",
@@ -47255,10 +47254,9 @@ var registerEvent = function registerEvent(eventId, token) {
   });
 };
 var unregisterEvent = function unregisterEvent(eventId, token) {
-  // return axios
-  // .get('/api/events/'+eventId+'/desinscription')
+  console.log("id ", eventId, " token ", token);
   return axios__WEBPACK_IMPORTED_MODULE_0___default()({
-    method: 'get',
+    method: 'delete',
     url: '/api/events/' + eventId + '/desinscription',
     headers: {
       'Content-Type': "application/json",
@@ -47660,6 +47658,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EventDisplayContainer).call(this, props));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.optInEvent = _this.optInEvent.bind(_assertThisInitialized(_this));
+    _this.optOutEvent = _this.optOutEvent.bind(_assertThisInitialized(_this));
     _this.state = {
       event: [],
       participants: []
@@ -47688,6 +47688,9 @@ function (_Component) {
                 return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["registerEvent"])(this.props.match.params.id, this.context.state.token);
 
               case 2:
+                this.props.history.push('/');
+
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -47716,6 +47719,9 @@ function (_Component) {
                 return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["unregisterEvent"])(this.props.match.params.id, this.context.state.token);
 
               case 2:
+                this.props.history.push('/');
+
+              case 3:
               case "end":
                 return _context2.stop();
             }
@@ -47767,11 +47773,12 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log("container", this.props.match.params.id, this.context.state.token);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_views_EventDisplay__WEBPACK_IMPORTED_MODULE_2__["default"], {
         package: this.state.event,
         participants: this.state.participants,
-        onClick: this.handleDelete
+        onClick: this.handleDelete,
+        optInEvent: this.optInEvent,
+        optOutEvent: this.optOutEvent
       });
     }
   }]);
@@ -48667,14 +48674,13 @@ function (_Component) {
         variant: "primary"
       }, "Go somewhere")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Footer, {
         className: "text-muted"
-      }, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Log in to register to this event.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I want to go !")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Check, {
-        custom: true,
-        type: "checkbox",
-        id: "custom-checkbox",
-        label: "Register to this event"
-      })))), this.context.state.session.id === this.props.package.author ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Log in to register to this event.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        variant: "success",
+        onClick: this.props.optInEvent
+      }, "I want to participate")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        variant: "danger",
+        onClick: this.props.optOutEvent
+      }, "I no longer want to come"))), this.context.state.session.id === this.props.package.author ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/event-edit-" + this.props.package.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         variant: "secondary"

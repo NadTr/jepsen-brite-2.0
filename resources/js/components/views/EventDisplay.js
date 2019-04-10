@@ -29,17 +29,10 @@ export default class EventDisplay extends Component {
             :
               <Col>
                 <Row>
-                  <p>I want to go !</p>
+                  <Button variant="success" onClick={this.props.optInEvent}>I want to participate</Button>
                 </Row>
                 <Row>
-                  <div className="mb-3">
-                      <Form.Check
-                        custom
-                        type='checkbox'
-                        id="custom-checkbox"
-                        label="Register to this event"
-                      />
-                  </div>
+                  <Button variant="danger" onClick={this.props.optOutEvent}>I no longer want to come</Button>
                 </Row>
               </Col>
             }
