@@ -10,7 +10,9 @@ class Event extends Model
         'name',
         'date',
         'description',
-        'author'
+        'author',
+        'reminder',
+        'u too late'
     ];
     
     public function users(){
