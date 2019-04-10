@@ -47252,7 +47252,6 @@ var unregisterEvent = function unregisterEvent(eventId) {
 }; //crud events
 
 var createEvent = function createEvent(obj, token) {
-  console.log(obj);
   return axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'post',
     url: '/api/events/create',
@@ -47555,9 +47554,9 @@ function (_Component) {
       data.preventDefault();
       var obj = {
         "name": this.state.name,
-        "date": this.state.date,
+        "date": this.state.date + ":00",
         "description": this.state.description,
-        "reminder": this.state.reminder,
+        "reminder": this.state.reminder + ":00",
         "u too late": "false"
       };
       Object(_Api__WEBPACK_IMPORTED_MODULE_2__["createEvent"])(obj, this.context.state.token);
@@ -47694,7 +47693,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state.event);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_views_EventDisplay__WEBPACK_IMPORTED_MODULE_2__["default"], {
         package: this.state.event,
         participants: this.state.participants,
@@ -47863,7 +47861,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log("control this.state.event.event ", this.state.event.event);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_views_EventEdit__WEBPACK_IMPORTED_MODULE_2__["default"], {
         package: this.state.event.event,
         onChangeName: this.onChangeName,
@@ -48501,13 +48498,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Date of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
         type: "text",
         onChange: this.props.onChangeDate,
-        defaultValue: "yyyy-mm-dd hh:mm:ss"
+        defaultValue: "yyyy-mm-dd hh:mm"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         controlId: "createForm.ControlInput3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Set a reminder:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
         type: "text",
         onChange: this.props.onChangeReminder,
-        defaultValue: "yyyy-mm-dd hh:mm:ss"
+        defaultValue: "yyyy-mm-dd hh:mm"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         controlId: "createForm.ControlInput4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Description of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
@@ -48677,7 +48674,6 @@ function (_Component) {
   _createClass(EventEdit, [{
     key: "render",
     value: function render() {
-      console.log("render", this.props.package);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.props.package ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         controlId: "createForm.ControlInput1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Name of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {

@@ -33,7 +33,6 @@ export default class EventDisplayContainer extends Component {
    }
 
   render() {
-    console.log(this.state.event);
     return(
     <EventDisplay package={this.state.event} participants={this.state.participants} onClick={this.handleDelete}/>
 

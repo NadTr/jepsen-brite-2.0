@@ -54,7 +54,6 @@ export const unregisterEvent = (eventId) => {
 
 //crud events
 export const createEvent = (obj, token) => {
-  console.log(obj);
   return axios({
   method: 'post',
   url:'/api/events/create',

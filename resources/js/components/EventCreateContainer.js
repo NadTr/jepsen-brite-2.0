@@ -51,9 +51,9 @@ export default class EventCreateContainer extends Component {
     data.preventDefault();
     const obj = {
       "name": this.state.name,
-      "date": this.state.date,
+      "date": this.state.date+":00",
       "description": this.state.description,
-      "reminder": this.state.reminder,
+      "reminder": this.state.reminder+":00",
       "u too late":"false"
     }
     createEvent(obj, this.context.state.token);

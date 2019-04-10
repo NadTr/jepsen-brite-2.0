@@ -71,7 +71,6 @@ export default class EventEditContainer extends Component {
   }
 
   render() {
-    console.log("control this.state.event.event ", this.state.event.event);
     return(
       <EventEdit
         package={this.state.event.event}

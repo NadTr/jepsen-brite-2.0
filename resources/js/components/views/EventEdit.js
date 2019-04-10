@@ -6,10 +6,8 @@ import ConfirmModalContainer from '../ConfirmModalContainer';
 
 export default class EventEdit extends Component {
   render() {
-    console.log("render", this.props.package);
     return(
       <>
-
       {this.props.package ?
         <Form>
           <Form.Group controlId="createForm.ControlInput1">
@@ -32,7 +30,6 @@ export default class EventEdit extends Component {
         :
         <div></div>
       }
-
         <div>
           <ConfirmModalContainer
             variant="info"
