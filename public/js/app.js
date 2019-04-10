@@ -47566,7 +47566,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log("context " + this.context.state.token);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_views_EventCreate__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onChangeName: this.onChangeName,
         onChangeDate: this.onChangeDate,
@@ -47654,7 +47653,9 @@ function (_Component) {
     value: function handleDelete() {
       Object(_Api__WEBPACK_IMPORTED_MODULE_3__["deleteEvent"])(this.state.event.id);
       this.props.history.push('/');
-    }
+    } // fct to subscribe to an events
+    // fct to unsubscribe to an events
+
   }, {
     key: "componentDidMount",
     value: function () {
@@ -47693,6 +47694,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.state.event);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_views_EventDisplay__WEBPACK_IMPORTED_MODULE_2__["default"], {
         package: this.state.event,
         participants: this.state.participants,
@@ -47767,12 +47769,14 @@ function (_Component) {
     _this.onChangeName = _this.onChangeName.bind(_assertThisInitialized(_this));
     _this.onChangeDate = _this.onChangeDate.bind(_assertThisInitialized(_this));
     _this.onChangeDescription = _this.onChangeDescription.bind(_assertThisInitialized(_this));
+    _this.onChangeReminder = _this.onChangeReminder.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       event: [],
       name: "",
       date: "",
-      description: ""
+      description: "",
+      reminder: ""
     };
     return _this;
   }
@@ -47792,6 +47796,13 @@ function (_Component) {
       });
     }
   }, {
+    key: "onChangeReminder",
+    value: function onChangeReminder(input) {
+      this.setState({
+        reminder: input.target.value
+      });
+    }
+  }, {
     key: "onChangeDescription",
     value: function onChangeDescription(input) {
       this.setState({
@@ -47805,7 +47816,8 @@ function (_Component) {
       var obj = {
         "name": this.state.name,
         "date": this.state.date,
-        "description": this.state.description
+        "description": this.state.description,
+        "reminder": this.state.reminder
       };
       Object(_Api__WEBPACK_IMPORTED_MODULE_3__["editEvent"])(this.props.match.params.id, obj);
       this.props.history.push('/');
@@ -47830,6 +47842,7 @@ function (_Component) {
                   event: event,
                   name: event.name,
                   date: event.date,
+                  reminder: event.reminder,
                   description: event.description
                 });
 
@@ -47850,11 +47863,13 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log("control this.state.event.event ", this.state.event.event);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_views_EventEdit__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        package: this.state.event,
+        package: this.state.event.event,
         onChangeName: this.onChangeName,
         onChangeDate: this.onChangeDate,
         onChangeDescription: this.onChangeDescription,
+        onChangeReminder: this.onChangeReminder,
         onClick: this.onSubmit
       });
     }
@@ -48662,7 +48677,8 @@ function (_Component) {
   _createClass(EventEdit, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+      console.log("render", this.props.package);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.props.package ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         controlId: "createForm.ControlInput1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Name of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         type: "text",
@@ -48674,12 +48690,17 @@ function (_Component) {
         defaultValue: this.props.package.date,
         onChange: this.props.onChangeDate
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        controlId: "createForm.ControlInput2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Reminder:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        defaultValue: this.props.package.reminder,
+        onChange: this.props.onChangeReminder
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         controlId: "createForm.ControlTextarea1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Description of the event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         type: "text",
         defaultValue: this.props.package.description,
         onChange: this.props.onChangeDescription
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmModalContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmModalContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
         variant: "info",
         label: "Submit change",
         message: "Do you want to change this event ?",

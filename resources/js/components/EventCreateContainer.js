@@ -61,7 +61,6 @@ export default class EventCreateContainer extends Component {
   }
 
   render() {
-    console.log("context "+this.context.state.token);
     return(
       <EventCreate
         onChangeName={this.onChangeName}

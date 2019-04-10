@@ -19,6 +19,10 @@ export default class EventDisplayContainer extends Component {
     this.props.history.push('/')
   }
 
+  // fct to subscribe to an events
+
+  // fct to unsubscribe to an events
+
   async componentDidMount() {
       const event = await getOneEvent(this.props.match.params.id);
       this.setState({
@@ -29,6 +33,7 @@ export default class EventDisplayContainer extends Component {
    }
 
   render() {
+    console.log(this.state.event);
     return(
     <EventDisplay package={this.state.event} participants={this.state.participants} onClick={this.handleDelete}/>
 
