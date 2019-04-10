@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 //importcomponents
 import { logUser, logUserOut } from '../Api';
@@ -99,7 +100,10 @@ export default class NavBar extends Component{
                  <Link to={"/event-create"}>
                    <Button className="navButton" variant="#207A8E">Create Event</Button>
                  </Link>
-                  <h5>Greetings</h5>{this.context.state.session.pseudo}
+                  <Col>
+                    <Row><h5>Greetings </h5></Row>
+                    <Row>{this.context.state.session.pseudo}</Row>
+                  </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
               }

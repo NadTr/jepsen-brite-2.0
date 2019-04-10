@@ -48756,10 +48756,13 @@ function (_Component) {
           background: "#D6E5E3",
           border: "solid 1.50px #40C0DD"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, " ", this.props.package.name, " ", this.props.package.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Text, null, "L\u2019id\xE9e est d\u2019avoir une interaction intuitive, facile, accueillante, qui ne fasse pas peur, dans laquelle le visiteur se lance sans appr\xE9hension au niveau du temps que \xE7a va prendre et de la difficult\xE9 imagin\xE9e du bazar. Le fonctionnement de base: comprendre quel est le probl\xE8me du visiteur. On part de questions g\xE9n\xE9ralistes qui permettent de d\xE9finir un premier cadre de possibilit\xE9s et les questions suivantes permettent de r\xE9tr\xE9cir ce cadre pour arriver \xE0 quelque chose de plus pr\xE9cis et concret. On passe \xE0 un autre mode d'interaction quand cela est consid\xE9r\xE9 souhaitable, dans un ordre logique, pour arriver \xE0 un vrai humain le plus tard possible (si possible r\xE9gler le probl\xE8me avant cette \xE9tape). Si un humain est disponible, cela peut-\xEAtre un chat, un appel (comme avec les banques et autres), si un humain n\u2019est pas disponible, les messages diff\xE9r\xE9s (emails) sont la seule option. On guide le visiteur avec ce syst\xE8me, mais d\xE8s que l\u2019on peut, on lui propose automatiquement des options de canal de communication. Apr\xE8s quelques questions-r\xE9ponses, on l\u2019emm\xE8ne au ChatBot, mais on peut lui proposer de passer directement au mail par exemple. L\u2019id\xE9e est de r\xE9colter un maximum de donn\xE9es de mani\xE8re automatis\xE9es, avec le minimum d\u2019intervention humaine.", this.props.package.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Footer, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, " ", this.props.package.name, " ", this.props.package.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Text, null, this.props.package.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Footer, {
         className: "text-muted"
       }, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Log in to register to this event.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        variant: "success",
+        style: {
+          background: "#207A8E",
+          border: "solid 1.50px #40C0DD"
+        },
         onClick: this.props.optInEvent
       }, "I want to participate")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         variant: "danger",
@@ -48767,8 +48770,12 @@ function (_Component) {
       }, "I no longer want to come"))), this.context.state.session.id === this.props.package.author ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/event-edit-" + this.props.package.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        variant: "secondary"
-      }, "Edit Event")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmModalContainer__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        id: "buttonevent",
+        style: {
+          background: "#207A8E",
+          border: "solid 1.50px #40C0DD"
+        }
+      }, "Edit")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmModalContainer__WEBPACK_IMPORTED_MODULE_3__["default"], {
         variant: "danger",
         label: "Erase",
         message: "Do you want to delete this event ?",
@@ -48786,11 +48793,9 @@ function (_Component) {
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
           className: "card-title"
-        }, "Card title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        }, participant.pseudo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
           className: "card-subtitle mb-2 text-muted"
-        }, "Lorem erigneriogn rz kgnzrkgn zirzr gpozr,po z,\xF4fzrpo,fzepof zpopoz z jfpizeropf,pozfpoz pofjop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "card-text"
-        }, participant.pseudo)));
+        })));
       })));
     }
   }]);
@@ -48877,8 +48882,11 @@ function (_Component) {
         defaultValue: this.props.package.description,
         onChange: this.props.onChangeDescription
       }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmModalContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        variant: "info",
-        label: "Submit change",
+        style: {
+          background: "#207A8E",
+          border: "solid 1.50px #40C0DD"
+        },
+        label: "Submit",
         message: "Do you want to change this event ?",
         onClick: this.props.onClick
       })));
@@ -49123,6 +49131,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
  //importcomponents
 
 
@@ -49296,7 +49305,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "navButton",
         variant: "#207A8E"
-      }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", null, "Greetings"), this.context.state.session.pseudo, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+      }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", null, "Greetings ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, this.context.state.session.pseudo)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "navButton",
         variant: "#207A8E",
         onClick: this.logOut

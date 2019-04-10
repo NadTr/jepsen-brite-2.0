@@ -32,8 +32,8 @@ export default class EventEdit extends Component {
       }
         <div>
           <ConfirmModalContainer
-            variant="info"
-            label="Submit change"
+            style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}
+            label="Submit"
             message="Do you want to change this event ?"
             onClick={this.props.onClick}/>
         </div>
