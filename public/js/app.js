@@ -47179,7 +47179,7 @@ module.exports = "/images/FoodTruck.png?1ee3534d0b7118003e763da2a39e5a48";
 /*!****************************************!*\
   !*** ./resources/js/components/Api.js ***!
   \****************************************/
-/*! exports provided: logUser, logUserOut, userSession, registerUser, registerEvent, unregisterEvent, createEvent, getAllEvents, getOldEvents, getOneEvent, editEvent, deleteEvent */
+/*! exports provided: logUser, logUserOut, userSession, registerUser, registerEvent, unregisterEvent, createEvent, getAllEvents, getOldEvents, getOneEvent, searchEvent, editEvent, deleteEvent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47194,6 +47194,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllEvents", function() { return getAllEvents; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOldEvents", function() { return getOldEvents; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOneEvent", function() { return getOneEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchEvent", function() { return searchEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "editEvent", function() { return editEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteEvent", function() { return deleteEvent; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -47305,6 +47306,13 @@ var getOldEvents = function getOldEvents() {
 };
 var getOneEvent = function getOneEvent(eventId) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/events/' + eventId).then(function (response) {
+    return response.data;
+  }).catch(function (err) {
+    return console.log(err);
+  });
+};
+var searchEvent = function searchEvent(string) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/events/search/0/4?string=' + string).then(function (response) {
     return response.data;
   }).catch(function (err) {
     return console.log(err);
@@ -49150,11 +49158,13 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props, context));
     _this.onChangeEmailAdress = _this.onChangeEmailAdress.bind(_assertThisInitialized(_this));
     _this.onChangePassword = _this.onChangePassword.bind(_assertThisInitialized(_this));
+    _this.onChangeSearchItem = _this.onChangeSearchItem.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     _this.logOut = _this.logOut.bind(_assertThisInitialized(_this));
     _this.state = {
       emailAdress: "",
-      password: ""
+      password: "",
+      searchItem: ""
     };
     return _this;
   }
@@ -49217,14 +49227,47 @@ function (_Component) {
       return onSubmit;
     }()
   }, {
-    key: "logOut",
+    key: "onChangeSearchItem",
+    value: function onChangeSearchItem(input) {
+      this.setState({
+        searchItem: input.target.value
+      });
+    }
+  }, {
+    key: "search",
     value: function () {
-      var _logOut = _asyncToGenerator(
+      var _search = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
+              case 0:
+                Object(_Api__WEBPACK_IMPORTED_MODULE_4__["searchEvent"])(this.state.searchItem);
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function search() {
+        return _search.apply(this, arguments);
+      }
+
+      return search;
+    }()
+  }, {
+    key: "logOut",
+    value: function () {
+      var _logOut = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 // reset the login data from this.state
                 this.setState({
@@ -49232,7 +49275,7 @@ function (_Component) {
                   password: ""
                 }); // log out from the database
 
-                _context2.next = 3;
+                _context3.next = 3;
                 return Object(_Api__WEBPACK_IMPORTED_MODULE_4__["logUserOut"])(this.context.state.token);
 
               case 3:
@@ -49241,10 +49284,10 @@ function (_Component) {
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
 
       function logOut() {
@@ -49276,7 +49319,18 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
         className: "navButton",
         variant: "#207A8E"
-      }, "Past Events")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
+      }, "Past Events")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
+        inline: true
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["FormControl"], {
+        type: "text",
+        className: " mr-sm-2",
+        onChange: this.onChangeSearchItem
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        className: "navButton",
+        variant: "#207A8E",
+        type: "submit",
+        onClick: this.onSubmit
+      }, "Search")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
         inline: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["FormControl"], {
         type: "text",
