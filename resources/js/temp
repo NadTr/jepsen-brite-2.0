@@ -52,6 +52,6 @@ return (
 
 <SessionProvider><HashRouter><App /></HashRouter></SessionProvider>
 
-from navBar
-// async logOut(){
-//   await unLogUser()
+from CreateEvent
+// createEvent(obj)
+// this.props.history.push('/')
