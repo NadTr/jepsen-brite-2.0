@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        
+
     ];
 
     /**
@@ -29,25 +29,25 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        \Log::info('In Kernel schedule function');
-        $reminder = DB::table('events')
-                        ->join('users' , 'events.author', '=','users.id' )
-                        ->select('users.email AS email', 'events.name', 'events.author', 'u too late AS warning')
-                        ->where('events.reminder', '<=', 'NOW()')
-                        ->where('u too late', 'false')
-                        ->get();
-
-
-                    DB::table('events')
-                        ->select('u too late AS warning')
-                        ->where('events.reminder', '<=', 'NOW()')
-                        ->update(['u too late' => 'true']);
-
-       
-        foreach ($reminder as $reminders) {
-            Mail::to($reminders->email)->send(new Reminder());
-            
-        }
+        // \Log::info('In Kernel schedule function');
+        // $reminder = DB::table('events')
+        //                 ->join('users' , 'events.author', '=','users.id' )
+        //                 ->select('users.email AS email', 'events.name', 'events.author', 'u too late AS warning')
+        //                 ->where('events.reminder', '<=', 'NOW()')
+        //                 ->where('u too late', 'false')
+        //                 ->get();
+        //
+        //
+        //             DB::table('events')
+        //                 ->select('u too late AS warning')
+        //                 ->where('events.reminder', '<=', 'NOW()')
+        //                 ->update(['u too late' => 'true']);
+        //
+        //
+        // foreach ($reminder as $reminders) {
+        //     Mail::to($reminders->email)->send(new Reminder());
+        //
+        // }
     }
 
     /**
