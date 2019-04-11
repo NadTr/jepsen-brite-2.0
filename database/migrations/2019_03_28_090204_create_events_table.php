@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->dateTime('date');
+            $table->string('image');
             $table->string('description');
             $table->integer('author');
             $table->timestamps();
