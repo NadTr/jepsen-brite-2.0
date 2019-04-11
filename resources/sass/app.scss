@@ -11,7 +11,7 @@
 
 #root{
   background: url("./assets/mur-bois.jpg")t;
-  
+
 }
 body{
   background: #BCD7DD;
@@ -67,9 +67,10 @@ body{
   top: 87px;
   background-image: url('./assets/campagne.jpg');
   background-position: bottom;
-  background-size: 100% 500px;
+  // background-size: 100% 500px;
+  background-repeat: no-repeat;
   width: 100%;
-  object-fit: scale-down;
+  object-fit: cover;
   z-index: 1;
   margin-bottom: 30px;
 }
@@ -81,7 +82,7 @@ img{
   height: 155px;
   position: relative;
 }
- 
+
 
 @keyframes slidein {
   from {
