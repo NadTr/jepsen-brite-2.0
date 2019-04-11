@@ -9,7 +9,7 @@ export default class eventSearch extends Component {
   }
   render(){
     return(
-      <>
+      
         <p></p>
         <h5>This is the search page</h5>
       </>
