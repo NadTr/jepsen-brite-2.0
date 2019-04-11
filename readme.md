@@ -1,5 +1,6 @@
 ## Install 
-Comment these line:
+### Comment these line:
+
 App>Console>Kernel.php
  line 30 to 51 
  
