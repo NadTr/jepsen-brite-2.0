@@ -1,12 +1,12 @@
 ## Install 
- Make command:
- 
-Comment App>Console>Kernel.php
+Comment these line:
+App>Console>Kernel.php
  line 30 to 51 
  
-Comment Config>database.php
+Config>database.php
  line 76 to 85
  
+ Make command: 
  
  ``` composer install```
  
