@@ -7,7 +7,7 @@ App>Console>Kernel.php
 Config>database.php
  line 76 to 85
  
- Make command: 
+ ### Make command: 
  
  ``` composer install```
  
