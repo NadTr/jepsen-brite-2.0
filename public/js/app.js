@@ -49668,8 +49668,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/nadine/Bureau/BeCode/02-Colline/jepsen-brite-2.0/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/nadine/Bureau/BeCode/02-Colline/jepsen-brite-2.0/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/braloup/Documents/Jepsen/jepsen-brite-2.0/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/braloup/Documents/Jepsen/jepsen-brite-2.0/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
