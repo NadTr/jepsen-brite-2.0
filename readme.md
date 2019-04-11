@@ -31,6 +31,7 @@ copy paste file envexemple and rename env.
 change date for your database connect
 
 make commade :
+ ``` docker-compose up  ``` je sais pas ce que ça fait mais il faut le faire!
  ``` php artisan migrate  ``` create the user table
 
 ## application
