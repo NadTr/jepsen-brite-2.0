@@ -11,7 +11,7 @@ export default class eventSearch extends Component {
     return(
       <>
         <p></p>
-        <h5>This is the search page</h5>
+        <h5>This is the search pages</h5>
       </>
     )
   }
