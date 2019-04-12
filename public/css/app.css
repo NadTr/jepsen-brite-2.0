@@ -10715,10 +10715,10 @@ body {
   top: 87px;
   background-image: url(/images/campagne.jpg?10d3057aa12ef4f090c0ae035bd0e1b6);
   background-position: bottom;
-  background-size: 100% 500px;
+  background-repeat: no-repeat;
   width: 100%;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 1;
   margin-bottom: 30px;
 }
