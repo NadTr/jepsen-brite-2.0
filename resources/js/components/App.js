@@ -10,6 +10,7 @@ import EventEditContainer from './EventEditContainer';
 import NavBar from './views/NavBar';
 import UserRegisterContainer from './UserRegisterContainer';
 import eventSearch from './eventSearch';
+import Login from './Login';
 
 export const App = () => {
   return (
@@ -23,6 +24,7 @@ export const App = () => {
         <Route exact path="/event-edit-:id" component={EventEditContainer} />
         <Route exact path="/user-register" component={UserRegisterContainer} />
         <Route exact path="/event-search" component={eventSearch} />
+        <Route exact path="/login" component={Login} />
       </Switch>
     </React.Fragment>
   )
