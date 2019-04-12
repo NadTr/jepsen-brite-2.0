@@ -8,6 +8,7 @@ import EventCreateContainer from './EventCreateContainer';
 import EventHistoryContainer from './EventHistoryContainer';
 import EventEditContainer from './EventEditContainer';
 import NavBar from './views/NavBar';
+import Footer from './views/Footer';
 import UserRegisterContainer from './UserRegisterContainer';
 import eventSearch from './eventSearch';
 import Login from './Login';
@@ -26,6 +27,7 @@ export const App = () => {
         <Route exact path="/event-search" component={eventSearch} />
         <Route exact path="/login" component={Login} />
       </Switch>
+      <Footer />
     </React.Fragment>
   )
 }

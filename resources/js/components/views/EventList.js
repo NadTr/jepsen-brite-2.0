@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import Logo from '../../assets/FoodTruck.png';
+
 //import components
 
 
 
 export default class EventList extends Component {
-  
+
   render() {
     return(
       <>
         <div onScroll={this.handleScroll}>
-          <div className="logoContainer">
-            <img src={Logo} alt="logo" id="foodTruck"/>
-          </div>
-          <div className="centre">
+
+          <div className="container">
             {this.props.package.map(event =>
               <Card  style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} key={event.id}>
                 <Card.Body id="card-body">

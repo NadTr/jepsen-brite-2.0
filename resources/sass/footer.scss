@@ -1,0 +1,27 @@
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.road{
+  background-color: $hfblue;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+#foodTruck{
+  width: auto;
+  height: 100px;
+  position: relative;
+  margin-top: -75px;
+}
+
+.flower {
+
+}
+
+.road {
+
+}
