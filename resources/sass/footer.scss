@@ -25,3 +25,13 @@
 .road {
 
 }
+
+@keyframes slidein {
+  from {
+    margin-left: -15%;
+  }
+
+  to {
+    margin-left: 80%;
+  }
+}

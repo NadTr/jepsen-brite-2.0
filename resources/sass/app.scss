@@ -37,11 +37,7 @@ body{
 #btn{
   margin: 10px;
 }
-.centre{
-  text-align: center;
 
-  margin: 0 auto;
-}
 .navButton{
  background-color: #CFFCFF;
  border: solid 1.75px #40C0DD;
@@ -65,19 +61,6 @@ body{
 
 
 
-
-
-
-
-@keyframes slidein {
-  from {
-    margin-left: -15%;
-  }
-
-  to {
-    margin-left: 80%;
-  }
-}
 
 
 #formulaire{
