@@ -17,7 +17,7 @@ export default class EventListContainer extends Component {
         const events = await getAllEvents();
         this.setState({
             events: events
-        });                
+        });
     }
 
     componentWillUnmount() {
@@ -33,7 +33,7 @@ export default class EventListContainer extends Component {
                 (document.body.offsetWidth - img.offsetWidth) +
             "px";
         let scrollTop = event.srcElement.body.scrollTop;
-        
+
     }
 
     render() {

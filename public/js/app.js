@@ -48526,18 +48526,7 @@ function (_Component) {
         variant: "#207A8E",
         type: "submit",
         onClick: this.onSubmit
-      }, "Login"))) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
-        className: "mr-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-        to: "/event-create"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        className: "navButton",
-        variant: "#207A8E"
-      }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", null, "Greetings ")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, this.context.state.session.pseudo)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        className: "navButton",
-        variant: "#207A8E",
-        onClick: this.logOut
-      }, "Log out"))));
+      }, "Login"))) : window.location = "/"));
     }
   }]);
 
@@ -49731,29 +49720,9 @@ function (_Component) {
         variant: "#207A8E",
         type: "submit",
         onClick: this.onSearch
-      }, "Search"))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
-        inline: true
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["FormControl"], {
-        type: "text",
-        placeholder: "Email",
-        className: " mr-sm-2",
-        onChange: this.onChangeEmailAdress
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["FormControl"], {
-        type: "password",
-        placeholder: "Password",
-        className: " mr-sm-2",
-        onChange: this.onChangePassword
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        className: "navButton",
-        variant: "#207A8E",
-        type: "submit",
-        onClick: this.onSubmit
-      }, "Login"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/user-register"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-        className: "navButton",
-        variant: "#207A8E"
-      }, "Register"))) : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
+      }, "Search"))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.context.state.logIn === false ? react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/login"
+      }, "Login ") : react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Nav"], {
         className: "mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/event-create"

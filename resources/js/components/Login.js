@@ -86,19 +86,10 @@ render(){
           <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
             <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
           </div>
-          
+
           </Form>
          :
-         <Nav className="mr-auto">
-           <Link to={"/event-create"}>
-             <Button className="navButton" variant="#207A8E">Create Event</Button>
-           </Link>
-            <Col>
-              <Row><h5>Greetings </h5></Row>
-              <Row>{this.context.state.session.pseudo}</Row>
-            </Col>
-            <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
-          </Nav>
+         window.location="/"  
         }
       </div>
 

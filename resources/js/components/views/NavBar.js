@@ -107,14 +107,7 @@ export default class NavBar extends Component{
         </Nav>
             <div>
               {(this.context.state.logIn === false ) ?
-                <Form inline>
-                  <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
-                  <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-                  <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
-                  <Link to={"/user-register"}>
-                    <Button className="navButton" variant="#207A8E">Register</Button>
-                  </Link>
-                </Form>
+                <Link to="/login">Login </Link>
                :
                <Nav className="mr-auto">
                  <Link to={"/event-create"}>
