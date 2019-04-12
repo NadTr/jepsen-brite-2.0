@@ -14,7 +14,7 @@ export default class EventList extends Component {
       <>
         <div onScroll={this.handleScroll}>
 
-          <div className="container-fluid">
+          <div className="container">
             {this.props.package.map(event =>
               <Card  style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} key={event.id}>
                 <Card.Body id="card-body">

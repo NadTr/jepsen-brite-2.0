@@ -4,23 +4,24 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.footer{
+.road{
   background-color: $hfblue;
-}
-
-.logoContainer{
-  position: -webkit-sticky;
-  position: sticky;
   width: 100%;
   object-fit: cover;
   z-index: 1;
-  padding-top: -50px;
 }
 
-img{
-  // margin-top: 190px;
+#foodTruck{
   width: auto;
-  height: 155px;
+  height: 100px;
   position: relative;
-  margin-top: -100px;
+  margin-top: -75px;
+}
+
+.flower {
+
+}
+
+.road {
+
 }
