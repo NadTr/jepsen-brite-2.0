@@ -32,7 +32,7 @@ handleScroll(event) {
           (document.body.offsetWidth - img.offsetWidth) +
       "px";
   let scrollTop = event.srcElement.body.scrollTop;
-  
+
 }
 
   render() {
