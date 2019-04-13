@@ -104,10 +104,14 @@ export default class NavBar extends Component{
               </Link>
             </Form>
           </Nav>
+          <Link to={"/user-register"}>
+              <Button className="navButton" variant="#207A8E">Register</Button>
+            </Link>
         </Nav>
             <div>
               {(this.context.state.logIn === false ) ?
                 <Link to="/login">Login </Link>
+
                :
                <Nav className="mr-auto">
                  <Link to={"/event-create"}>
