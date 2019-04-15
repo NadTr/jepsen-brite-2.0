@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Moment from 'react-moment';
 
 //import components
 
@@ -20,13 +21,13 @@ export default class CardLayout extends Component {
               {this.props.event.description}
             </Card.Text>
             <Card.Text>
-              {this.props.event.date}
+              <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
             </Card.Text>
             <Link to={"/event-display-"+this.props.event.id}>
               <Button id="btn" style={{background:"#207A8E" }}>More</Button>
             </Link>
           </Card.Body>
-        </Card>
+        </Card>    
       </>
     )
   }

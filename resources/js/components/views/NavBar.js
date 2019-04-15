@@ -98,11 +98,6 @@ export default class NavBar extends Component{
               </Link>
 
 
-              <Link to={"/"}>
-                <Button className="navButton" variant="#207A8E">Home</Button>
-              </Link>
-            
-
           <Nav className="mr-auto">
               <Link to={"/event-history"}>
                 <Button className="navButton" variant="#207A8E">Past Events</Button>

@@ -15,7 +15,7 @@ export default class EventList extends Component {
     return(
       <>
         <div onScroll={this.handleScroll}>
-          <div className="container my-5">
+          <div className="container py-5">
             <CardDeck>
             {this.props.package.map((event, index) =>
               index < 3 ?
@@ -29,6 +29,7 @@ export default class EventList extends Component {
             )}
             </CardDeck>
           </div>
+
         </div>
       </>
     )
