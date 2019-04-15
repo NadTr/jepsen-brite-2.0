@@ -13,27 +13,30 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->group(function () {
+Route::post('/register', 'Auth\RegisterController@register');
+Route::post('/login', 'ApiAuthController@login');
 
-    // Routes USERS
-    Route::get('/user','ApiAuthController@user')->name('app.user');
-    Route::post('/logout', 'ApiAuthController@logout');
-    Route::post('/refresh', 'ApiAuthController@refresh');
-
-    //Routes EVENTS
-    Route::post('/events/create', 'EventController@store')->name('events.store');
-    Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
-    Route::put('/events/{event}', 'EventController@update')->name('events.update');
-    Route::put('/events/{event}/inscription', 'EventController@inscription')->name('events.inscription');
-    Route::delete('/events/{event}/desinscription','EventController@desinscription')->name('events.desinscription');
-});
-
-// Routes USERS
-Route::post('/register','Auth\RegisterController@register');
-Route::post('/login','ApiAuthController@login')->name('events.login');
-
-// Routes EVENTS
+Route::get('/homepage', 'EventController@homepage')->name('events.homepage');
 Route::get('/events', 'EventController@index')->name('events.index');
-Route::get('/events/{event}', 'EventController@show')->name('events.show');
-Route::get('/events/{offset}/{limit}', 'EventController@pastEvent')->name('events.pastevent');
-Route::get('/events/search/{offset}/{limit}', 'EventController@search')->name('events.search');
+Route::get('/pastevents', 'EventController@past')->name('events.past');
+Route::get('/event/{event}', 'EventController@show')->name('events.show');
+Route::get('/confirm/{token}', 'ApiAuthController@confirm');
+Route::get('/sendreminders', 'AttendeeController@sendReminders');
+//if authenticated
+Route::middleware('auth:api')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    //Authentication routes
+    Route::post('logout', 'ApiAuthController@logout');
+    Route::post('refresh', 'ApiAuthController@refresh');
+    Route::post('me', 'ApiAuthController@me');
+    // routes related to events
+    Route::post('/events', 'EventController@store')->name('events.store');
+    Route::put('/events/{event}', 'EventController@update')->name('events.update');
+    Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
+    // route that deal with attending or not
+    Route::post('/attend/{event}', 'AttendeeController@store')->name('attendee.store');
+    Route::delete('/attend/{event}', 'AttendeeController@destroy')->name('attendee.destroy');
+
+});

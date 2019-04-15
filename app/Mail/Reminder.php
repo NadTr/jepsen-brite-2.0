@@ -10,15 +10,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class Reminder extends Mailable
 {
     use Queueable, SerializesModels;
+    public $event;
+    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($event, $user)
     {
-        //
+        $this->event = $event;
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +31,8 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        return $this->view('email.reminder');
+        return $this->from('Hello@EventFood.com')
+                    ->subject('Event reminder' . $this->event['event_title'])
+                    ->markdown('email.reminder');
     }
 }
