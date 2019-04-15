@@ -13,7 +13,7 @@ import UserRegisterContainer from './UserRegisterContainer';
 import eventSearch from './eventSearch';
 import Login from './Login';
 
-export const App = () => {
+export const Routes = () => {
   return (
     <React.Fragment>
       <NavBar />
@@ -32,4 +32,4 @@ export const App = () => {
   )
 }
 
-export default App;
+export default Routes;
