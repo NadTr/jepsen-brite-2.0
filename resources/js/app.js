@@ -3,7 +3,7 @@ So screw it :(*/
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 //import components
 import App from './components/App';
@@ -11,7 +11,7 @@ import SessionProvider from './components/providers/SessionProvider';
 
 
 ReactDOM.render(<SessionProvider>
-                  <HashRouter>
+                  <BrowserRouter>
                     <App />
-                  </HashRouter>
+                  </BrowserRouter>
                 </SessionProvider>, document.getElementById('root'));

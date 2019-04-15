@@ -8,7 +8,7 @@ import Logo from '../../assets/FoodTruck.png';
 
 
 export default class EventList extends Component {
-  
+
   render() {
     return(
       <>
@@ -21,13 +21,13 @@ export default class EventList extends Component {
               <Card  style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} key={event.id}>
                 <Card.Body id="card-body">
                   <Card.Title>
-                    <h3>{event.name}</h3>
+                    <h3>{event.event_title}</h3>
                   </Card.Title>
                   <Card.Text>
-                    {event.description}
+                    {event.event_description}
                   </Card.Text>
                   <Card.Text>
-                    {event.date}
+                    {event.event_time}
                   </Card.Text>
                   <Link to={"/event-display-"+event.id}>
                     <Button id="btn" style={{background:"#207A8E" }}>More</Button>
