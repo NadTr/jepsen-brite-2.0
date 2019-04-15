@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import EventList from "./views/EventList";
 import { getAllEvents } from "./Api";
 
+
 export default class EventListContainer extends Component {
     constructor(props) {
         super(props);
@@ -13,30 +14,14 @@ export default class EventListContainer extends Component {
     }
 
     async componentDidMount() {
-        window.addEventListener("scroll", this.handleScroll);
         const events = await getAllEvents();
         this.setState({
             events: events
-        });                
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll);
-    }
-
-    handleScroll(event) {
-        let img = document.getElementById("foodTruck");
-
-        img.style.left =
-            (window.scrollY /
-                (document.body.offsetHeight - window.innerHeight)) *
-                (document.body.offsetWidth - img.offsetWidth) +
-            "px";
-        let scrollTop = event.srcElement.body.scrollTop;
-        
+        });
     }
 
     render() {
+      console.log(this.state.events)
         return <EventList package={this.state.events} />;
     }
 }

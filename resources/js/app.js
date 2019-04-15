@@ -6,12 +6,12 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 
 //import components
-import App from './components/App';
+import Routes from './components/Routes';
 import SessionProvider from './components/providers/SessionProvider';
 
 
 ReactDOM.render(<SessionProvider>
                   <HashRouter>
-                    <App />
+                    <Routes />
                   </HashRouter>
                 </SessionProvider>, document.getElementById('root'));

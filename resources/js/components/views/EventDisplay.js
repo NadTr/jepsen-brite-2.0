@@ -5,6 +5,7 @@ import { CardDeck } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+import Moment from 'react-moment';
 
 //import components
 import ConfirmModalContainer from '../ConfirmModalContainer'
@@ -14,13 +15,15 @@ export default class EventDisplay extends Component {
   render() {
     return(
       <>
-        <div>
-          <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
-            <Card.Header> {this.props.package.name} {this.props.package.date}</Card.Header>
+        <div className="container py-3">
+          <Card id="text-center" style={{ width: '100%', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
+            <Card.Header>
+              <Card.Img src="https://via.placeholder.com/1070x602" />
+                <h2 className="mt-3">{this.props.package.name}</h2>
+                <h3><Moment format="DD MMM YYYY - H:mm">{this.props.package.date}</Moment></h3>
+              </Card.Header>
             <Card.Body>
-              <Card.Text >
-                {this.props.package.description}
-              </Card.Text>
+              <Card.Text >{this.props.package.description}</Card.Text>
             </Card.Body>
             <Card.Footer className="text-muted">
           {(this.context.state.logIn === false ) ?
@@ -54,7 +57,7 @@ export default class EventDisplay extends Component {
                 </Row>
               </Col>
               :
-              <div>Not the author, can't access edit or delete functionnalities</div>
+              <div>You're not the author, you can't access edit or delete functionnalities</div>
             }
             </Card.Footer>
           </Card>

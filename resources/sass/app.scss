@@ -9,6 +9,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'footer';
+
 #root{
   background: url("./assets/mur-bois.jpg")t;
 
@@ -35,11 +37,7 @@ body{
 #btn{
   margin: 10px;
 }
-.centre{
-  text-align: center;
-  width: 850px;
-  margin: 0 auto;
-}
+
 .navButton{
  background-color: #CFFCFF;
  border: solid 1.75px #40C0DD;
@@ -60,40 +58,6 @@ body{
   margin-top: 30px;
   margin: 0 auto;
 }
-
-.logoContainer{
-  position: -webkit-sticky;
-  position: sticky;
-  top: 87px;
-  background-image: url('./assets/campagne.jpg');
-  background-position: bottom;
-  // background-size: 100% 500px;
-  background-repeat: no-repeat;
-  width: 100%;
-  object-fit: cover;
-  z-index: 1;
-  margin-bottom: 30px;
-}
-
-
-img{
-  margin-top: 190px;
-  width: auto;
-  height: 155px;
-  position: relative;
-}
-
-
-@keyframes slidein {
-  from {
-    margin-left: -15%;
-  }
-
-  to {
-    margin-left: 80%;
-  }
-}
-
 
 #formulaire{
   text-align: center ;
@@ -134,13 +98,4 @@ img{
 .row{
   display: flex;
   justify-content: center;
-}
-footer{
-  background: #D6E5E3;
-  border-top: 2.5px solid  #40C0DD;
-  text-Align: center;
-  position: fixed;
-  bottom: 0;
-  height: 130px;
-  width: 100%;
 }
