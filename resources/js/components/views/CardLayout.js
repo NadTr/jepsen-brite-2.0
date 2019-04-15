@@ -11,7 +11,7 @@ export default class CardLayout extends Component {
     return(
       <>
         <Card style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
-          <Card.Body id="card-body">
+          <Card.Body className="p-0">
             <Card.Img src="https://via.placeholder.com/400x200" />
             <Card.Title>
               <h3>{this.props.event.name}</h3>
