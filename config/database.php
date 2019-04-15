@@ -1,5 +1,14 @@
 <?php
 
+$dbUrl = [
+    "host" => "",
+    "path" => "",
+    "user" => "",
+    "pass" => "",
+];
+if(env("DATABASE_URL", false))
+    $dbUrl = parse_url(getenv("DATABASE_URL"));
+
 return [
 
     /*
@@ -75,11 +84,11 @@ return [
 
         'heroku' => [
             'driver'   => 'pgsql',
-            'host'     => parse_url(getenv("DATABASE_URL"))["host"],
+            'host'     => $dbUrl["host"],
             'port'     => env('DB_PORT', '5432'),
-            'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
-            'username' => parse_url(getenv("DATABASE_URL"))["user"],
-            'password' => parse_url(getenv("DATABASE_URL"))["pass"],
+            'database' => substr($dbUrl["path"], 1),
+            'username' => $dbUrl["user"],
+            'password' => $dbUrl["pass"],
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
