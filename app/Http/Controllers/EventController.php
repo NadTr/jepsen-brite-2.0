@@ -116,8 +116,7 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-     public function destroy(Event $event)
-       {
+     public function destroy(Event $event) {
           if ($event['event_author'] == auth()->user()->id) {
             $event->delete();
             return response()->json([
@@ -127,4 +126,16 @@ class EventController extends Controller
              return response()->json(["message" => "You're not the author of this event"], 401);
           }
         }
+
+        // public function search(Request $request) {
+        //     $parameter = $request->input('param');
+        //     $param = array_first($parameter);
+        //     $events = Event::where('event_time', '>', NOW())->orderBy('event_time', 'asc')
+        //       ->where('name', 'LIKE', '%'.$param.'%')
+        //       ->orWhere('description', 'LIKE', '%'.'%'.$param.'%')
+        //       ->orWhere('date', 'LIKE', '%'.'%'.$param.'%')
+        //       ->paginate(4);
+        //     return $events;
+        //   }
+
 }

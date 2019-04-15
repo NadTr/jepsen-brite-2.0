@@ -19,6 +19,7 @@ Route::post('/login', 'ApiAuthController@login');
 Route::get('/homepage', 'EventController@homepage')->name('events.homepage');
 Route::get('/events', 'EventController@index')->name('events.index');
 Route::get('/pastevents', 'EventController@past')->name('events.past');
+// Route::get('/search', 'EventController@search')->name('events.search');
 Route::get('/event/{event}', 'EventController@show')->name('events.show');
 Route::get('/confirm/{token}', 'ApiAuthController@confirm');
 Route::get('/sendreminders', 'AttendeeController@sendReminders');
