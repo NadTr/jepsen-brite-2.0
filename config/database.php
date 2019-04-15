@@ -1,5 +1,16 @@
 <?php
 
+$dbUrl = [
+    "host" => "",
+    "path" => "",
+    "user" => "",
+    "pass" => "",
+];
+
+
+if(env("DATABASE_URL", false))
+    $dbUrl = parse_url(getenv("DATABASE_URL"));
+
 return [
 
     /*
@@ -13,7 +24,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'heroku'),
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +72,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'amazonqqch'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'becode'),
             'username' => env('DB_USERNAME', 'becode'),
@@ -75,10 +86,11 @@ return [
 
         'heroku' => [
             'driver'   => 'pgsql',
-            'host'     => parse_url(getenv("DATABASE_URL"))["host"],
-            'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
-            'username' => parse_url(getenv("DATABASE_URL"))["user"],
-            'password' => parse_url(getenv("DATABASE_URL"))["pass"],
+            'host'     => $dbUrl["host"],
+            'port'     => env('DB_PORT', '5432'),
+            'database' => substr($dbUrl["path"], 1),
+            'username' => $dbUrl["user"],
+            'password' => $dbUrl["pass"],
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
