@@ -12,10 +12,12 @@ export default class CardLayout extends Component {
     return(
       <>
         <Card style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
-          <Card.Body className="p-0">
-            <Card.Img src="https://via.placeholder.com/400x200" />
+          <Card.Body className="p-2 text-center">
+            <Link to={"/event-display-"+this.props.event.id}>
+              <Card.Img src="https://via.placeholder.com/426x240" />
+            </Link>
             <Card.Title>
-              <h3>{this.props.event.name}</h3>
+              <h3 className="mt-2">{this.props.event.name}</h3>
             </Card.Title>
             <Card.Text>
               {this.props.event.description}
@@ -24,10 +26,10 @@ export default class CardLayout extends Component {
               <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
             </Card.Text>
             <Link to={"/event-display-"+this.props.event.id}>
-              <Button id="btn" style={{background:"#207A8E" }}>More</Button>
+              <Button id="btn" className="text-center" style={{background:"#207A8E" }}>More</Button>
             </Link>
           </Card.Body>
-        </Card>    
+        </Card>
       </>
     )
   }
