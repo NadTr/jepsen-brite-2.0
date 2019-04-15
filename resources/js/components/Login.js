@@ -73,23 +73,23 @@ render(){
         {(this.context.state.logIn === false ) ?
           <Form>
 
-          <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-            <Form.Label className ="h4">Email address</Form.Label>
-            <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
-          </div>
+            <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
+              <Form.Label className ="h4">Email address</Form.Label>
+              <FormControl type="text" placeholder="Email" className="mr-sm-2" onChange={this.onChangeEmailAdress}/>
+            </div>
 
-          <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-            <Form.Label className ="h4">Email address</Form.Label>
-            <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
-          </div>
+            <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
+              <Form.Label className ="h4">Email address</Form.Label>
+              <FormControl type="password" placeholder="Password" className="mr-sm-2" onChange={this.onChangePassword}/>
+            </div>
 
-          <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-            <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
-          </div>
+            <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
+              <Button className="navButton px-5 py-2" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
+            </div>
 
           </Form>
          :
-         window.location="/"  
+         window.location="/"
         }
       </div>
 

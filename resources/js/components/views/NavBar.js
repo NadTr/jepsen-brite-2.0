@@ -89,25 +89,32 @@ export default class NavBar extends Component{
             </div>
           </Link>
         </Navbar.Brand>
+
         <Nav className="mr-auto">
+
           <Link to={"/"}>
             <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
-          <Nav className="mr-auto">
-            <Link to={"/event-history"}>
-              <Button className="navButton" variant="#207A8E">Past Events</Button>
-            </Link>
+            <Nav className="mr-auto">
+              <Link to={"/event-history"}>
+                <Button className="navButton" variant="#207A8E">Past Events</Button>
+              </Link>
             <Form inline>
               <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
-              <Link to={"/event-search"}>
-                <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
-              </Link>
-            </Form>
-          </Nav>
+                <Link to={"/event-search"}>
+                  <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+                </Link>
+              </Form>
+            </Nav>
+
         </Nav>
             <div>
               {(this.context.state.logIn === false ) ?
-                <Link to="/login">Login </Link>
+
+                <Link to="/login">
+                  <Button className="navButton" variant="#207A8E">login</Button>
+                  <Button className="navButton" variant="#207A8E">Register</Button>
+                </Link>
                :
                <Nav className="mr-auto">
                  <Link to={"/event-create"}>
