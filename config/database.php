@@ -7,8 +7,6 @@ $dbUrl = [
     "pass" => "",
 ];
 
-error_log('env("DATABASE_URL"): ');
-error_log(env("DATABASE_URL", 'none'));
 
 if(env("DATABASE_URL", false))
     $dbUrl = parse_url(getenv("DATABASE_URL"));
