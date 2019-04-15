@@ -103,11 +103,12 @@ export default class NavBar extends Component{
               <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
                 <Link to={"/event-search"}>
                   <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
-                </Link>
+               </Link>
             </Form>
           </Nav>
 
         </Nav>
+
             <div>
 
               {(this.context.state.logIn === false ) ?
@@ -130,11 +131,12 @@ export default class NavBar extends Component{
                   </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
-
               }
+
             </div>
 
         </Navbar>
+
       </>
     )
   }
