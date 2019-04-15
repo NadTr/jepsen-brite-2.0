@@ -109,12 +109,16 @@ export default class NavBar extends Component{
 
         </Nav>
             <div>
-              {(this.context.state.logIn === false ) ?
 
-                <Link to="/login">
-                  <Button className="navButton" variant="#207A8E">login</Button>
-                  <Button className="navButton" variant="#207A8E">Register</Button>
-                </Link>
+              {(this.context.state.logIn === false ) ?
+                <div>
+                  <Link to="/login">
+                    <Button className="navButton" variant="#207A8E">login</Button>
+                  </Link>
+                  <Link to="/user-register">
+                    <Button className="navButton" variant="#207A8E">Register</Button>
+                  </Link>
+                </div>
                :
                <Nav className="mr-auto">
                  <Link to={"/event-create"}>
@@ -126,6 +130,7 @@ export default class NavBar extends Component{
                   </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
+
               }
             </div>
 
