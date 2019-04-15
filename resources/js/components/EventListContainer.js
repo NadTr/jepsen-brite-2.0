@@ -21,6 +21,7 @@ export default class EventListContainer extends Component {
     }
 
     render() {
+      console.log(this.state.events)
         return <EventList package={this.state.events} />;
     }
 }
