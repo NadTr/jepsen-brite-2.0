@@ -6,6 +6,10 @@ $dbUrl = [
     "user" => "",
     "pass" => "",
 ];
+
+\Log::info('env("DATABASE_URL"): ');
+\Log::info(env("DATABASE_URL", 'none'));
+
 if(env("DATABASE_URL", false))
     $dbUrl = parse_url(getenv("DATABASE_URL"));
 
