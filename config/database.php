@@ -70,7 +70,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'amazonqqch'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'becode'),
             'username' => env('DB_USERNAME', 'becode'),
