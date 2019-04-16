@@ -23,7 +23,7 @@ export default class EventList extends Component {
             </CardDeck>
             {/* Start pagination */}
             <div className="container mt-3 d-flex justify-content-between">
-              <Link to={this.props.route+"/page=1"}>
+              <Link to={"/pastevents/page=1"}>
                 <Button className="navButton" variant="#207A8E">Back to the Past</Button>
               </Link>
               <nav aria-label="Page navigation example">

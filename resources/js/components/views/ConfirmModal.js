@@ -5,7 +5,7 @@ export default class ConfirmModal extends Component {
   render() {
     return(
       <React.Fragment>
-        <Button  id="modalBtn" variant={this.props.variant} style={this.props.style} onClick={this.props.handleShow}>
+        <Button id="modalBtn" variant={this.props.variant} style={this.props.style} onClick={this.props.handleShow}>
           {this.props.label}
         </Button>
 

@@ -12,13 +12,15 @@ import ConfirmModalContainer from '../ConfirmModalContainer'
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
 export default class EventDisplay extends Component {
+
   render() {
+    console.log(this.props)
     return(
       <>
         <div className="container">
           <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
             <Card.Header>
-              <Card.Img src="https://via.placeholder.com/1070x602" />
+              <Card.Img src={this.props.package.event_image} />
               <h2 className="mt-3">{this.props.package.event_title}</h2>
               <h3><Moment format="DD MMM YYYY - H:mm">{this.props.package.event_time}</Moment></h3>
             </Card.Header>
