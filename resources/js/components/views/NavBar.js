@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavbarBrand, NavbarCollapse, NavbarToggle, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
@@ -81,7 +81,7 @@ export default class NavBar extends Component{
   render() {
     return (
       <>
-        <Navbar id="navbar" collapseOnSelect expand="lg">
+        <Navbar id="navbar">
         <Navbar.Brand>
           <Link to={"/"}>
             <div className="navbar-brand">
@@ -89,44 +89,32 @@ export default class NavBar extends Component{
             </div>
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-
-              <Link to={"/"}>
-                <Button className="navButton" variant="#207A8E">Home</Button>
-              </Link>
-
-
-              <Link to={"/"}>
-                <Button className="navButton" variant="#207A8E">Home</Button>
-              </Link>
-
-
+          <Link to={"/events/page="+1}>
+            <Button className="navButton" variant="#207A8E">Events</Button>
+          </Link>
           <Nav className="mr-auto">
-              <Link to={"/pastevents/page="+1}>
-                <Button className="navButton" variant="#207A8E">Past Events</Button>
-              </Link>
+            <Link to={"/pastevents/page="+1}>
+              <Button className="navButton" variant="#207A8E">Past Events</Button>
+            </Link>
             <Form inline>
               <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
-                <Link to={"/search"}>
-                  <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
-                </Link>
+              <Link to={"/event-search"}>
+                <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              </Link>
             </Form>
           </Nav>
-
         </Nav>
             <div>
-
               {(this.context.state.logIn === false ) ?
-                <div>
-                  <Link to="/login">
-                    <Button className="navButton" variant="#207A8E">login</Button>
-                  </Link>
-                  <Link to="/register">
+                <Form inline>
+                  <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
+                  <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
+                  <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
+                  <Link to={"/user-register"}>
                     <Button className="navButton" variant="#207A8E">Register</Button>
                   </Link>
-                </div>
+                </Form>
                :
                <Nav className="mr-auto">
                  <Link to={"/event-create"}>
@@ -138,10 +126,9 @@ export default class NavBar extends Component{
                   </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
-
               }
             </div>
-          </Navbar.Collapse>
+
         </Navbar>
       </>
     )

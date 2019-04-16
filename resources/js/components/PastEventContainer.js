@@ -31,7 +31,7 @@ export default class PastEventContainer extends Component {
         package={this.state.events}
         current_page={this.state.current_page}
         last_page={this.state.last_page}
-        route={'pastevents'}
+        route={'/pastevents'}
        />;
   }
 }

@@ -15,7 +15,7 @@ export default class Example extends Component {
                             <div className="card-body">
                                 I'm an example component!
 
-                                <Sheep message="Nous sommes la team gros porcs !" />
+                                <Sheep message="Nous sommes la team!" />
                             </div>
                         </div>
                     </div>
