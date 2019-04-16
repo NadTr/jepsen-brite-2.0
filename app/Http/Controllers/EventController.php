@@ -43,7 +43,6 @@ class EventController extends Controller
      public function store(Request $request)
      {
         $request['event_author'] = auth()->user()->id;
-        $request['event_creator'] = auth()->user()->name;
 
         $request->validate([
          'event_title'      => 'required',
@@ -60,7 +59,7 @@ class EventController extends Controller
         $event = Event::create($request->all());
 
         $mails = $request['mails'];
-        \Log::info($mails);
+        $request['event_creator'] = auth()->user()->name;
 
         foreach ($mails as $mail) {
             Mail::to($mail)->send(new FriendInvite($event, $request['event_creator']));
@@ -139,17 +138,5 @@ class EventController extends Controller
              return response()->json(["message" => "You're not the author of this event"], 401);
           }
         }
-
-        // public function search(Request $request) {
-        //     $parameter = $request->input('param');
-        //     console.log($parameter)
-        //     $param = array_first($parameter);
-        //     $events = Event::orderBy('event_time', 'asc')
-        //       ->where('event_title', 'LIKE', '%'.$param.'%')
-        //       ->orWhere('event_description', 'LIKE', '%'.$param.'%')
-        //       ->orWhere('event_time', 'LIKE', '%'.$param.'%')
-        //       ->paginate(8);
-        //     return $events;
-        //   }
 
 }
