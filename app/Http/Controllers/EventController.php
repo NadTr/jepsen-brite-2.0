@@ -127,16 +127,15 @@ class EventController extends Controller
           }
         }
 
-        // public function search(Request $request) {
-        //     $parameter = $request->input('param');
-        //     console.log($parameter)
-        //     $param = array_first($parameter);
-        //     $events = Event::orderBy('event_time', 'asc')
-        //       ->where('event_title', 'LIKE', '%'.$param.'%')
-        //       ->orWhere('event_description', 'LIKE', '%'.$param.'%')
-        //       ->orWhere('event_time', 'LIKE', '%'.$param.'%')
-        //       ->paginate(8);
-        //     return $events;
-        //   }
+        public function search(Request $request) {
+            $parameter = $request->only('param');
+            $param = array_first($parameter);
+            $events = Event::where('event_time', '>', now())
+              ->where('event_title', 'LIKE', '%'.$param.'%')
+              ->orWhere('event_description', 'LIKE', '%'.$param.'%')
+              ->orWhere('event_time', 'LIKE', '%'.$param.'%')
+              ->orderBy('event_time', 'asc')->paginate(8);
+            return $events;
+          }
 
 }

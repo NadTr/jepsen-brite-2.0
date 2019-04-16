@@ -48,8 +48,9 @@ export default class Login extends Component {
     };
     // await api request
     let token = await logUser(obj);
+    console.log(token.data);
     // toggle the navbar content & send the access_token
-    if(token!==null){this.context.toggleLogIn(token.data.access_token)}
+    if(token!==null){this.context.toggleLogIn(token.access_token)}
   }
 
   async logOut(){
@@ -79,7 +80,7 @@ render(){
             </div>
 
             <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-              <Form.Label className ="h4">Email address</Form.Label>
+              <Form.Label className ="h4">Password</Form.Label>
               <FormControl type="password" placeholder="Password" className="mr-sm-2" onChange={this.onChangePassword}/>
             </div>
 

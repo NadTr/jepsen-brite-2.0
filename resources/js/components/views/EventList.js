@@ -29,8 +29,8 @@ export default class EventList extends Component {
             )}
             </CardDeck>
             {/* Start pagination */}
-            <div className="container mt-3">
-              <nav aria-label="Page navigation example">
+            <div className="container mt-3 mb-7">
+              <nav aria-label="Page navigation example mr-4">
                 <ul className="pagination d-flex justify-content-end">
                   {parseInt(this.props.current_page) > 1 &&
                     <li className="page-item">
@@ -57,8 +57,6 @@ export default class EventList extends Component {
                   }
                 </ul>
               </nav>
-              <div className="btn btn-danger px-3 py-2"><a className="past text-white" href={this.props.route+"/page=1"}>Back to the Past</a></div>
-
             </div>
             {/* End pagination */}
           </div>

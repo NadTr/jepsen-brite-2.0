@@ -13,8 +13,8 @@ export default class CardLayout extends Component {
       <>
         <Card style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
           <Card.Body className="p-2 text-center">
-            <Link to={"/event-display-"+this.props.event.id}>
-              <Card.Img src="https://via.placeholder.com/426x240" />
+            <Link to={"/event/"+this.props.event.id}>
+              <Card.Img src={this.props.event.event_image} />
             </Link>
             <Card.Title>
               <h3>{this.props.event.event_title}</h3>

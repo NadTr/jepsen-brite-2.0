@@ -29,8 +29,11 @@ export default class Home extends Component {
               <CardLayout key={event.id} event={event}/> : ''
             )}
             </CardDeck>
-        
+            <Link to={"/addevent"}>
+              <Button className="navButton" variant="#207A8E">Add an event</Button>
+            </Link>
           </div>
+
         </div>
       </>
     );

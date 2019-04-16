@@ -12,7 +12,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
       'event_description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
       'event_city'        => $faker->city(),
       'event_location'    => $faker->address(),
-      'event_image'       => $faker->imageUrl($width = 600, $height = 250, 'nature'),
+      'event_image'       => 'http://www.clairiereetcanopee.com/wp-content/uploads/2018/02/for%C3%AAt-clairi%C3%A8re-et-canop%C3%A9e.jpg',
       'event_video'       => null,
       'event_author'      => $faker->randomElement($authors),
       'reminder'          => $faker->date(),
