@@ -5,6 +5,7 @@ import { CardDeck } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+import Moment from 'react-moment';
 
 //import components
 import ConfirmModalContainer from '../ConfirmModalContainer'
@@ -16,7 +17,11 @@ export default class EventDisplay extends Component {
       <>
         <div>
           <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
-            <Card.Header> {this.props.package.event_title} {this.props.package.event_time}</Card.Header>
+            <Card.Header>
+              <Card.Img src="https://via.placeholder.com/1070x602" />
+              <h2 className="mt-3">{this.props.package.event_title}</h2>
+              <h3><Moment format="DD MMM YYYY - H:mm">{this.props.package.event_time}</Moment></h3>
+            </Card.Header>
             <Card.Body>
               <Card.Text >
                 {this.props.package.event_description}
@@ -54,7 +59,7 @@ export default class EventDisplay extends Component {
                 </Row>
               </Col>
               :
-              <div>Not the author, can't access edit or delete functionnalities</div>
+              <div>You're not the author, you can't access edit or delete functionnalities</div>
             }
             </Card.Footer>
           </Card>

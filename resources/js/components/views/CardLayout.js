@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Moment from 'react-moment';
 
 //import components
 
@@ -11,8 +12,10 @@ export default class CardLayout extends Component {
     return(
       <>
         <Card style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
-          <Card.Body className="p-0">
-            <Card.Img src="https://via.placeholder.com/400x200" />
+          <Card.Body className="p-2 text-center">
+            <Link to={"/event-display-"+this.props.event.id}>
+              <Card.Img src="https://via.placeholder.com/426x240" />
+            </Link>
             <Card.Title>
               <h3>{this.props.event.event_title}</h3>
             </Card.Title>

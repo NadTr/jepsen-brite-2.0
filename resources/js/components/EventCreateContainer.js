@@ -9,23 +9,23 @@ export default class EventCreateContainer extends Component {
   constructor(props){
     super(props);
 
-    this.onChangeName = this.onChangeName.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeReminder = this.onChangeReminder.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      name: "",
+      title: "",
       date: "",
       description: "",
       reminder: ""
     }
   }
 
-  onChangeName(input){
+  onChangeTitle(input){
     this.setState({
-     name: input.target.value
+     title: input.target.value
    });
   }
 
@@ -50,11 +50,14 @@ export default class EventCreateContainer extends Component {
   onSubmit(data){
     data.preventDefault();
     const obj = {
-      "name": this.state.name,
-      "date": this.state.date+":00",
-      "description": this.state.description,
-      "reminder": this.state.reminder+":00",
-      "u too late":"false"
+      "event_title": this.state.title,
+      "event_time": this.state.date+":00",
+      "event_description": this.state.description,
+      "event_city": 'Liège', //this.state.city,
+      "event_location": 'Rue de Mulhouse 36', // this.state.location,
+      "event_image": this.state.image,
+      "event_video": null, //this.state.video,
+      "reminder": this.state.reminder+":00"
     }
     createEvent(obj, this.context.state.token);
     this.props.history.push('/');
@@ -63,7 +66,7 @@ export default class EventCreateContainer extends Component {
   render() {
     return(
       <EventCreate
-        onChangeName={this.onChangeName}
+        onChangeTitle={this.onChangeTitle}
         onChangeDate={this.onChangeDate}
         onChangeDescription={this.onChangeDescription}
         onChangeReminder={this.onChangeReminder}

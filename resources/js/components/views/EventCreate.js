@@ -11,8 +11,8 @@ export default class EventCreate extends Component {
       <div onScroll={this.handleScroll}>
         <Form id="formulaire" >
           <Form.Group controlId="createForm.ControlInput1" >
-            <Form.Label>Name of the event:</Form.Label>
-            <Form.Control type="text" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3",border:"solid 1.50px #40C0DD" }} onChange={this.props.onChangeName}/>
+            <Form.Label>Title of the event:</Form.Label>
+            <Form.Control type="text" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3",border:"solid 1.50px #40C0DD" }} onChange={this.props.onChangeTitle}/>
           </Form.Group>
           <Form.Group controlId="createForm.ControlInput2">
             <Form.Label>Date of the event yyyy-mm-dd hh:mm :</Form.Label>
