@@ -23,7 +23,7 @@ export default class CardLayout extends Component {
               {this.props.event.event_description}
             </Card.Text>
             <Card.Text>
-              {this.props.event.event_time}
+              <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
             </Card.Text>
             <Link to={"/event/"+this.props.event.id}>
               <Button id="btn" style={{background:"#207A8E" }}>More</Button>

@@ -96,8 +96,8 @@ export default class NavBar extends Component{
             <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
           <Nav className="mr-auto">
-          <Link to={"/pastevents/page="+1}>
-            <Button className="navButton" variant="#207A8E">Past Events</Button>
+          <Link to={"/events/page="+1}>
+            <Button className="navButton" variant="#207A8E">Events</Button>
           </Link>
           <Form inline>
           <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
