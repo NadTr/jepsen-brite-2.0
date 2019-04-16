@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-use App\User_Event;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -15,52 +13,53 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $event = Event::take(5)->orderBy('date', 'DESC')->get();
+     public function homepage()
+     {
+       $events = Event::where('event_time', '>', NOW())->orderBy('event_time', 'asc')->limit(3)->get();
+       return response()->json($events);
+     }
+     public function index()
+       {
+         $events = Event::where('event_time', '>', NOW())->orderBy('event_time', 'asc')->paginate(6);
+         return response()->json($events);
+       }
 
-        return response()->json($event);
-    }
+       public function past()
+          {
+            $events = Event::where('event_time', '<', NOW())->orderBy('event_time', 'asc')->paginate(6);
+            return response()->json($events);
+          }
 
-    public function pastEvent($offset, $limit) {
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function store(Request $request)
+     {
+        $request['event_author'] = auth()->user()->id;
 
-        $event = Event::where('date', '<=', now())->skip($offset*$limit)->take($limit)->orderBy('date', 'DESC')->get();
+         $request->validate([
+             'event_title'      => 'required',
+             'event_time'       => 'required',
+             'event_description'=> 'required',
+             'event_city'       => 'required',
+             'event_location'   => 'required',
+             'event_image'      => 'nullable',
+             'event_video'      => 'nullable',
+             'event_author'     => 'required',
+             'reminder'         => 'nullable'
+         ]);
 
-        return response()->json($event);
-    }
+         $event = Event::create($request->all());
 
-    public function store(Request $request)
-    {
-        $params = $request->all();
-        $params['author'] = auth('api')->user()->id;
-        $event = Event::create($params);
-        $event['author'] = $event->author()->get()[0];
-
-        return response()->json([
-            'message' => 'Great success! New event created',
-            'Event' => $event
-        ]);
-    }
-
-    public function search(Request $request, $offset, $limit){
-
-        if ($request->has('id')) {
-
-            $res = Event::find($request->input('id'));
-            return $res ? $res : 'raté.';
-        }
-
-        elseif ($request->has('string')) {
-
-            $res = Event::where(
-              'name', 'LIKE', '%'.$request->input('string').'%')->orWhere(
-              'description', 'LIKE', '%'.$request->input('string').'%')->orWhere(
-              'date', 'ILIKE', '%'.$request->input('string').'%')->skip($offset*$limit)->take($limit)->get();
-            return $res ? $res : 'raté.';}
-
-        return 'coucou';
-    }
+         return response()->json([
+             'message' => 'Great success! New event created',
+             'event' => $event
+         ]);
+     }
 
     /**
      * Display the specified resource.
@@ -70,22 +69,14 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $ev['event'] = DB::table('events', 'users')
-                    ->select('events.id', 'events.name','events.description', 'events.date', 'events.author', 'users.name AS username', 'events.reminder', 'u too late')
-                    ->join('users' , 'events.author', '=','users.id' )
-                    ->where('events.id', '=', $event->id)
-                     ->first();
 
+        $event['event_author'] = $event->author()->get()[0];
 
-        $ev['participants'] = DB::table('user__events')
-                    ->select('pseudo')
-                    ->join('users', 'user__events.users_id', '=','users.id')
-                    ->where('events_id', '=', $event->id)
-                    ->get();
-       return $ev;
+        $event['attendees'] = $event->attendees()->get();
+        return $event;
     }
 
-    /**
+      /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -94,18 +85,29 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $request->validate([
-            'name'       => 'nullable',
-            'date' => 'nullable',
-            'description' => 'nullable'
-         ]);
+        if ($event['event_author'] == auth()->user()->id) {
 
-         $event->update($request->all());
+            $request['event_author'] = auth()->user()->id;
+            $request->validate([
+                'event_title'       => 'nullable',
+                'event_time'        => 'nullable',
+                'event_description' => 'nullable',
+                'event_city'        => 'nullable',
+                'event_location'    => 'nullable',
+                'event_image'       => 'nullable',
+                'event_author'      => 'nullable',
+                'reminder'          => 'nullable'
+            ]);
 
-         return response()->json([
-             'message' => 'Great success! Event updated',
-             'Event' => $event
-         ]);
+            $event->update($request->all());
+
+            return response()->json([
+                'message' => 'Great success! Event updated',
+                'event' => $event
+            ]);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
     }
 
     /**
@@ -114,54 +116,27 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
-    {
-        $event->delete();
-
-        return response()->json([
-            'message' => 'Successfully deleted event!'
-        ]);
-    }
-
-    public function inscription (Event $event){
-
-        $userEvent = new User_Event;
-        $test = json_decode(DB::table('user__events')
-        ->select('users_id')
-        ->where('events_id', '=', $event->id)
-        ->get());
-
-        if ($test != NULL && ($test[0]->users_id === auth('api')->user()->id)) {
+     public function destroy(Event $event) {
+          if ($event['event_author'] == auth()->user()->id) {
+            $event->delete();
             return response()->json([
-                'message' => 'You are already suscribed!']);
-        }
-        $userEvent['events_id'] = $event->id;
-        $userEvent['users_id'] = auth('api')->user()->id;
-
-        $userEvent->save();
-
-        return response()->json([
-                'message' => 'Succes']);
-
-    }
-     public function desinscription (Event $event){
-
-        $userEvent = new User_Event;
-        $test = json_decode(DB::table('user__events')
-        ->select('users_id')
-        ->where('events_id', '=', $event->id)
-        ->get());
-
-        if ($test != NULL && ($test[0]->users_id === auth('api')->user()->id)) {
-            DB::table('user__events')->select('users_id')
-                ->where('events_id', '=', $event->id)->delete();
-
-            return response()->json([
-                'message' => 'Succes']);
+               'message' => 'Successfully deleted event!'
+            ]);
+          } else {
+             return response()->json(["message" => "You're not the author of this event"], 401);
+          }
         }
 
-        return response()->json([
-                'message' => 'You are not suscribed']);
+        // public function search(Request $request) {
+        //     $parameter = $request->input('param');
+        //     console.log($parameter)
+        //     $param = array_first($parameter);
+        //     $events = Event::orderBy('event_time', 'asc')
+        //       ->where('event_title', 'LIKE', '%'.$param.'%')
+        //       ->orWhere('event_description', 'LIKE', '%'.$param.'%')
+        //       ->orWhere('event_time', 'LIKE', '%'.$param.'%')
+        //       ->paginate(8);
+        //     return $events;
+        //   }
 
-    }
 }

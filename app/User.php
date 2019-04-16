@@ -2,7 +2,9 @@
 namespace App;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -12,7 +14,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'pseudo', 'password',
+        'name', 'email', 'password', 'confirmation_token', 'avatar'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -48,8 +50,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    public function events(){
 
-        return $this->belongsToMany(Event::class, 'user_event');
+    public function setPasswordAttribute($password)
+    {
+        if ( !empty($password) ) {
+            $this->attributes['password'] = bcrypt($password);
+        }
     }
 }

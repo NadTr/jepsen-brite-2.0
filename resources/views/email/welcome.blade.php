@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<!-- <html>
 <head>
     <title>Welcome Email</title>
 </head>
@@ -10,4 +10,4 @@
 Your registered email : {{$user['email']}}
 </body>
 
-</html>
+</html> -->

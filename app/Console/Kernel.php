@@ -4,12 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Event;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\Reminder;
-
-
+use App\Http\Controllers\AttendeesController as Attendees;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -18,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-
+        //
     ];
 
     /**
@@ -29,25 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // \Log::info('In Kernel schedule function');
-        // $reminder = DB::table('events')
-        //                 ->join('users' , 'events.author', '=','users.id' )
-        //                 ->select('users.email AS email', 'events.name', 'events.author', 'u too late AS warning')
-        //                 ->where('events.reminder', '<=', 'NOW()')
-        //                 ->where('u too late', 'false')
-        //                 ->get();
-        //
-        //
-        //             DB::table('events')
-        //                 ->select('u too late AS warning')
-        //                 ->where('events.reminder', '<=', 'NOW()')
-        //                 ->update(['u too late' => 'true']);
-        //
-        //
-        // foreach ($reminder as $reminders) {
-        //     Mail::to($reminders->email)->send(new Reminder());
-        //
-        // }
+        $schedule->call(function(){
+             Attendees::sendReminders();
+        })->everyMinute();
     }
 
     /**

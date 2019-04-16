@@ -24,7 +24,7 @@ export const logUserOut = (token) => {
 export const userSession = (token) => {
   return axios({
     method: 'get',
-    url:'/api/user',
+    url:'/api/me',
     headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
   })
 }
@@ -42,8 +42,8 @@ export const registerUser = (obj) => {
 //Events participation
 export const registerEvent = (eventId, token) => {
   return axios({
-  method: 'put',
-  url:'/api/events/'+eventId+'/inscription',
+  method: 'post',
+  url:'/api/attend/'+eventId,
   headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
   })
   .catch(err => console.log(err))
@@ -52,7 +52,7 @@ export const registerEvent = (eventId, token) => {
 export const unregisterEvent = (eventId, token) => {
   return axios({
   method: 'delete',
-  url:'/api/events/'+eventId+'/desinscription',
+  url:'/api/attend/'+eventId,
   headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
   })
   .catch(err => console.log(err))
@@ -62,37 +62,38 @@ export const unregisterEvent = (eventId, token) => {
 export const createEvent = (obj, token) => {
   return axios({
   method: 'post',
-  url:'/api/events/create',
+  url:'/api/events',
   headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
   data: obj
   })
   .catch(err => console.log(err))
 }
 
-export const getAllEvents = () => {
+export const getAllEvents = (page = 1) => {
   return axios
-    .get('/api/events')
+    .get('api/events?page='+page)
     .then(response => response.data)
     .catch(err => console.log(err))
 }
 
-export const getOldEvents = () => {
+export const getOldEvents = (page = 1) => {
+  console.log(page);
   return axios
-    .get('/api/events/1/5')
+    .get('/api/pastevents?page='+page)
     .then(response => response.data)
     .catch(err => console.log(err))
 }
 
 export const getOneEvent = (eventId) => {
   return axios
-    .get('/api/events/'+eventId)
+    .get('/api/event/'+eventId)
     .then(response => response.data)
     .catch(err => console.log(err))
 }
 
 export const searchEvent = (string) => {
   return axios
-    .get('/api/events/search/0/4?string='+string)
+    .get('/api/events/search?param='+string)
     .then(response => response.data)
     .catch(err => console.log(err))
 }

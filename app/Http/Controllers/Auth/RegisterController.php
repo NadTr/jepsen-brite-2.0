@@ -7,12 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
-
-
-use App\Mail\WelcomeMail;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use App\Notifications\RegisteredUsers;
+
 
 class RegisterController extends Controller
 {
@@ -46,6 +44,29 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public static function confirm($token)
+    {
+        $user = User::where('confirmation_token', $token)->first();
+        if ($user) {
+            $user->update(['confirmation_token' => null, 'email_verified_at' => 'NOW' ]);
+            return response()->json(
+                ['success' => 'successfull email confirmation']);
+        }else {
+            return response()->json(
+                ['error' => 'invalid token']);
+        }
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        $user->notify(new RegisteredUsers());
+        return response()->json(
+            ['success' => 'veuillez confirmer votre adresse via le mail que vous allez recevoir']);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -56,7 +77,6 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'pseudo' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -67,21 +87,15 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\User
-
      */
-
-     protected function register(Request $request)
+    protected function create(array $data)
     {
-
-        $user =  User::create([
-            'name'  => $request->name,
-            'pseudo'=> $request->pseudo,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'confirmation_token' => str_replace('/', '', bcrypt(str_random(20))),
+            'avatar' => $data['avatar']
         ]);
-        
-        //Mail::to($request->email)->send(new WelcomeMail($user));
-
-        return $user;
     }
 }

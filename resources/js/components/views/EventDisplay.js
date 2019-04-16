@@ -16,10 +16,10 @@ export default class EventDisplay extends Component {
       <>
         <div>
           <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
-            <Card.Header> {this.props.package.name} {this.props.package.date}</Card.Header>
+            <Card.Header> {this.props.package.event_title} {this.props.package.event_time}</Card.Header>
             <Card.Body>
               <Card.Text >
-                {this.props.package.description}
+                {this.props.package.event_description}
               </Card.Text>
             </Card.Body>
             <Card.Footer className="text-muted">
