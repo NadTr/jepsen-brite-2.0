@@ -64,7 +64,7 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </div>
-        <div className="row">
+        <div className="row pb-5">
           {this.props.attendees.map(attendee =>
           <div className="card col-4" key={Math.random()}>
           <div className="card-body" style={{border:"solid 1.50px #40C0DD"}}>

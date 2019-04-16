@@ -1,20 +1,39 @@
-
-// Fonts
-
-// @import url("https://fonts.googleapis.com/css?family=Cabin+Sketch");
-// Variables
-@import 'variables';
-// @import './assets/campagne.jpg';
+// Import cards style
+// @import 'cards';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Variables
+@import 'variables';
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Import custom footer
 @import 'footer';
 
-#root{
-  background: url("./assets/mur-bois.jpg")t;
 
+.small-card {
+  min-width: 320px;
 }
+
+.card-deck{
+  justify-content: center;
+}
+
+@include media-breakpoint-up(md) {
+  .small-card {
+    max-width: 45%;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .small-card {
+    max-width: 30%;
+  }
+}
+
+
 body{
   background: #BCD7DD;
   font-family: 'Noto Serif', serif;
