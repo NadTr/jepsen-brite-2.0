@@ -50,7 +50,7 @@ export default class Login extends Component {
     let token = await logUser(obj);
     console.log(token.data);
     // toggle the navbar content & send the access_token
-    if(token!==null){this.context.toggleLogIn(token.access_token)}
+    if(token!==null){this.context.toggleLogIn(token.data.access_token)}
   }
 
   async logOut(){

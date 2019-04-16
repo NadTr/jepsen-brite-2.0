@@ -31,7 +31,7 @@ Route::middleware('auth:api')->group(function () {
     //Authentication routes
     Route::post('logout', 'ApiAuthController@logout');
     Route::post('refresh', 'ApiAuthController@refresh');
-    Route::post('me', 'ApiAuthController@me');
+    Route::get('me', 'ApiAuthController@me');
     // routes related to events
     Route::post('/events', 'EventController@store')->name('events.store');
     Route::put('/events/{event}', 'EventController@update')->name('events.update');

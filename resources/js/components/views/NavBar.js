@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavbarBrand, NavbarCollapse, NavbarToggle, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
@@ -8,7 +8,6 @@ import { Row, Col } from 'react-bootstrap';
 //importcomponents
 import { logUser, logUserOut, searchEvent } from '../Api';
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
-
 
 export default class NavBar extends Component{
   constructor(props, context){
@@ -61,6 +60,8 @@ export default class NavBar extends Component{
 
   async onSearch(){
     const search = await searchEvent(this.state.searchItem)
+    console.log(search);
+
   }
 
   async logOut(){
@@ -77,9 +78,10 @@ export default class NavBar extends Component{
   }
 
   render() {
+    console.log("context ",this.context.state);
     return (
       <>
-        <Navbar id="navbar" collapseOnSelect expand="lg">
+        <Navbar id="navbar">
         <Navbar.Brand>
           <Link to={"/"}>
             <div className="navbar-brand">
@@ -87,8 +89,6 @@ export default class NavBar extends Component{
             </div>
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Link to={"/events/page="+1}>
             <Button className="navButton" variant="#207A8E">Events</Button>
@@ -104,19 +104,17 @@ export default class NavBar extends Component{
               </Link>
             </Form>
           </Nav>
-
         </Nav>
             <div>
-
               {(this.context.state.logIn === false ) ?
-                <div>
-                  <Link to="/login">
-                    <Button className="navButton" variant="#207A8E">login</Button>
+                <Form inline>
+                  <Link to={"/Login"}>
+                    <Button className="navButton" variant="#207A8E">Login</Button>
                   </Link>
-                  <Link to="/register">
+                  <Link to={"/register"}>
                     <Button className="navButton" variant="#207A8E">Register</Button>
                   </Link>
-                </div>
+                </Form>
                :
                <Nav className="mr-auto">
                  <Link to={"/addEvent"}>
@@ -128,10 +126,9 @@ export default class NavBar extends Component{
                   </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
-
               }
             </div>
-          </Navbar.Collapse>
+
         </Navbar>
       </>
     )
