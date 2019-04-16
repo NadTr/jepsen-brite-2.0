@@ -13,14 +13,14 @@ class SchedulerDaemon extends Command
      *
      * @var string
      */
-    protected $signature = 'schedule:daemon';
+    protected $signature = 'schedule:daemon {--sleep=60}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Call the scheduler every minute.';
 
     /**
      * Create a new command instance.
@@ -39,12 +39,12 @@ class SchedulerDaemon extends Command
      */
     public function handle()
     {
-        \Log::info('In scheduler daemon');
         while (true) {
-            $this->line('Scheduler');
+            $this->line('<info>[' . Carbon::now()->format('Y-m-d H:i:s') . ']</info> Calling scheduler');
+
             $this->call('schedule:run');
-            $this->line('Done');
-            sleep(60);
+
+            sleep($this->option('sleep'));
         }
     }
 }

@@ -6,22 +6,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $fillable = [
-        'name',
-        'date',
-        'description',
-        'author',
-        'reminder',
-        'u too late'
-    ];
-    
-    public function users(){
+  protected $fillable = [
+    'id',
+    'event_title',
+    'event_time',
+    'event_description',
+    'event_city',
+    'event_location',
+    'event_image',
+    'event_video',
+    'event_author',
+    'reminder',
+  ];
 
-        return $this->belongsToMany(User::class, 'user_event');
-    }
-     public function author(){
+  protected $attributes = [
+      'reminder_sent' => false
+  ];
 
-        return $this->belongsTo(User::class, 'author');
-    }
+  public function author()
+  {
+    return $this->belongsTo('App\User', 'event_author');
+  }
 
+  public function attendees()
+  {
+    return $this->hasManyThrough(
+      'App\User',
+      'App\Attendee',
+      'event_id', // Foreign key on Attendees table...
+      'id', // Foreign key on User table...
+      'id', // Local key on Event table...
+      'user_id' // Local key on Attendees table...
+    );
+  }
 }

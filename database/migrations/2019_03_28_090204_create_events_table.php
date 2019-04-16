@@ -14,15 +14,19 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->dateTime('date');
-            $table->string('description');
-            $table->integer('author');
-            $table->timestamps();
-            $table->dateTime('reminder');
-            $table->boolean('u too late');
-            $table->foreign('author')->references('id')->on('users');
+          $table->bigIncrements('id');
+          $table->string('event_title');
+          $table->dateTime('event_time');
+          $table->text('event_description');
+          $table->string('event_city');
+          $table->text('event_location');
+          $table->text('event_image')->nullable();
+          $table->string('event_video')->nullable();
+          $table->unsignedInteger('event_author');
+          $table->foreign('event_author')->references('id')->on('users')->onDelete('cascade');
+          $table->date('reminder')->nullable();
+          $table->boolean('reminder_sent')->nullable();
+          $table->timestamps();
         });
     }
 

@@ -1,5 +1,18 @@
 <?php
-
+$host = '127.0.0.1';
+$port = '3306';
+$database = 'forge';
+$username = 'forge';
+$password = '';
+$db;
+if(env('APP_ENV')!='local'){
+  $db = parse_url(getenv("DATABASE_URL"));
+  $path = ltrim($db["path"], "/");
+  $port = $db["port"];
+  $host = $db["host"];
+  $username = $db["user"];
+  $password = $db["pass"];
+}
 return [
 
     /*
@@ -13,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -61,28 +74,17 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'becode'),
-            'username' => env('DB_USERNAME', 'becode'),
-            'password' => env('DB_PASSWORD', 'becode'),
+            'host' => env('DB_HOST', $host),
+            'port' => env('DB_PORT', $port),
+            'database' => env('DB_DATABASE', $path),
+            'username' => env('DB_USERNAME', $username),
+            'password' => env('DB_PASSWORD', $password),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
-
-        // 'heroku' => [
-        //     'driver'   => 'pgsql',
-        //     'host'     => parse_url(getenv("DATABASE_URL"))["host"],
-        //     'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
-        //     'username' => parse_url(getenv("DATABASE_URL"))["user"],
-        //     'password' => parse_url(getenv("DATABASE_URL"))["pass"],
-        //     'charset'  => 'utf8',
-        //     'prefix'   => '',
-        //     'schema'   => 'public',
-        // ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
