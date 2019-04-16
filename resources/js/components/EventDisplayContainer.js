@@ -14,8 +14,8 @@ export default class EventDisplayContainer extends Component {
     this.optOutEvent = this.optOutEvent.bind(this);
 
     this.state = {
-      event: [],
-      participants: []
+      event: {},
+      attendees: [],
     }
   }
 
@@ -38,11 +38,10 @@ export default class EventDisplayContainer extends Component {
 
   async componentDidMount() {
       const event = await getOneEvent(this.props.match.params.id);
-      console.log(event);
+      console.log(event.attendees);
       this.setState({
        event: event,
-       attendees: event.attendees
-
+       attendees: event.attendees,
      })
    }
 
@@ -50,7 +49,7 @@ export default class EventDisplayContainer extends Component {
     return(
       <EventDisplay
         package={this.state.event}
-        participants={this.state.attendees}
+        attendees={this.state.attendees}
         onClick={this.handleDelete}
         optInEvent={this.optInEvent}
         optOutEvent={this.optOutEvent}

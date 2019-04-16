@@ -13,7 +13,7 @@ export default class CardLayout extends Component {
       <>
         <Card style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
           <Card.Body className="p-2 text-center">
-            <Link to={"/event-display-"+this.props.event.id}>
+            <Link to={"/event/"+this.props.event.id}>
               <Card.Img src="https://via.placeholder.com/426x240" />
             </Link>
             <Card.Title>
@@ -23,7 +23,7 @@ export default class CardLayout extends Component {
               {this.props.event.event_description}
             </Card.Text>
             <Card.Text>
-              {this.props.event.event_time}
+              <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
             </Card.Text>
             <Link to={"/event/"+this.props.event.id}>
               <Button id="btn" style={{background:"#207A8E" }}>More</Button>

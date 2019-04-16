@@ -96,13 +96,13 @@ export default class NavBar extends Component{
             <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
           <Nav className="mr-auto">
-          <Link to={"/pastevents/page="+1}>
-            <Button className="navButton" variant="#207A8E">Past Events</Button>
+          <Link to={"/events/page="+1}>
+            <Button className="navButton" variant="#207A8E">Events</Button>
           </Link>
           <Form inline>
           <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
             <Link to={"/search"}>
-              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search 2</Button>
             </Link>
           </Form>
           </Nav>
@@ -121,7 +121,7 @@ export default class NavBar extends Component{
                 </div>
                :
                <Nav className="mr-auto">
-                 <Link to={"/event-create"}>
+                 <Link to={"/addEvent"}>
                    <Button className="navButton" variant="#207A8E">Create Event</Button>
                  </Link>
                   <Col>
