@@ -25,7 +25,7 @@ export const Routes = () => {
       <NavBar />
       <Switch>
         <Route exact path="/" component={HomeContainer} />
-        <Route exact path="/page=:page" component={EventListContainer} />
+        <Route exact path="/events/page=:page" component={EventListContainer} />
         <Route exact path="/pastevents/page=:page" component={PastEventContainer} />
 
         <Route exact path="/event/:id" component={EventDisplayContainer} />

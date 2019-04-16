@@ -71,14 +71,14 @@ export const createEvent = (obj, token) => {
 
 export const getHomepage = () => {
   return axios
-    .get('api/homepage')
+    .get('/api/homepage')
     .then(response => response.data)
     .catch(err => console.log(err))
 }
 
 export const getAllEvents = (page = 1) => {
   return axios
-    .get('api/events?page='+page)
+    .get('/api/events?page='+page)
     .then(response => response.data)
     .catch(err => console.log(err))
 }
