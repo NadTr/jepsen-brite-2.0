@@ -3,20 +3,19 @@ import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import CardLayout from './CardLayout';
 import CardDeck from 'react-bootstrap/CardDeck';
-
+import Moment from 'react-moment';
 
 //import components
-
 
 
 export default class EventList extends Component {
 
   render() {
-    console.log(this.props.current_page);
     return(
       <>
         <div onScroll={this.handleScroll}>
           <div className="container py-5">
+            <h1 className="mt-3 mb-2"><i className="far fa-calendar-alt pr-3"></i>Next events</h1>
             <CardDeck>
             {this.props.package.map((event, index) =>
               index < 3 ?
@@ -30,7 +29,10 @@ export default class EventList extends Component {
             )}
             </CardDeck>
             {/* Start pagination */}
-            <div className="container mt-3">
+            <div className="container mt-3 d-flex justify-content-between">
+              <Link to={this.props.route+"/page=1"}>
+                <Button className="navButton" variant="#207A8E">Back to the Past</Button>
+              </Link>
               <nav aria-label="Page navigation example">
                 <ul className="pagination d-flex justify-content-end">
                   {parseInt(this.props.current_page) > 1 &&
@@ -58,8 +60,6 @@ export default class EventList extends Component {
                   }
                 </ul>
               </nav>
-              <div className="btn btn-danger px-3 py-2"><a className="past text-white" href={this.props.route+"/page=1"}>Back to the Past</a></div>
-
             </div>
             {/* End pagination */}
           </div>

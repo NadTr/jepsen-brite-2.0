@@ -17,8 +17,7 @@ export default class EventListContainer extends Component {
     }
 
     async componentDidMount() {
-        const events = await getAllEvents();
-        console.log(events);
+        const events = await getAllEvents(this.props.match.params.page);
         this.setState({
             events: events.data,
             current_page: events.current_page,

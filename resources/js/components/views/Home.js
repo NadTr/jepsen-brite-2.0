@@ -17,19 +17,12 @@ export default class Home extends Component {
       <>
         <div onScroll={this.handleScroll}>
           <div className="container my-5">
+            <h1 className="mt-3 mb-2"><i className="far fa-calendar-alt pr-3"></i> 3 Next events</h1>
             <CardDeck>
-            {this.props.package.map((event, index) =>
-              index < 3 ?
-              <CardLayout key={event.id} event={event}/> : ''
+            {this.props.package.map(event =>
+              <CardLayout key={event.id} event={event} />
             )}
             </CardDeck>
-            <CardDeck>
-            {this.props.package.map((event, index) =>
-              index >= 3 ?
-              <CardLayout key={event.id} event={event}/> : ''
-            )}
-            </CardDeck>
-        
           </div>
         </div>
       </>
