@@ -17,16 +17,16 @@ export default class CardLayout extends Component {
               <Card.Img src="https://via.placeholder.com/426x240" />
             </Link>
             <Card.Title>
-              <h3 className="mt-2">{this.props.event.name}</h3>
+              <h3>{this.props.event.event_title}</h3>
             </Card.Title>
             <Card.Text>
-              {this.props.event.description}
+              {this.props.event.event_description}
             </Card.Text>
             <Card.Text>
-              <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
+              {this.props.event.event_time}
             </Card.Text>
-            <Link to={"/event-display-"+this.props.event.id}>
-              <Button id="btn" className="text-center" style={{background:"#207A8E" }}>More</Button>
+            <Link to={"/event/"+this.props.event.id}>
+              <Button id="btn" style={{background:"#207A8E" }}>More</Button>
             </Link>
           </Card.Body>
         </Card>

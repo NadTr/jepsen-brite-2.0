@@ -20,13 +20,13 @@ class EventController extends Controller
      }
      public function index()
        {
-         $events = Event::where('event_time', '>', NOW())->orderBy('event_time', 'asc')->paginate(4);
+         $events = Event::where('event_time', '>', NOW())->orderBy('event_time', 'asc')->paginate(6);
          return response()->json($events);
        }
 
        public function past()
           {
-            $events = Event::where('event_time', '>', NOW())->orderBy('event_time', 'asc')->paginate(4);
+            $events = Event::where('event_time', '<', NOW())->orderBy('event_time', 'asc')->paginate(6);
             return response()->json($events);
           }
 
@@ -129,12 +129,13 @@ class EventController extends Controller
 
         // public function search(Request $request) {
         //     $parameter = $request->input('param');
+        //     console.log($parameter)
         //     $param = array_first($parameter);
-        //     $events = Event::where('event_time', '>', NOW())->orderBy('event_time', 'asc')
-        //       ->where('name', 'LIKE', '%'.$param.'%')
-        //       ->orWhere('description', 'LIKE', '%'.'%'.$param.'%')
-        //       ->orWhere('date', 'LIKE', '%'.'%'.$param.'%')
-        //       ->paginate(4);
+        //     $events = Event::orderBy('event_time', 'asc')
+        //       ->where('event_title', 'LIKE', '%'.$param.'%')
+        //       ->orWhere('event_description', 'LIKE', '%'.$param.'%')
+        //       ->orWhere('event_time', 'LIKE', '%'.$param.'%')
+        //       ->paginate(8);
         //     return $events;
         //   }
 

@@ -69,16 +69,24 @@ export const createEvent = (obj, token) => {
   .catch(err => console.log(err))
 }
 
-export const getAllEvents = () => {
+export const getHomepage = () => {
   return axios
-    .get('/api/events')
+    .get('api/homepage')
     .then(response => response.data)
     .catch(err => console.log(err))
 }
 
-export const getOldEvents = () => {
+export const getAllEvents = (page = 1) => {
   return axios
-    .get('/api/pastevents')
+    .get('api/events?page='+page)
+    .then(response => response.data)
+    .catch(err => console.log(err))
+}
+
+export const getOldEvents = (page = 1) => {
+  console.log(page);
+  return axios
+    .get('/api/pastevents?page='+page)
     .then(response => response.data)
     .catch(err => console.log(err))
 }

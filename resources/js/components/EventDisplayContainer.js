@@ -38,9 +38,10 @@ export default class EventDisplayContainer extends Component {
 
   async componentDidMount() {
       const event = await getOneEvent(this.props.match.params.id);
+      console.log(event);
       this.setState({
-       event: event.event,
-       participants: event.participants
+       event: event,
+       attendees: event.attendees
 
      })
    }
@@ -49,7 +50,7 @@ export default class EventDisplayContainer extends Component {
     return(
       <EventDisplay
         package={this.state.event}
-        participants={this.state.participants}
+        participants={this.state.attendees}
         onClick={this.handleDelete}
         optInEvent={this.optInEvent}
         optOutEvent={this.optOutEvent}

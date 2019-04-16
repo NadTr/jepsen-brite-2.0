@@ -10,13 +10,13 @@
         <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
-        <link href="./css/app.css" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
         <!-- Styles -->
 
     </head>
     <body>
       <div class="content" id="root">
       </div>
-      <script src="js/app.js"></script>
+      <script src="/js/app.js"></script>
     </body>
 </html>
