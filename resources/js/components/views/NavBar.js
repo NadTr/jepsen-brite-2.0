@@ -96,31 +96,18 @@ export default class NavBar extends Component{
             <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
           <Nav className="mr-auto">
-<<<<<<< HEAD
-              <Link to={"/event-history"}>
-                <Button className="navButton" variant="#207A8E">Past Events</Button>
-              </Link>
-            <Form inline>
-              <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
-                <Link to={"/event-search"}>
-                  <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
-               </Link>
-            </Form>
-=======
-          <Link to={"/events/page="+1}>
-            <Button className="navButton" variant="#207A8E">Events</Button>
+          <Link to={"/pastevents/page="+1}>
+            <Button className="navButton" variant="#207A8E">Past Events</Button>
           </Link>
           <Form inline>
           <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
             <Link to={"/search"}>
-              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search 2</Button>
+              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
             </Link>
           </Form>
->>>>>>> front-end
           </Nav>
 
         </Nav>
-
             <div>
 
               {(this.context.state.logIn === false ) ?
@@ -143,12 +130,11 @@ export default class NavBar extends Component{
                   </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>
-              }
 
+              }
             </div>
           </Navbar.Collapse>
         </Navbar>
-
       </>
     )
   }
