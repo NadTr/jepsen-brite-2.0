@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Reminder extends Mailable
+class FriendInvite extends Mailable
 {
     use Queueable, SerializesModels;
     public $event;
@@ -31,7 +31,7 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        return $this->subject('Event reminder' . $this->event['event_title'])
-                    ->markdown('email.reminder');
+        return $this->subject('Your invite: ' . $this->event['event_title'])
+                    ->markdown('email.invite');
     }
 }
