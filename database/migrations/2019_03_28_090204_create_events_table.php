@@ -20,8 +20,7 @@ class CreateEventsTable extends Migration
           $table->text('event_description');
           $table->string('event_city');
           $table->text('event_location');
-          $table->text('event_image')->nullable();
-          $table->string('event_video')->nullable();
+          $table->text('event_media')->nullable();
           $table->unsignedInteger('event_author');
           $table->foreign('event_author')->references('id')->on('users')->onDelete('cascade');
           $table->date('reminder')->nullable();
