@@ -21,13 +21,6 @@ export default class UserRegister extends Component{
                      </div>
 
                      <div className="col-sm-8 col-md-10 col-lg-6 pt-1 mx-auto">
-                       <Form.Group className="h4" controlId="formBasicPseudo">
-                          <Form.Label>Pseudo</Form.Label>
-                          <Form.Control type="pseudo" placeholder="Pseudo" onChange={this.props.onChangePseudo}/>
-                       </Form.Group>
-                     </div>
-
-                     <div className="col-sm-8 col-md-10 col-lg-6 pt-1 mx-auto">
                        <Form.Group className="h4" controlId="formBasicEmail">
                            <Form.Label>Email address</Form.Label>
                            <Form.Control type="email" placeholder="Enter email" onChange={this.props.onChangeEmailAdress}/>

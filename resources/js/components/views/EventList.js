@@ -11,7 +11,6 @@ import Moment from 'react-moment';
 export default class EventList extends Component {
 
   render() {
-    console.log(this.props.current_page);
     return(
       <>
         <div onScroll={this.handleScroll}>
@@ -30,7 +29,10 @@ export default class EventList extends Component {
             )}
             </CardDeck>
             {/* Start pagination */}
-            <div className="container mt-3">
+            <div className="container mt-3 d-flex justify-content-between">
+              <Link to={this.props.route+"/page=1"}>
+                <Button className="navButton" variant="#207A8E">Back to the Past</Button>
+              </Link>
               <nav aria-label="Page navigation example">
                 <ul className="pagination d-flex justify-content-end">
                   {parseInt(this.props.current_page) > 1 &&
@@ -58,9 +60,6 @@ export default class EventList extends Component {
                   }
                 </ul>
               </nav>
-              <Link to={this.props.route+"/page=1"}>
-                <Button className="navButton" variant="#207A8E">Back to the Past</Button>
-              </Link>
             </div>
             {/* End pagination */}
           </div>
