@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 //import components
 import NavBar from './views/NavBar';
 
+import HomeContainer from './HomeContainer';
 import EventListContainer from './EventListContainer';
 import EventDisplayContainer from './EventDisplayContainer';
 import EventCreateContainer from './EventCreateContainer';
@@ -23,8 +24,8 @@ export const Routes = () => {
     <React.Fragment>
       <NavBar />
       <Switch>
-      <Route exact path="/" component={EventListContainer} />
-      <Route exact path="/page=:page" component={EventListContainer} />
+        <Route exact path="/" component={HomeContainer} />
+        <Route exact path="/page=:page" component={EventListContainer} />
         <Route exact path="/pastevents/page=:page" component={PastEventContainer} />
 
         <Route exact path="/event/:id" component={EventDisplayContainer} />

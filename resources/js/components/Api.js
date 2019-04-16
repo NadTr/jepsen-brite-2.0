@@ -69,6 +69,13 @@ export const createEvent = (obj, token) => {
   .catch(err => console.log(err))
 }
 
+export const getHomepage = () => {
+  return axios
+    .get('api/homepage')
+    .then(response => response.data)
+    .catch(err => console.log(err))
+}
+
 export const getAllEvents = (page = 1) => {
   return axios
     .get('api/events?page='+page)
