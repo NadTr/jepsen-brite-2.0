@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FriendInvite;
+
 
 class EventController extends Controller
 {
@@ -40,25 +43,35 @@ class EventController extends Controller
      public function store(Request $request)
      {
         $request['event_author'] = auth()->user()->id;
+        $request['event_creator'] = auth()->user()->name;
 
-         $request->validate([
-             'event_title'      => 'required',
-             'event_time'       => 'required',
-             'event_description'=> 'required',
-             'event_city'       => 'required',
-             'event_location'   => 'required',
-             'event_image'      => 'nullable',
-             'event_video'      => 'nullable',
-             'event_author'     => 'required',
-             'reminder'         => 'nullable'
-         ]);
+        $request->validate([
+         'event_title'      => 'required',
+         'event_time'       => 'required',
+         'event_description'=> 'required',
+         'event_city'       => 'required',
+         'event_location'   => 'required',
+         'event_image'      => 'nullable',
+         'event_video'      => 'nullable',
+         'event_author'     => 'required',
+         'reminder'         => 'nullable'
+        ]);
 
-         $event = Event::create($request->all());
+        $event = Event::create($request->all());
 
-         return response()->json([
-             'message' => 'Great success! New event created',
-             'event' => $event
-         ]);
+        $mails = $request['mails'];
+        \Log::info($mails);
+
+        foreach ($mails as $mail) {
+            Mail::to($mail)->send(new FriendInvite($event, $request['event_creator']));
+        }
+
+        return response()->json([
+         'message' => 'Great success! New event created',
+         'event' => $event,
+         'invites' => $mails
+        ]);
+
      }
 
     /**
