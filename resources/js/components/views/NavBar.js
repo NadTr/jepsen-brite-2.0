@@ -113,7 +113,7 @@ export default class NavBar extends Component{
           <Form inline>
           <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
             <Link to={"/search"}>
-              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search 2</Button>
             </Link>
           </Form>
 >>>>>>> front-end
