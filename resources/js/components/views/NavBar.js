@@ -121,7 +121,7 @@ export default class NavBar extends Component{
                 </div>
                :
                <Nav className="mr-auto">
-                 <Link to={"/event-create"}>
+                 <Link to={"/addEvent"}>
                    <Button className="navButton" variant="#207A8E">Create Event</Button>
                  </Link>
                   <Col>

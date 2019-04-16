@@ -40,11 +40,11 @@ export default class EventDisplay extends Component {
                 </Row>
               </Col>
             }
-            {(this.context.state.session.id === this.props.package.author) ?
+            {(this.context.state.session.id === this.props.package.event_author) ?
               <Col>
                 <Row>
                   <Form>
-                    <Link to={"/event-edit-"+this.props.package.id}>
+                    <Link to={"/edit-"+this.props.package.id}>
                       <Button id="buttonevent" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Edit</Button>
                     </Link>
                   </Form>
@@ -65,10 +65,10 @@ export default class EventDisplay extends Component {
           </Card>
         </div>
         <div className="row">
-          {this.props.participants.map(participant =>
+          {this.props.attendees.map(attendee =>
           <div className="card col-4" key={Math.random()}>
           <div className="card-body" style={{border:"solid 1.50px #40C0DD"}}>
-            <h5 className="card-title">{participant.pseudo}</h5>
+            <h5 className="card-title">{attendee.name}</h5>
             <h6 className="card-subtitle mb-2 text-muted"></h6>
           </div>
         </div>

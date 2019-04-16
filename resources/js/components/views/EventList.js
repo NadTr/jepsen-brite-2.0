@@ -11,7 +11,6 @@ import Moment from 'react-moment';
 export default class EventList extends Component {
 
   render() {
-    console.log(this.props.current_page);
     return(
       <>
         <div onScroll={this.handleScroll}>
