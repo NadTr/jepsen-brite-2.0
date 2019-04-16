@@ -111,13 +111,13 @@ export default class NavBar extends Component{
                   <FormControl type="text" placeholder="Email" className=" mr-sm-2" onChange={this.onChangeEmailAdress}/>
                   <FormControl type="password" placeholder="Password" className=" mr-sm-2" onChange={this.onChangePassword}/>
                   <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
-                  <Link to={"/user-register"}>
+                  <Link to={"/register"}>
                     <Button className="navButton" variant="#207A8E">Register</Button>
                   </Link>
                 </Form>
                :
                <Nav className="mr-auto">
-                 <Link to={"/event-create"}>
+                 <Link to={"/addEvent"}>
                    <Button className="navButton" variant="#207A8E">Create Event</Button>
                  </Link>
                   <Col>

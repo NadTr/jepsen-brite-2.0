@@ -17,7 +17,6 @@ export default class UserRegisterContainer extends Component{
         this.state = {
           emailAdress: "",
           name : "",
-          pseudo: "",
           password: ""
         }
     }
@@ -46,7 +45,6 @@ export default class UserRegisterContainer extends Component{
       let obj = {
         "email": this.state.emailAdress,
       	"name" : this.state.name,
-      	"pseudo": this.state.pseudo,
       	"password": this.state.password
       };
       registerUser(obj);
@@ -59,7 +57,6 @@ export default class UserRegisterContainer extends Component{
             onChangeEmailAdress={this.onChangeEmailAdress}
             onChangePassword={this.onChangePassword}
             onChangeName={this.onChangeName}
-            onChangePseudo={this.onChangePseudo}
             onSubmit={this.onSubmit}
             />
         );
