@@ -1,56 +1,62 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
-
-
 
 class ApiAuthController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
-    public function __construct()
+  /**
+   * Create a new AuthController instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+  }
+  public function register(Request $request)
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $user = User::create([
+            'name'     => $request->name,
+            'password' => $request->password,
+            'email'    => $request->email,
+         ]);
 
-    }
-    /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function login()
-    {
-        $credentials = request(['email', 'password']);
-        if (! $token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        $token = auth()->login($user);
         return $this->respondWithToken($token);
     }
     /**
-     * Get the authenticated User.
+     * Get a JWT token via given credentials.
+     *
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function user()
+    public function login(Request $request)
     {
-        return response()->json(auth()->user());
-
+        $credentials = $request->only('email', 'password');
+        if ($token = auth('api')->attempt($credentials)) {
+            return $this->respondWithToken($token);
+        }
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
     /**
-     * Log the user out (Invalidate the token).
+     * Get the authenticated User
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function me()
+    {
+        return response()->json(auth('api')->user());
+    }
+    /**
+     * Log the user out (Invalidate the token)
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout()
     {
-        auth()->logout();
+        auth('api')->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
     /**
@@ -79,6 +85,15 @@ class ApiAuthController extends Controller
     }
 
 
-
-
+    /**
+     * Confirm email
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function confirm(Request $request, string $token)
+    {
+        return \App\Http\Controllers\Auth\RegisterController::confirm($token);
+    }
 }

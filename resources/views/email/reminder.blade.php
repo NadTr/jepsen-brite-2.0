@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dont forget your event!</title>
-</head>
+@component('mail::message')
+# Hello {{$user['name']}}, <br>
+**{{$event['event_title']}}** is coming up soon! <br>
+It will take place in *{{$event['event_location']}}* on {{substr($event['event_time'], 0, -9)}} at {{substr($event['event_time'],11, -3)}}.<br>
+We hope to see you there!
 
-<body>
-<h2>Welcome  random</h2>
-<br/>
-Your time is up
-</body>
+@component('mail::button', ['url' =>'https://jepsen-brite-jnsnc.herokuapp.com/' . $event['id'], 'color' => 'success'])
+Get back to EventFood!
+@endcomponent
 
-</html>
+Thanks,<br>
+EventFood Team
+@endcomponent
