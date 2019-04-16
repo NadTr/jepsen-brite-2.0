@@ -30,6 +30,7 @@ export const userSession = (token) => {
 }
 
 export const registerUser = (obj) => {
+  console.log(obj);
   return axios({
   method: 'post',
   url:'/api/register',
@@ -100,7 +101,7 @@ export const getOneEvent = (eventId) => {
 
 export const searchEvent = (string) => {
   return axios
-    .get('/api/events/search?param='+string)
+    .get('/api/search?param='+string)
     .then(response => response.data)
     .catch(err => console.log(err))
 }

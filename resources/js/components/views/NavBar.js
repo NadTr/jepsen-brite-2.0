@@ -92,19 +92,19 @@ export default class NavBar extends Component{
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link to={"/"}>
-            <Button className="navButton" variant="#207A8E">Home</Button>
-          </Link>
-          <Nav className="mr-auto">
           <Link to={"/events/page="+1}>
             <Button className="navButton" variant="#207A8E">Events</Button>
           </Link>
-          <Form inline>
-          <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
-            <Link to={"/search"}>
-              <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search 2</Button>
+          <Nav className="mr-auto">
+            <Link to={"/pastevents/page="+1}>
+              <Button className="navButton" variant="#207A8E">Past Events</Button>
             </Link>
-          </Form>
+            <Form inline>
+              <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
+              <Link to={"/event-search"}>
+                <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              </Link>
+            </Form>
           </Nav>
 
         </Nav>
