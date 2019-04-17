@@ -2,7 +2,6 @@ import axios from 'axios';
 
 //Users
 export const logUser = (obj) => {
-  console.log("Logging in")
   return axios({
     method: 'post',
     url:'/api/login',
@@ -13,7 +12,6 @@ export const logUser = (obj) => {
 }
 
 export const logUserOut = (token) => {
-  console.log("Logging out")
   return axios({
     method: 'post',
     url:'/api/logout',
@@ -60,9 +58,10 @@ export const unregisterEvent = (eventId, token) => {
 
 //crud events
 export const createEvent = (obj, token) => {
+  console.log(obj);
   return axios({
   method: 'post',
-  url:'/api/events',
+  url:'/api/event',
   headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
   data: obj
   })
@@ -98,9 +97,9 @@ export const getOneEvent = (eventId) => {
     .catch(err => console.log(err))
 }
 
-export const searchEvent = (string) => {
+export const searchEvent = (param) => {
   return axios
-    .get('/api/events/search?param='+string)
+    .get('/api/search?param='+param)
     .then(response => response.data)
     .catch(err => console.log(err))
 }
@@ -108,7 +107,7 @@ export const searchEvent = (string) => {
 export const editEvent = (eventId, obj, token) => {
     return axios({
     method: 'put',
-    url:'/api/events/'+eventId,
+    url:'/api/event/'+eventId,
     headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
     data: obj
     })
@@ -118,7 +117,7 @@ export const editEvent = (eventId, obj, token) => {
 export const deleteEvent = (eventId, token) => {
   return axios({
   method: 'delete',
-  url:'/api/events/'+eventId,
+  url:'/api/event/'+eventId,
   headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token}
   })
   .catch(err => console.log(err))

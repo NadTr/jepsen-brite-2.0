@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FriendInvite;
+
 
 class EventController extends Controller
 {
@@ -41,24 +44,32 @@ class EventController extends Controller
      {
         $request['event_author'] = auth()->user()->id;
 
-         $request->validate([
-             'event_title'      => 'required',
-             'event_time'       => 'required',
-             'event_description'=> 'required',
-             'event_city'       => 'required',
-             'event_location'   => 'required',
-             'event_image'      => 'nullable',
-             'event_video'      => 'nullable',
-             'event_author'     => 'required',
-             'reminder'         => 'nullable'
-         ]);
+        $request->validate([
+         'event_title'      => 'required',
+         'event_time'       => 'required',
+         'event_description'=> 'required',
+         'event_city'       => 'required',
+         'event_location'   => 'required',
+         'event_media'      => 'required',
+         'event_author'     => 'required',
+         'reminder'         => 'nullable'
+        ]);
 
-         $event = Event::create($request->all());
+        $event = Event::create($request->all());
 
-         return response()->json([
-             'message' => 'Great success! New event created',
-             'event' => $event
-         ]);
+        $mails = $request['mails'];
+        $request['event_creator'] = auth()->user()->name;
+
+        foreach ($mails as $mail) {
+            Mail::to($mail)->send(new FriendInvite($event, $request['event_creator']));
+        }
+
+        return response()->json([
+         'message' => 'Great success! New event created',
+         'event' => $event,
+         'invites' => $mails
+        ]);
+
      }
 
     /**
@@ -94,7 +105,7 @@ class EventController extends Controller
                 'event_description' => 'nullable',
                 'event_city'        => 'nullable',
                 'event_location'    => 'nullable',
-                'event_image'       => 'nullable',
+                'event_media'       => 'nullable',
                 'event_author'      => 'nullable',
                 'reminder'          => 'nullable'
             ]);
@@ -127,16 +138,15 @@ class EventController extends Controller
           }
         }
 
-        // public function search(Request $request) {
-        //     $parameter = $request->input('param');
-        //     console.log($parameter)
-        //     $param = array_first($parameter);
-        //     $events = Event::orderBy('event_time', 'asc')
-        //       ->where('event_title', 'LIKE', '%'.$param.'%')
-        //       ->orWhere('event_description', 'LIKE', '%'.$param.'%')
-        //       ->orWhere('event_time', 'LIKE', '%'.$param.'%')
-        //       ->paginate(8);
-        //     return $events;
-        //   }
+        public function search(Request $request) {
+            $parameter = $request->only('param');
+            $param = array_first($parameter);
+            $events = Event::where('event_time', '>', now())
+              ->where('event_title', 'ILIKE', '%'.$param.'%')
+              ->orWhere('event_description', 'ILIKE', '%'.$param.'%')
+              ->orWhere('event_time', 'LIKE', '%'.$param.'%')
+              ->orderBy('event_time', 'asc')->paginate(4);
+            return $events;
+          }
 
 }

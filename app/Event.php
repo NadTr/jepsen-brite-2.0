@@ -13,8 +13,7 @@ class Event extends Model
     'event_description',
     'event_city',
     'event_location',
-    'event_image',
-    'event_video',
+    'event_media',
     'event_author',
     'reminder',
   ];

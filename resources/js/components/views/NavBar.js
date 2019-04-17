@@ -9,49 +9,20 @@ import { Row, Col } from 'react-bootstrap';
 import { logUser, logUserOut, searchEvent } from '../Api';
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
-
 export default class NavBar extends Component{
   constructor(props, context){
     super(props, context);
+    console.log(context);
 
-    this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
     this.onChangeSearchItem = this.onChangeSearchItem.bind(this);
     this.onSearch = this.onSearch.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
     this.logOut = this.logOut.bind(this);
 
     this.state = {
-      emailAdress: "",
-      password: "",
       searchItem:""
     }
   }
 
-  onChangeEmailAdress(input) {
-    this.setState({
-      emailAdress: input.target.value
-    })
-  }
-
-  onChangePassword(input) {
-    this.setState({
-      password: input.target.value
-    })
-  }
-
-  async onSubmit(data) {
-    data.preventDefault();
-    // retrieve data from the form
-    let obj = {
-      "email": this.state.emailAdress,
-      "password": this.state.password
-    };
-    // await api request
-    let token = await logUser(obj);
-    // toggle the navbar content & send the access_token
-    if(token!==null){this.context.toggleLogIn(token.data.access_token)}
-  }
 
   onChangeSearchItem(input) {
     this.setState({
@@ -60,21 +31,16 @@ export default class NavBar extends Component{
   }
 
   async onSearch(){
-    const search = await searchEvent(this.state.searchItem)
-    console.log(search);
 
   }
 
   async logOut(){
-    // reset the login data from this.state
-    this.setState({
-      emailAdress: "",
-      password: ""
-    })
-    // log out from the database
-    await logUserOut(this.context.state.token)
     // toggle the navbar content
     this.context.toggleLogOut()
+
+    // log out from the database
+    await logUserOut(this.context.state.token)
+
 
   }
 
@@ -92,6 +58,7 @@ export default class NavBar extends Component{
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
+<<<<<<< HEAD
           <Link to={"/"}>
             <Button className="navButton" variant="#207A8E">Home</Button>
           </Link>
@@ -103,8 +70,21 @@ export default class NavBar extends Component{
           <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
             <Link to={"/search"}>
               <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+=======
+          <Link to={"/events/page="+1}>
+            <Button className="navButton" variant="#207A8E">Events</Button>
+          </Link>
+          <Nav className="mr-auto">
+            <Link to={"/pastevents/page="+1}>
+              <Button className="navButton" variant="#207A8E">Past Events</Button>
+>>>>>>> master
             </Link>
-          </Form>
+            <Form inline>
+              <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
+              <Link to={"/search?"+this.state.searchItem}>
+                <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
+              </Link>
+            </Form>
           </Nav>
 
         </Nav>
@@ -126,7 +106,7 @@ export default class NavBar extends Component{
                  </Link>
                   <Col>
                     <Row><h5>Greetings </h5></Row>
-                    <Row>{this.context.state.session.pseudo}</Row>
+                    <Row>{this.context.state.session.name}</Row>
                   </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
                 </Nav>

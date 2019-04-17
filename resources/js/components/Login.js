@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 //importcomponents
-import { logUser, logUserOut } from './Api';
+import { logUser } from './Api';
 import { Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import {SessionProvider, SessionContext} from './providers/SessionProvider';
-import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+
 
 export default class Login extends Component {
 
@@ -17,7 +17,6 @@ export default class Login extends Component {
     this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.logOut = this.logOut.bind(this);
 
 
     this.state = {
@@ -52,18 +51,6 @@ export default class Login extends Component {
     if(token!==null){this.context.toggleLogIn(token.data.access_token)}
   }
 
-  async logOut(){
-    // reset the login data from this.state
-    this.setState({
-      emailAdress: "",
-      password: ""
-    })
-    // log out from the database
-    await logUserOut(this.context.state.token)
-    // toggle the navbar content
-    this.context.toggleLogOut()
-
-  }
 
 render(){
   return(
@@ -79,12 +66,12 @@ render(){
             </div>
 
             <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-              <Form.Label className ="h4">Email address</Form.Label>
+              <Form.Label className ="h4">Password</Form.Label>
               <FormControl type="password" placeholder="Password" className="mr-sm-2" onChange={this.onChangePassword}/>
             </div>
 
             <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-              <Button className="navButton px-5 py-2" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
+              <Button className="navButton px-3 py-2" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
             </div>
 
           </Form>

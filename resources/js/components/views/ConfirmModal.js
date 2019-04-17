@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 export default class ConfirmModal extends Component {
   render() {
     return(
       <React.Fragment>
-        <Button  id="modalBtn" variant={this.props.variant} style={this.props.style} onClick={this.props.handleShow}>
+        <Button  id="modalBtn" variant={this.props.variant}  className={"navButton py-2 text-dark"} onClick={this.props.handleShow}>
           {this.props.label}
         </Button>
 

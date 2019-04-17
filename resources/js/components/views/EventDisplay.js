@@ -14,40 +14,61 @@ import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 import EmbededOpenStreetMap from 'EmbededOpenStreetMap';
 
 export default class EventDisplay extends Component {
+
   render() {
+    let url = this.props.package.event_media;
+    let videoID;
+    let mediaHolder;
+    if (url == undefined){
+    } else if(url.startsWith('https')){
+      let videoUrl = new URL(url);
+      videoID = videoUrl.searchParams.get('v');
+      mediaHolder = document.getElementById("mediaHolder").innerHTML = "<iframe width=\"1066\" height=\"600\" src=\"https://www.youtube.com/embed/" + videoID +"\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+    } else if(url.startsWith('data')){
+      mediaHolder = document.getElementById("mediaHolder").innerHTML = "<img class=\"image-display\" src=\"" + url + "\" />"
+    }
+
+    console.log(this.props)
     return(
       <>
+<<<<<<< HEAD
         <EmbededOpenStreetMapclassName address={} mapId={} className={}/>
         <div className="container">
           <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
+=======
+        <div className="container py-5">
+          <Card className="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
+>>>>>>> master
             <Card.Header>
-              <Card.Img src="https://via.placeholder.com/1070x602" />
-              <h2 className="mt-3">{this.props.package.event_title}</h2>
-              <h3><Moment format="DD MMM YYYY - H:mm">{this.props.package.event_time}</Moment></h3>
-            </Card.Header>
+              <div id="mediaHolder" className="media-holder">
+                </div>
+                <h2 className="mt-3">{this.props.package.event_title}</h2>
+                <h3><Moment format="DD MMM YYYY - H:mm">{this.props.package.event_time}</Moment></h3>
+              </Card.Header>
             <Card.Body>
-              <Card.Text >
-                {this.props.package.event_description}
-              </Card.Text>
+              <Card.Text >{this.props.package.event_description}</Card.Text>
             </Card.Body>
             <Card.Footer className="text-muted">
           {(this.context.state.logIn === false ) ?
                 <div>Log in to register to this event.</div>
             :
               <Col>
-                <Row>
-                  <Button style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}} onClick={this.props.optInEvent}>I want to participate</Button>
-                </Row>
-                <Row>
-                  <Button variant="danger" onClick={this.props.optOutEvent}>I no longer want to come</Button>
-                </Row>
+                {(!this.props.isAttending() ) ?
+                  <Row>
+                    <Button style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}} onClick={this.props.optInEvent}>I want to participate</Button>
+                  </Row>
+                :
+                  <Row>
+                    <Button variant="danger" onClick={this.props.optOutEvent}>I no longer want to come</Button>
+                  </Row>
+              }
               </Col>
             }
-            {(this.context.state.session.id === this.props.package.event_author) ?
+            {(this.context.state.session.id === this.props.package.event_author) &&
               <Col>
                 <Row>
                   <Form>
-                    <Link to={"/edit-"+this.props.package.id}>
+                    <Link to={"/event-edit-"+this.props.package.id}>
                       <Button id="buttonevent" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Edit</Button>
                     </Link>
                   </Form>
@@ -61,8 +82,6 @@ export default class EventDisplay extends Component {
                   </div>
                 </Row>
               </Col>
-              :
-              <div>You're not the author, you can't access edit or delete functionnalities</div>
             }
             </Card.Footer>
           </Card>

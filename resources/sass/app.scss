@@ -12,26 +12,7 @@
 
 // Import custom footer
 @import 'footer';
-
-
-.small-card {
-  min-width: 320px;
-}
-
-.card-deck{
-  justify-content: center;
-}
-
-@include media-breakpoint-up(md) {
-  .small-card {
-    max-width: 45%;
-  }
-}
-@include media-breakpoint-up(lg) {
-  .small-card {
-    max-width: 30%;
-  }
-}
+@import 'cards';
 
 
 body{
@@ -117,4 +98,16 @@ body{
 .row{
   display: flex;
   justify-content: center;
+}
+
+.media-holder{
+  max-height: 600px;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center top;
+}
+
+.image-display{
+  max-width:100%;
+
 }

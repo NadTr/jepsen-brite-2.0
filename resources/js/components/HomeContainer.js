@@ -16,10 +16,8 @@ export default class HomeContainer extends Component {
 
     async componentDidMount() {
         const events = await getHomepage();
-        console.log(events);
         this.setState({
             events: events
-
         });
     }
 

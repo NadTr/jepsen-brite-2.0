@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 //import components
 import EventList from "./views/EventList";
-import { getAllEvents } from "./Api";
+import { searchEvent } from "./Api";
 
 
 export default class EventSearchContainer extends Component {
@@ -14,10 +14,21 @@ export default class EventSearchContainer extends Component {
     }
 
     async componentDidMount() {
-        const events = await searchEvent('test');
+
+        const events = await searchEvent(this.props.location.search.slice(1));
+        console.log(events);
         this.setState({
             events: events.data
         });
+    }
+    async componentDidUpdate(prevProps) {
+        if (prevProps.location != this.props.location){
+          const events = await searchEvent(this.props.location.search.slice(1));
+          console.log(events);
+          this.setState({
+              events: events.data
+          });
+        }
     }
 
     render() {
