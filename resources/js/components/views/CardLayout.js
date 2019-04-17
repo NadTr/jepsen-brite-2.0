@@ -9,7 +9,19 @@ import TextTruncate from 'react-text-truncate';
 
 export default class CardLayout extends Component {
 
+  componentDidMount(){
+    let url = this.props.event.event_media;
+    let mediaHolder;
+    if (url == undefined){
+    } else if(url.startsWith('data')){
+      mediaHolder = document.getElementById("mediaHolder"+ this.props.event.id).innerHTML = "<img class=\"image-display\" src=\"" + url + "\" />"
+    }
+  }
+
+
   render() {
+    let eventId = this.props.event.id ? this.props.event.id : '';
+
     return(
       <>
         <div className="card small-card" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
@@ -29,8 +41,7 @@ export default class CardLayout extends Component {
               <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
             </div>
             </div>
-            <div id="mediaHolder2">
-            </div>
+            <div id={"mediaHolder"+eventId}></div>
           </div>
         </div>
       </>
