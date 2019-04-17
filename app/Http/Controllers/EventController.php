@@ -50,8 +50,7 @@ class EventController extends Controller
          'event_description'=> 'required',
          'event_city'       => 'required',
          'event_location'   => 'required',
-         'event_image'      => 'nullable',
-         'event_video'      => 'nullable',
+         'event_media'      => 'required',
          'event_author'     => 'required',
          'reminder'         => 'nullable'
         ]);
@@ -106,7 +105,7 @@ class EventController extends Controller
                 'event_description' => 'nullable',
                 'event_city'        => 'nullable',
                 'event_location'    => 'nullable',
-                'event_image'       => 'nullable',
+                'event_media'       => 'nullable',
                 'event_author'      => 'nullable',
                 'reminder'          => 'nullable'
             ]);
@@ -143,8 +142,8 @@ class EventController extends Controller
             $parameter = $request->only('param');
             $param = array_first($parameter);
             $events = Event::where('event_time', '>', now())
-              ->where('event_title', 'LIKE', '%'.$param.'%')
-              ->orWhere('event_description', 'LIKE', '%'.$param.'%')
+              ->where('event_title', 'ILIKE', '%'.$param.'%')
+              ->orWhere('event_description', 'ILIKE', '%'.$param.'%')
               ->orWhere('event_time', 'LIKE', '%'.$param.'%')
               ->orderBy('event_time', 'asc')->paginate(8);
             return $events;

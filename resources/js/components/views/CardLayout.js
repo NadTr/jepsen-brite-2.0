@@ -3,7 +3,6 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Moment from 'react-moment';
-import TextTruncate from 'react-text-truncate';
 
 //import components
 
@@ -25,11 +24,12 @@ export default class CardLayout extends Component {
             </Card.Text>
             <Card.Text>
               <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
-            </div>
-            </div>
-            <img src={this.props.event.event_image}/>
-          </div>
-        </div>
+            </Card.Text>
+            <Link to={"/event/"+this.props.event.id}>
+              <Button id="btn" style={{background:"#207A8E" }}>More</Button>
+            </Link>
+          </Card.Body>
+        </Card>
       </>
     )
   }

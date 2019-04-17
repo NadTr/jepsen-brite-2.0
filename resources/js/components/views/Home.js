@@ -12,7 +12,6 @@ import CardDeck from 'react-bootstrap/CardDeck';
 export default class Home extends Component {
 
   render() {
-    console.log(this.props.current_page);
     return(
       <>
         <div onScroll={this.handleScroll}>
