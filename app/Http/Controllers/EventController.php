@@ -145,7 +145,7 @@ class EventController extends Controller
               ->where('event_title', 'ILIKE', '%'.$param.'%')
               ->orWhere('event_description', 'ILIKE', '%'.$param.'%')
               ->orWhere('event_time', 'LIKE', '%'.$param.'%')
-              ->orderBy('event_time', 'asc')->paginate(8);
+              ->orderBy('event_time', 'asc')->paginate(4);
             return $events;
           }
 

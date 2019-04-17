@@ -97,9 +97,9 @@ export const getOneEvent = (eventId) => {
     .catch(err => console.log(err))
 }
 
-export const searchEvent = (string) => {
+export const searchEvent = (param) => {
   return axios
-    .get('/api/search?param='+string)
+    .get('/api/search?param='+param)
     .then(response => response.data)
     .catch(err => console.log(err))
 }

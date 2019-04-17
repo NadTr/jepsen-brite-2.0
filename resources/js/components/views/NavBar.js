@@ -31,8 +31,6 @@ export default class NavBar extends Component{
   }
 
   async onSearch(){
-    const search = await searchEvent(this.state.searchItem)
-    console.log(search);
 
   }
 
@@ -69,7 +67,7 @@ export default class NavBar extends Component{
             </Link>
             <Form inline>
               <FormControl type="text" className=" mr-sm-2" onChange={this.onChangeSearchItem}/>
-              <Link to={"/event-search"}>
+              <Link to={"/search?"+this.state.searchItem}>
                 <Button className="navButton" variant="#207A8E" type="submit" onClick={this.onSearch}>Search</Button>
               </Link>
             </Form>
