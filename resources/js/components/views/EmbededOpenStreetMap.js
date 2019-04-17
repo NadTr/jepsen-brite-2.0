@@ -22,7 +22,7 @@ export default class EmbededOpenStreetMap extends Component {
     const lonLat = new OpenLayers.LonLat(json[0].lon, json[0].lat)
       .transform(
         new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-        map.getProjectionObject() // to Spherical Mercator Projection  
+        map.getProjectionObject() // to Spherical Mercator Projection
       );
     const zoom=16;
     const markers = new OpenLayers.Layer.Markers("Markers");

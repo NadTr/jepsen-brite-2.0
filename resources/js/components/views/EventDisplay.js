@@ -7,14 +7,17 @@ import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import Moment from 'react-moment';
 
+
 //import components
-import ConfirmModalContainer from '../ConfirmModalContainer'
+import ConfirmModalContainer from '../ConfirmModalContainer';
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
+import EmbededOpenStreetMap from 'EmbededOpenStreetMap';
 
 export default class EventDisplay extends Component {
   render() {
     return(
       <>
+        <EmbededOpenStreetMapclassName address={} mapId={} className={}/>
         <div className="container">
           <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
             <Card.Header>
