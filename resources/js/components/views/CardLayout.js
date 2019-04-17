@@ -14,6 +14,7 @@ export default class CardLayout extends Component {
       <>
         <div className="card small-card" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
           <div className="card-body p-2 text-center d-flex justify-content-center flex-column">
+            <div className="bg-white">
             <div className="card-title">
               <Link to={"/event/"+this.props.event.id} style={{zIndex: '1', position: 'relative'}}>
                 <h3 style={{zIndex: '1', position: 'relative'}}>{this.props.event.event_title}</h3>
@@ -26,6 +27,7 @@ export default class CardLayout extends Component {
                      textTruncateChild={<Link to={"/event/"+this.props.event.id} onClick={() => reload(this.props.event.id)}>Read more</Link>} />
              <div className="card-text" style={{zIndex: '1', position: 'relative'}}>
               <Moment format="DD MMM YYYY - H:mm">{this.props.event.date}</Moment>
+            </div>
             </div>
             <img src={this.props.event.event_image}/>
           </div>
