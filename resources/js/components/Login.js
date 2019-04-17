@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 //importcomponents
-import { logUser, logUserOut } from './Api';
+import { logUser } from './Api';
 import { Form, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import {SessionProvider, SessionContext} from './providers/SessionProvider';
-import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+
 
 export default class Login extends Component {
 
@@ -17,7 +17,6 @@ export default class Login extends Component {
     this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.logOut = this.logOut.bind(this);
 
 
     this.state = {
@@ -48,23 +47,10 @@ export default class Login extends Component {
     };
     // await api request
     let token = await logUser(obj);
-    console.log(token.data);
     // toggle the navbar content & send the access_token
     if(token!==null){this.context.toggleLogIn(token.data.access_token)}
   }
 
-  async logOut(){
-    // reset the login data from this.state
-    this.setState({
-      emailAdress: "",
-      password: ""
-    })
-    // log out from the database
-    await logUserOut(this.context.state.token)
-    // toggle the navbar content
-    this.context.toggleLogOut()
-
-  }
 
 render(){
   return(

@@ -93,8 +93,7 @@ export default class EventCreateContainer extends Component {
       "event_description": this.state.description,
       "event_city": this.state.city,
       "event_location": this.state.location,
-      "event_image": this.state.image,
-      "event_video": null, //this.state.video,
+      "event_media": this.state.image,
       "reminder": this.state.reminder
     }
     createEvent(obj, this.context.state.token);

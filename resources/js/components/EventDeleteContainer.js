@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 //import components
 import { deleteEvent } from './Api';
-import Sheep from './views/Sheep';
 
 import {SessionProvider, SessionContext} from './providers/SessionProvider';
 
@@ -22,7 +21,7 @@ export default class EventDeleteContainer extends Component {
 
   render() {
     return(
-      <Sheep/>
+      <div><p>Event deleted</p></div>
     )
   }
 }

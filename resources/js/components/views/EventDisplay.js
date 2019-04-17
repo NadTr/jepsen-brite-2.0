@@ -45,15 +45,18 @@ export default class EventDisplay extends Component {
                 <div>Log in to register to this event.</div>
             :
               <Col>
-                <Row>
-                  <Button style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}} onClick={this.props.optInEvent}>I want to participate</Button>
-                </Row>
-                <Row>
-                  <Button variant="danger" onClick={this.props.optOutEvent}>I no longer want to come</Button>
-                </Row>
+                {(!this.props.isAttending() ) ?
+                  <Row>
+                    <Button style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}} onClick={this.props.optInEvent}>I want to participate</Button>
+                  </Row>
+                :
+                  <Row>
+                    <Button variant="danger" onClick={this.props.optOutEvent}>I no longer want to come</Button>
+                  </Row>
+              }
               </Col>
             }
-            {(this.context.state.session.id === this.props.package.event_author) ?
+            {(this.context.state.session.id === this.props.package.event_author) &&
               <Col>
                 <Row>
                   <Form>
@@ -71,8 +74,6 @@ export default class EventDisplay extends Component {
                   </div>
                 </Row>
               </Col>
-              :
-              <div>You're not the author, you can't access edit or delete functionnalities</div>
             }
             </Card.Footer>
           </Card>

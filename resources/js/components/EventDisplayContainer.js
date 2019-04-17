@@ -9,6 +9,7 @@ export default class EventDisplayContainer extends Component {
   constructor (props) {
     super (props);
 
+    this.isAttending = this.isAttending.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.optInEvent = this.optInEvent.bind(this);
     this.optOutEvent = this.optOutEvent.bind(this);
@@ -19,6 +20,9 @@ export default class EventDisplayContainer extends Component {
     }
   }
 
+  isAttending() {
+    return this.state.attendees.map(attendee => attendee.id).includes(this.context.state.session.id);
+  }
   handleDelete() {
     deleteEvent(this.state.event.id, this.context.state.token)
     this.props.history.push('/')
@@ -51,6 +55,7 @@ export default class EventDisplayContainer extends Component {
         package={this.state.event}
         attendees={this.state.attendees}
         onClick={this.handleDelete}
+        isAttending={this.isAttending}
         optInEvent={this.optInEvent}
         optOutEvent={this.optOutEvent}
       />
