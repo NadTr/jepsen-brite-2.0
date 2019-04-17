@@ -31,14 +31,14 @@ export default class EventDisplay extends Component {
     console.log(this.props)
     return(
       <>
-<<<<<<< HEAD
-        <EmbededOpenStreetMapclassName address={} mapId={} className={}/>
+
+        
         <div className="container">
           <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
-=======
+
         <div className="container py-5">
           <Card className="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
->>>>>>> master
+
             <Card.Header>
               <div id="mediaHolder" className="media-holder">
                 </div>
