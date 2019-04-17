@@ -1,0 +1,39 @@
+.small-card {
+  min-width: 320px;
+  min-height: 280px;
+  overflow: hidden;
+}
+.small-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.2;
+  filter: alpha(opacity=50);
+  z-index: 0;
+  min-height: 280px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.small-card img:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=100);
+}
+
+.card-deck{
+  justify-content: center;
+}
+
+@include media-breakpoint-up(md) {
+  .small-card {
+    max-width: 45%;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .small-card {
+    max-width: 30%;
+  }
+}

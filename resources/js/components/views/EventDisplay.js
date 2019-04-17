@@ -23,17 +23,16 @@ export default class EventDisplay extends Component {
       videoID = videoUrl.searchParams.get('v');
       mediaHolder = document.getElementById("mediaHolder").innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/" + videoID +"\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
     } else if(url.startsWith('data')){
-      mediaHolder = document.getElementById("mediaHolder").innerHTML = "<img src=\"" + url + "\" />"
+      mediaHolder = document.getElementById("mediaHolder").innerHTML = "<img class=\"image-display\" src=\"" + url + "\" />"
     }
 
     console.log(this.props)
     return(
       <>
-        <div className="container">
-          <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
+        <div className="container py-5">
+          <Card className="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
             <Card.Header>
-              <div id="mediaHolder">
-
+              <div id="mediaHolder" className="media-holder">
                 </div>
                 <h2 className="mt-3">{this.props.package.event_title}</h2>
                 <h3><Moment format="DD MMM YYYY - H:mm">{this.props.package.event_time}</Moment></h3>
