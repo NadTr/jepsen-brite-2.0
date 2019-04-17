@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //import components
-import EventCreate from './views/EventCreate';
+import EventForm from './views/EventForm';
 import { createEvent } from './Api';
 import {SessionProvider, SessionContext} from './providers/SessionProvider';
 
@@ -11,14 +11,24 @@ export default class EventCreateContainer extends Component {
 
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
+    this.onChangeTime = this.onChangeTime.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeCity = this.onChangeCity.bind(this);
+    this.onChangeLocation = this.onChangeLocation.bind(this);
+    this.onChangeImage = this.onChangeImage.bind(this);
+    this.onChangeVideo = this.onChangeVideo.bind(this);
     this.onChangeReminder = this.onChangeReminder.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       title: "",
+      time: "",
       date: "",
       description: "",
+      city: "",
+      location: "",
+      image: "",
+      video: "",
       reminder: ""
     }
   }
@@ -35,9 +45,36 @@ export default class EventCreateContainer extends Component {
    });
   }
 
+  onChangeTime(input){
+    this.setState({
+     time: input.target.value
+   });
+  }
+
   onChangeDescription(input){
     this.setState({
      description: input.target.value
+   });
+  }
+
+  onChangeCity(input){
+    this.setState({
+     city: input.target.value
+   });
+  }
+  onChangeLocation(input){
+    this.setState({
+     location: input.target.value
+   });
+  }
+  onChangeImage(input){
+    this.setState({
+     image: input.target.value
+   });
+  }
+  onChangeVideo(input){
+    this.setState({
+     video: input.target.value
    });
   }
 
@@ -49,15 +86,16 @@ export default class EventCreateContainer extends Component {
 
   onSubmit(data){
     data.preventDefault();
+
     const obj = {
       "event_title": this.state.title,
-      "event_time": this.state.date+":00",
+      "event_time": this.state.date+' '+this.state.time,
       "event_description": this.state.description,
-      "event_city": 'Liège', //this.state.city,
-      "event_location": 'Rue de Mulhouse 36', // this.state.location,
+      "event_city": this.state.city,
+      "event_location": this.state.location,
       "event_image": this.state.image,
       "event_video": null, //this.state.video,
-      "reminder": this.state.reminder+":00"
+      "reminder": this.state.reminder
     }
     createEvent(obj, this.context.state.token);
     this.props.history.push('/');
@@ -65,10 +103,16 @@ export default class EventCreateContainer extends Component {
 
   render() {
     return(
-      <EventCreate
+      <EventForm
+        method={'create'}
         onChangeTitle={this.onChangeTitle}
         onChangeDate={this.onChangeDate}
+        onChangeTime={this.onChangeTime}
         onChangeDescription={this.onChangeDescription}
+        onChangeCity={this.onChangeCity}
+        onChangeLocation={this.onChangeLocation}
+        onChangeImage={this.onChangeImage}
+        onChangeVideo={this.onChangeVideo}
         onChangeReminder={this.onChangeReminder}
         onClick={this.onSubmit}
       />

@@ -44,8 +44,10 @@ export default class UserRegisterContainer extends Component{
       data.preventDefault();
       let obj = {
         "email": this.state.emailAdress,
-      	"name" : this.state.name,
-      	"password": this.state.password
+        "name" : this.state.name,
+        "avatar" : "https://www.lemagduchat.com/images/dossiers/2018-11/chat-drole-113730.jpg",
+        "password": this.state.password,
+        "password_confirmation": this.state.password
       };
       registerUser(obj);
       this.props.history.push('/')

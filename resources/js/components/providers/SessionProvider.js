@@ -28,6 +28,9 @@ export default class SessionProvider extends Component {
       token: token,
       session: session.data
     })
+    console.log("logged in");
+    console.log("state ",this.state);
+    console.log("session ",this.state.session);
   }
 
   toggleLogOut(){
@@ -36,6 +39,7 @@ export default class SessionProvider extends Component {
       token:"",
       session:""
     })
+    console.log("logged out");
   }
 
   render() {

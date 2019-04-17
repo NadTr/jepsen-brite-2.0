@@ -9,7 +9,6 @@ import { Row, Col } from 'react-bootstrap';
 import { logUser, logUserOut, searchEvent } from '../Api';
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 
-
 export default class NavBar extends Component{
   constructor(props, context){
     super(props, context);
@@ -79,6 +78,7 @@ export default class NavBar extends Component{
   }
 
   render() {
+    console.log("context ",this.context.state);
     return (
       <>
         <Navbar id="navbar" collapseOnSelect expand="lg">

@@ -24,6 +24,7 @@ export default class Home extends Component {
             )}
             </CardDeck>
           </div>
+
         </div>
       </>
     );

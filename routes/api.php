@@ -19,7 +19,7 @@ Route::post('/login', 'ApiAuthController@login');
 Route::get('/homepage', 'EventController@homepage')->name('events.homepage');
 Route::get('/events', 'EventController@index')->name('events.index');
 Route::get('/pastevents', 'EventController@past')->name('events.past');
-// Route::get('/search', 'EventController@search')->name('events.search');
+Route::get('/search', 'EventController@search')->name('events.search');
 Route::get('/event/{event}', 'EventController@show')->name('events.show');
 Route::get('/confirm/{token}', 'ApiAuthController@confirm');
 Route::get('/sendreminders', 'AttendeeController@sendReminders');
@@ -31,7 +31,7 @@ Route::middleware('auth:api')->group(function () {
     //Authentication routes
     Route::post('logout', 'ApiAuthController@logout');
     Route::post('refresh', 'ApiAuthController@refresh');
-    Route::post('me', 'ApiAuthController@me');
+    Route::get('me', 'ApiAuthController@me');
     // routes related to events
     Route::post('/events', 'EventController@store')->name('events.store');
     Route::put('/events/{event}', 'EventController@update')->name('events.update');
