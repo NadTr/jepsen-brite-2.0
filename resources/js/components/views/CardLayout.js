@@ -10,16 +10,6 @@ import TextTruncate from 'react-text-truncate';
 export default class CardLayout extends Component {
 
   render() {
-    let url = this.props.event_media;
-    let videoID;
-    let mediaHolder;
-    if (url == undefined){
-
-    }else if(url.startsWith('data')){
-      console.log(this.props.event_media)
-      mediaHolder = document.getElementById("mediaHolder2").innerHTML = "<img class=\"small-card-img\" src=\"" + url + "\" />"
-      }
-
     return(
       <>
         <div className="card small-card" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >

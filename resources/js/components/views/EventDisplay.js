@@ -21,7 +21,7 @@ export default class EventDisplay extends Component {
     } else if(url.startsWith('https')){
       let videoUrl = new URL(url);
       videoID = videoUrl.searchParams.get('v');
-      mediaHolder = document.getElementById("mediaHolder").innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/" + videoID +"\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+      mediaHolder = document.getElementById("mediaHolder").innerHTML = "<iframe width=\"1066\" height=\"600\" src=\"https://www.youtube.com/embed/" + videoID +"\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
     } else if(url.startsWith('data')){
       mediaHolder = document.getElementById("mediaHolder").innerHTML = "<img class=\"image-display\" src=\"" + url + "\" />"
     }
