@@ -84,7 +84,7 @@ render(){
             </div>
 
             <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-              <Button className="navButton px-5 py-2" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
+              <Button className="navButton px-3 py-2" variant="#207A8E" type="submit" onClick={this.onSubmit}>Login</Button>
             </div>
 
           </Form>
