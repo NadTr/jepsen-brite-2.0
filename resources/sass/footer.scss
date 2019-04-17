@@ -14,14 +14,7 @@
   height: 100px;
   position: relative;
   margin-top: -75px;
-}
-
-.flower {
-
-}
-
-.road {
-
+  pointer-events: none;
 }
 
 @keyframes slidein {
@@ -32,4 +25,8 @@
   to {
     margin-left: 80%;
   }
+}
+
+*, *::before, *::after {
+    /* box-sizing: border-box; */
 }
