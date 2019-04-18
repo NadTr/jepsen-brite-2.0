@@ -10,7 +10,8 @@ import Moment from 'react-moment';
 //import components
 import ConfirmModalContainer from '../ConfirmModalContainer'
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
-import EmbededOpenStreetMap from '../layout/embededOpenStreetMap';
+import EmbededOpenStreetMap from './embededOpenStreetMap';
+
 
 
 export default class EventDisplay extends Component {
