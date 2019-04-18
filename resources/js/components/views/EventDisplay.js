@@ -6,6 +6,7 @@ import { Card } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import Moment from 'react-moment';
+import OpenStreetMap from '../map';
 
 //import components
 import ConfirmModalContainer from '../ConfirmModalContainer'
@@ -39,6 +40,7 @@ export default class EventDisplay extends Component {
             <Card.Body>
               <Card.Text >{this.props.package.event_description}</Card.Text>
             </Card.Body>
+            <OpenStreetMap address={`${this.props.package.event_location}`} className="map-placeholder" mapId={`event-${this.props.package.id}-map`}/>
             <Card.Footer className="text-muted">
           {(this.context.state.logIn === false ) ?
                 <div>Log in to register to this event.</div>
