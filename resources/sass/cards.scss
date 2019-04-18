@@ -1,9 +1,18 @@
 .small-card {
   min-width: 320px;
   min-height: 280px;
+  width: 100%;
+  margin-bottom: 20px;
   overflow: hidden;
+  background-color: #D6E5E3;
+  border: solid 1.5px;
+  border-color: #40C0DD;
 }
-.small-card-img {
+
+.small-card:hover {
+  opacity: 1;
+}
+.small-card img {
   position: absolute;
   top: 0;
   left: 0;
@@ -11,16 +20,15 @@
   height: auto;
   display: block;
   opacity: 0.2;
-  filter: alpha(opacity=50);
   z-index: 0;
   min-height: 280px;
   object-fit: cover;
   object-position: center top;
+  transition: opacity 0.2s;
 }
 
-.small-card-img:hover {
-  opacity: 0.7;
-  filter: alpha(opacity=100);
+.small-card img:hover {
+  opacity: 0.8;
 }
 
 .card-deck{

@@ -34,7 +34,6 @@ export default class EventDisplay extends Component {
       mediaHolder = document.getElementById("mediaHolder").innerHTML = "<img class=\"image-display\" src=\"" + url + "\" />"
     }
 
-    console.log(this.props)
     return(
       <>
         <div className="container py-5">
