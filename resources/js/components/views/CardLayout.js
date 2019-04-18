@@ -24,7 +24,7 @@ export default class CardLayout extends Component {
 
     return(
       <>
-        <div className="card small-card" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }} >
+        <div className="card small-card" style={{ marginBottom: '0.5rem' }} >
           <div className="card-body p-2 text-center d-flex justify-content-center flex-column">
             <div className="bg-white">
             <div className="card-title">
