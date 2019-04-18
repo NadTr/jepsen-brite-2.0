@@ -40,7 +40,9 @@ export default class EventDisplay extends Component {
             <Card.Body>
               <Card.Text >{this.props.package.event_description}</Card.Text>
             </Card.Body>
-            <OpenStreetMap address={`${this.props.package.event_location}`} className="map-placeholder" mapId={`event-${this.props.package.id}-map`}/>
+            <div className="map-holder">
+              <OpenStreetMap address={`${this.props.package.event_location}`} className="map-placeholder" mapId={`event-${this.props.package.id}-map`}/>
+            </div>
             <Card.Footer className="text-muted">
           {(this.context.state.logIn === false ) ?
                 <div>Log in to register to this event.</div>
