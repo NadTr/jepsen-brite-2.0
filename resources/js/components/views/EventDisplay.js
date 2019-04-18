@@ -7,11 +7,11 @@ import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import Moment from 'react-moment';
 
-
 //import components
-import ConfirmModalContainer from '../ConfirmModalContainer';
+import ConfirmModalContainer from '../ConfirmModalContainer'
 import {SessionProvider, SessionContext} from '../providers/SessionProvider';
-import EmbededOpenStreetMap from 'EmbededOpenStreetMap';
+import EmbededOpenStreetMap from '../layout/embededOpenStreetMap';
+
 
 export default class EventDisplay extends Component {
 
@@ -31,14 +31,8 @@ export default class EventDisplay extends Component {
     console.log(this.props)
     return(
       <>
-
-        
-        <div className="container">
-          <Card id="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
-
         <div className="container py-5">
           <Card className="text-center" style={{ width: '100%', marginBottom: '0.5rem', background: "#D6E5E3", border:"solid 1.50px #40C0DD" }}>
-
             <Card.Header>
               <div id="mediaHolder" className="media-holder">
                 </div>
@@ -47,6 +41,9 @@ export default class EventDisplay extends Component {
               </Card.Header>
             <Card.Body>
               <Card.Text >{this.props.package.event_description}</Card.Text>
+              <h4>Description</h4>
+                    <EmbededOpenStreetMap className="map-placeholder" mapId={`event-${this.state.eventSolo.id}-map`} address={`${this.state.eventSolo.event_location} ${this.state.eventSolo.event_city}`}/>
+              <p>{eventSolo.event_description}</p>
             </Card.Body>
             <Card.Footer className="text-muted">
           {(this.context.state.logIn === false ) ?

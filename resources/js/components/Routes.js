@@ -33,6 +33,7 @@ export const Routes = () => {
         <Route exact path="/edit/:id" component={EventEditContainer} />
         <Route exact path="/delete/:id" component={EventDeleteContainer} />
         <Route exact path="/search" component={EventSearchContainer} />
+        <Route exact path="/openStreet" component={EventSearchContainer} />
 
         <Route exact path="/register" component={UserRegisterContainer} />
         <Route exact path="/login" component={Login} />
