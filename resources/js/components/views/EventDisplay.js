@@ -13,9 +13,14 @@ import {SessionProvider, SessionContext} from '../providers/SessionProvider';
 import EmbededOpenStreetMap from './embededOpenStreetMap';
 
 
-
 export default class EventDisplay extends Component {
+  constructor(props) {
+      super(props);
 
+      this.state = {
+        eventSolo: []
+      }
+    }
   render() {
     let url = this.props.package.event_media;
     let videoID;
