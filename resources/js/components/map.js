@@ -14,6 +14,7 @@ export default class OpenStreetMap extends Component {
     const map = new OpenLayers.Map(this.props.mapId);
     map.addLayer(new OpenLayers.Layer.OSM());
 
+
     const response = await fetch('https://nominatim.openstreetmap.org/search?format=json&q='+encodeURIComponent(this.props.address));
 
 
@@ -38,7 +39,7 @@ export default class OpenStreetMap extends Component {
   render() {
       //console.log("props.address", this.props.address);
       return (
-        <div className={`col-6 ${this.props.className}`} id={this.props.mapId}></div>
+        <div className={`col ${this.props.className}`} id={this.props.mapId}></div>
       )
     }
 }

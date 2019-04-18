@@ -81,16 +81,18 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </div>
-        <div className="row pb-5">
-          {this.props.attendees.map(attendee =>
-          <div className="card col-4" key={Math.random()}>
-          <div className="card-body" style={{border:"solid 1.50px #40C0DD"}}>
-            <h5 className="card-title">{attendee.name}</h5>
-            <h6 className="card-subtitle mb-2 text-muted"></h6>
+        <div className="container">
+          <h3>Attendees</h3>
+          <div className="row pb-5">
+            {this.props.attendees.map(attendee =>
+            <div className="card col-4 p-0" key={Math.random()}>
+            <div className="card-body" style={{border:"solid 1.50px #40C0DD"}}>
+              <h5 className="card-title">{attendee.name}</h5>
+              <h6 className="card-subtitle mb-2 text-muted"></h6>
+            </div>
           </div>
-        </div>
-
-          )}
+            )}
+          </div>
         </div>
       </>
     )
