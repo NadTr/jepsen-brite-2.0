@@ -57,21 +57,26 @@ class EventController extends Controller
 
         $event = Event::create($request->all());
 
-        $mails = $request['mails'];
-        $request['event_creator'] = auth()->user()->name;
-
-        foreach ($mails as $mail) {
-            Mail::to($mail)->send(new FriendInvite($event, $request['event_creator']));
-        }
-
         return response()->json([
          'message' => 'Great success! New event created',
          'event' => $event,
-         'invites' => $mails
         ]);
 
      }
 
+    public function invite(Request $request, Event $event) {
+        $request['event_creator'] = auth()->user()->name;
+        $mails = $request['mails'];
+
+        foreach($mails as $mail) {
+            Mail::to($mail)->send(new FriendInvite($event, $request['event_creator']));
+        }
+
+        return response()->json([
+            'message' => 'Your mails have successfully been sent',
+            'invites' => $mails
+        ]);
+    }
     /**
      * Display the specified resource.
      *
