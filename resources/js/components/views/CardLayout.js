@@ -11,10 +11,16 @@ export default class CardLayout extends Component {
 
   componentDidMount(){
     let url = this.props.event.event_media;
+    let videoID;
     let mediaHolder;
     if (url == undefined){
+      console.log('it is undefined bitch')
+    } else if(url.startsWith('https')){
+      let videoUrl = new URL(url);
+      videoID = videoUrl.searchParams.get('v');
+      mediaHolder = document.getElementById("mediaHolder"+ this.props.event.id).innerHTML = "<img src=\"https://img.youtube.com/vi/" + videoID + "/0.jpg\"/>";
     } else if(url.startsWith('data')){
-      mediaHolder = document.getElementById("mediaHolder"+ this.props.event.id).innerHTML = "<img class=\"image-display\" src=\"" + url + "\" />"
+      mediaHolder = document.getElementById("mediaHolder"+ this.props.event.id).innerHTML = "<img className=\"image-display\" src=\"" + url + "\" />"
     }
   }
 
