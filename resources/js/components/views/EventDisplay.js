@@ -59,9 +59,7 @@ export default class EventDisplay extends Component {
               <Col>
                 <Row>
                   <Form>
-                    <Link to={"/invite/"+this.props.package.id}>
-                      <Button id="buttoninvite" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Invite Friends</Button>
-                    </Link>
+                    
                     <Link to={"/edit-"+this.props.package.id}>
                       <Button id="buttonevent" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Edit</Button>
                     </Link>

@@ -55,9 +55,10 @@ export default class MailInvitationContainer extends Component{
     }
     async onSubmit(data) {
       data.preventDefault();
+      const obj = { mails: this.state.emailArray};
       const id =this.props.match.params.id;
       console.log(id);
-      await mailInvite(this.state.emailArray, id , this.context.state.token);
+      await mailInvite(obj, id , this.context.state.token);
       this.props.history.push('/event/'+id);
     }
 
