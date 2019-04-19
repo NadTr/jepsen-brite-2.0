@@ -40,4 +40,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/attend/{event}', 'AttendeeController@store')->name('attendee.store');
     Route::delete('/attend/{event}', 'AttendeeController@destroy')->name('attendee.destroy');
 
+    //Route to send invite mail
+    Route::post('/invite/{event}', 'EventController@invite')->name('events.invite');
 });
