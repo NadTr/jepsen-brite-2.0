@@ -29,7 +29,8 @@ export default class EventCreateContainer extends Component {
       location: "",
       image: "",
       video: "",
-      reminder: ""
+      reminder: "",
+      selectedMedia: "image"
     }
   }
 
@@ -85,6 +86,12 @@ export default class EventCreateContainer extends Component {
    });
   }
 
+  onChangeMediaSelected(newType){
+    this.setState({
+      selectedMedia: newType
+    })
+  }
+
   onChangeReminder(input){
       this.setState({
         reminder: input.target.value
@@ -100,11 +107,16 @@ export default class EventCreateContainer extends Component {
       "event_description": this.state.description,
       "event_city": this.state.city,
       "event_location": this.state.location,
-      "event_media": this.state.image,
+      "event_media": this.state.selectedMedia == 'image' ? this.state.image : this.state.video,
       "reminder": this.state.reminder
     }
     createEvent(obj, this.context.state.token);
     this.props.history.push('/');
+  }
+
+  componentDidMount(){
+    document.querySelector('#image-toggle').addEventListener('click', () => this.onChangeMediaSelected('image'));
+    document.querySelector('#video-toggle').addEventListener('click', () => this.onChangeMediaSelected('video'));
   }
 
   render() {

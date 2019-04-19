@@ -37,7 +37,7 @@ export default class EventForm extends Component {
 
             <Accordion defaultActiveKey="0">
               <Card>
-                <Accordion.Toggle as={Card.Header} variant="link" eventKey="0" >
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey="0" id="image-toggle">
                   Add an image
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0">
@@ -49,7 +49,7 @@ export default class EventForm extends Component {
                 </Accordion.Collapse>
               </Card>
               <Card>
-                <Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey="1" id="video-toggle">
                   Add a video
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
