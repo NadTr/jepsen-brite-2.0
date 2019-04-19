@@ -47,7 +47,10 @@ export default class EventDisplay extends Component {
               <Col>
                 <Row>
                   <Form>
-                    <Link to={"/event-edit-"+this.props.package.id}>
+                    <Link to={"/invite/"+this.props.package.id}>
+                      <Button id="buttoninvite" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Invite Friends</Button>
+                    </Link>
+                    <Link to={"/edit-"+this.props.package.id}>
                       <Button id="buttonevent" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Edit</Button>
                     </Link>
                   </Form>
@@ -65,6 +68,7 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </div>
+
         <div className="row pb-5">
           {this.props.attendees.map(attendee =>
           <div className="card col-4" key={Math.random()}>

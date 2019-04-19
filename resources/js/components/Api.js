@@ -68,6 +68,17 @@ export const createEvent = (obj, token) => {
   .catch(err => console.log(err))
 }
 
+export const mailInvite = (emailArray, eventId, token) => {
+  console.log(emailArray);
+  return axios({
+  method: 'post',
+  url:'/api/invite/'+eventId,
+  headers: {'Content-Type' : "application/json","Authorization": "Bearer "+token},
+  data: emailArray
+  })
+  .catch(err => console.log(err))
+}
+
 export const getHomepage = () => {
   return axios
     .get('/api/homepage')

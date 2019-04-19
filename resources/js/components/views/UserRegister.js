@@ -23,7 +23,7 @@ export default class UserRegister extends Component{
                      <div className="col-sm-8 col-md-10 col-lg-6 pt-1 mx-auto">
                        <Form.Group className="h4" controlId="formBasicEmail">
                            <Form.Label>Email address</Form.Label>
-                           <Form.Control type="email" placeholder="Enter email" onChange={this.props.onChangeEmailAdress}/>
+                           <Form.Control type="email" placeholder="Enter email" onChange={this.props.onChangeEmailAddress}/>
                            <Form.Text className="text-muted">
                            We'll never share your email with anyone else.
                            </Form.Text>
@@ -40,7 +40,7 @@ export default class UserRegister extends Component{
                      <div className="col-sm-8 col-md-10 col-lg-6 pt-1 mx-auto">
                        <Form.Group className="h4" controlId="formConfirmPassword">
                            <Form.Label>Confirm password</Form.Label>
-                           <Form.Control type="password" placeholder="Password" />
+                           <Form.Control type="password" placeholder="Password" onChange={this.props.onChangePasswordConfirm}/>
                        </Form.Group>
                     </div>
 
