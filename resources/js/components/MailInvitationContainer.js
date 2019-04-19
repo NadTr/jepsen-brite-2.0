@@ -40,25 +40,22 @@ export default class MailInvitationContainer extends Component{
 
     }
 
-      onDeleteItem(data) {
-        data.preventDefault();
-        // console.log();
+    onDeleteItem(index) {
+      // console.log();
 
-        let emailArray = this.state.emailArray;
-        const index=parseInt(data.target.value);
-        console.log(index);
-        emailArray.splice(index, 1);
-        console.log(emailArray);
-        this.setState({
-          emailArray: emailArray
-        })
+      let emailArray = this.state.emailArray;
+      console.log(index);
+      emailArray.splice(index, 1);
+      console.log(emailArray);
+      this.setState({
+        emailArray: emailArray
+      })
     }
     async onSubmit(data) {
       data.preventDefault();
-      const obj = { mails: this.state.emailArray};
       const id =this.props.match.params.id;
       console.log(id);
-      await mailInvite(obj, id , this.context.state.token);
+      await mailInvite(this.state.emailArray, id , this.context.state.token);
       this.props.history.push('/event/'+id);
     }
 

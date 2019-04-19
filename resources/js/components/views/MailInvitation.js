@@ -28,7 +28,7 @@ export default class MailInvitation extends Component{
                  <ul className="list-group ">
                  {this.props.emailArray.map((email, index) =>
                    <li className="list-group-item list-group-item-info d-flex flex-row justify-content-between pb-1 pt-1"> <p>{email}</p>
-                     <button type="button" className="btn btn-outline-info" onClick={this.props.onDeleteItem} value={index} ><i className="far fa-trash-alt"></i></button>
+                     <button type="button" className="btn btn-outline-info" onClick={() => this.props.onDeleteItem(index)} value={index} ><i className="far fa-trash-alt"></i></button>
 
                    </li>
                  )
