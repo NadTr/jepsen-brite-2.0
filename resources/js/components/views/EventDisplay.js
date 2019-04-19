@@ -63,7 +63,8 @@ export default class EventDisplay extends Component {
               <Col>
                 <Row>
                   <Form>
-                    <Link to={"/event-edit-"+this.props.package.id}>
+
+                    <Link to={"/edit-"+this.props.package.id}>
                       <Button id="buttonevent" style={{background:"#207A8E", border:"solid 1.50px #40C0DD"}}>Edit</Button>
                     </Link>
                   </Form>
@@ -81,6 +82,7 @@ export default class EventDisplay extends Component {
             </Card.Footer>
           </Card>
         </div>
+
         <div className="container">
           <h3>Attendees</h3>
           <div className="row pb-5">
@@ -92,6 +94,7 @@ export default class EventDisplay extends Component {
             </div>
           </div>
             )}
+
           </div>
         </div>
       </>
