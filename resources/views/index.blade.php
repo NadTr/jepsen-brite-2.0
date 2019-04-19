@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="/css/app.css" rel="stylesheet">
         <!-- Styles -->
-        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <script src="./OpenLayers.js"></script>
 
     </head>
     <body>
