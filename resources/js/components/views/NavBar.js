@@ -72,9 +72,7 @@ export default class NavBar extends Component{
               </Link>
             </Form>
           </Nav>
-
         </Nav>
-            <div>
 
               {(this.context.state.logIn === false ) ?
                 <div>
@@ -86,19 +84,18 @@ export default class NavBar extends Component{
                   </Link>
                 </div>
                :
-               <Nav className="mr-auto">
+               <Nav className="ml-auto">
+                 <div className="my-auto text-center">
+                   <h5>Greetings {this.context.state.session.name}</h5>
                  <Link to={"/addEvent"}>
                    <Button className="navButton" variant="#207A8E">Create Event</Button>
                  </Link>
-                  <Col>
-                    <Row><h5>Greetings </h5></Row>
-                    <Row>{this.context.state.session.name}</Row>
-                  </Col>
                   <Button className="navButton" variant="#207A8E" onClick={this.logOut}>Log out</Button>
+                </div>
                 </Nav>
 
               }
-            </div>
+          
           </Navbar.Collapse>
         </Navbar>
       </>

@@ -21,6 +21,13 @@ body{
   overflow-x: hidden;
 }
 
+.map-holder{
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 #navbar{
   position: -webkit-sticky;
   position: sticky;
@@ -111,3 +118,5 @@ body{
   max-width:100%;
 
 }
+
+/* background */
