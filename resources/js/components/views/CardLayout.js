@@ -18,7 +18,7 @@ export default class CardLayout extends Component {
     } else if(url.startsWith('https')){
       let videoUrl = new URL(url);
       videoID = videoUrl.searchParams.get('v');
-      mediaHolder = document.getElementById("mediaHolder"+ this.props.event.id).innerHTML = "<img src=\"https://img.youtube.com/vi/" + videoID + "/maxresdefault.jpg\"/>";
+      mediaHolder = document.getElementById("mediaHolder"+ this.props.event.id).innerHTML = "<img src=\"https://img.youtube.com/vi/" + videoID + "/hqdefault.jpg\"/>";
     } else if(url.startsWith('data')){
       mediaHolder = document.getElementById("mediaHolder"+ this.props.event.id).innerHTML = "<img className=\"image-display\" src=\"" + url + "\" />"
     }
