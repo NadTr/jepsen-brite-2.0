@@ -36,11 +36,13 @@ export default class EventDisplay extends Component {
                 </div>
                 <h2 className="mt-3">{this.props.package.event_title}</h2>
                 <h3><Moment format="DD MMM YYYY - H:mm">{this.props.package.event_time}</Moment></h3>
+                  <Link to={"/invite/"+this.props.package.id}>
+                    <button type="button" className="navButton" variant="#207A8E">Invite friends</button>
+                  </Link>
               </Card.Header>
-            <Card.Body>
+            <Card.Body style={{ backgroundColor: "#f8fafc" }}>
               <Card.Text >{this.props.package.event_description}</Card.Text>
             </Card.Body>
-            <Link to={"/invite/"+this.props.package.id}>Invite friends</Link>
             <div className="map-holder">
               <OpenStreetMap address={`${this.props.package.event_location} ${this.props.package.event_city}`} className="map-placeholder" mapId={`event-${this.props.package.id}-map`}/>
             </div>

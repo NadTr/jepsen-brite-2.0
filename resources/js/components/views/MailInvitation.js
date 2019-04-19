@@ -10,26 +10,21 @@ export default class MailInvitation extends Component{
         return(
            <>
               <div className="container mt-4">
-                <h2>Invite des amis</h2>
+                <h2>Invite your friends</h2>
 
                   <Form>
-
                      <div className="col-sm-8 col-md-10 col-lg-6 pt-1 mx-auto">
-                       <Form.Group className="h4" controlId="formBasicEmail">
-                           <Form.Label>Email address</Form.Label>
+                       <h4>Email address</h4>
+                       <Form.Group className="d-flex" controlId="formBasicEmail">
                            <Form.Control type="email" placeholder="Enter email" onChange={this.props.onChangeEmail} value={this.props.emailAddress}/>
+                           <Button className="navButton" variant="#207A8E" type="button" onClick={this.props.onAdd}>Add</Button>
                        </Form.Group>
                      </div>
-                     <div className="col-sm-8 col-md-10 col-lg-6 pt-5 mx-auto">
-                       <Button className="navButton px-3 py-2" variant="#207A8E" type="button" onClick={this.props.onAdd}>Add</Button>
-                     </div>
-
                  </Form>
                  <ul className="list-group ">
                  {this.props.emailArray.map((email, index) =>
-                   <li className="list-group-item list-group-item-info d-flex flex-row justify-content-between pb-1 pt-1"> <p>{email}</p>
-                     <button type="button" className="btn btn-outline-info" onClick={() => this.props.onDeleteItem(index)} value={index} ><i className="far fa-trash-alt"></i></button>
-
+                   <li className="list-group-item list-group-item-info d-flex flex-row justify-content-between pb-1 pt-1" key={index}> <p>{email}</p>
+                     <button type="button" className="navButton" variant="#207A8E" onClick={() => this.props.onDeleteItem(index)} value={index} ><i className="far fa-trash-alt"></i></button>
                    </li>
                  )
                  }
