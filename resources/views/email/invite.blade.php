@@ -1,6 +1,6 @@
 @component('mail::message')
 # Hello dear foodie, <br>
-{{$user}} has invited you to its event : **{{$event['event_title']}}** <br>
+{{$user}} has invited you to their event : **{{$event['event_title']}}** <br>
 It will take place in *{{$event['event_location']}}* on {{substr($event['event_time'], 0, -9)}} at {{substr($event['event_time'],11, -3)}}.<br>
 We hope to see you there!
 
