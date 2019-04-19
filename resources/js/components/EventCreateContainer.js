@@ -29,7 +29,8 @@ export default class EventCreateContainer extends Component {
       location: "",
       image: "",
       video: "",
-      reminder: ""
+      reminder: "",
+      selectedMedia: "image"
     }
   }
 
@@ -67,15 +68,28 @@ export default class EventCreateContainer extends Component {
      location: input.target.value
    });
   }
-  onChangeImage(input){
-    this.setState({
-     image: input.target.value
-   });
+  onChangeImage(event){
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.setState({
+        image: reader.result
+      });
+    })
+    reader.readAsDataURL(event.target.files[0]);
+   //  this.setState({
+   //   image: input.target.value
+   // });
   }
   onChangeVideo(input){
     this.setState({
      video: input.target.value
    });
+  }
+
+  onChangeMediaSelected(newType){
+    this.setState({
+      selectedMedia: newType
+    })
   }
 
   onChangeReminder(input){
@@ -93,11 +107,16 @@ export default class EventCreateContainer extends Component {
       "event_description": this.state.description,
       "event_city": this.state.city,
       "event_location": this.state.location,
-      "event_media": this.state.image,
+      "event_media": this.state.selectedMedia == 'image' ? this.state.image : this.state.video,
       "reminder": this.state.reminder
     }
     createEvent(obj, this.context.state.token);
     this.props.history.push('/');
+  }
+
+  componentDidMount(){
+    document.querySelector('#image-toggle').addEventListener('click', () => this.onChangeMediaSelected('image'));
+    document.querySelector('#video-toggle').addEventListener('click', () => this.onChangeMediaSelected('video'));
   }
 
   render() {

@@ -9,18 +9,19 @@ export default class UserRegisterContainer extends Component{
     constructor(props){
     super(props);
 
-        this.onChangeEmailAdress = this.onChangeEmailAdress.bind(this);
+        this.onChangeEmailAddress = this.onChangeEmailAddress.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangePasswordConfirm = this.onChangePasswordConfirm.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
-        this.onChangePseudo = this.onChangePseudo.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
           emailAdress: "",
           name : "",
-          password: ""
+          password: "",
+          password_confirmation: ""
         }
     }
-    onChangeEmailAdress(input) {
+    onChangeEmailAddress(input) {
       this.setState({
         emailAdress: input.target.value
       })
@@ -30,16 +31,17 @@ export default class UserRegisterContainer extends Component{
         password: input.target.value
       })
     }
+    onChangePasswordConfirm(input) {
+      this.setState({
+        password_confirmation: input.target.value
+      })
+    }
     onChangeName(input) {
       this.setState({
         name: input.target.value
       })
     }
-    onChangePseudo(input) {
-      this.setState({
-        pseudo: input.target.value
-      })
-    }
+
     onSubmit(data) {
       data.preventDefault();
       let obj = {
@@ -47,7 +49,7 @@ export default class UserRegisterContainer extends Component{
         "name" : this.state.name,
         "avatar" : "https://www.lemagduchat.com/images/dossiers/2018-11/chat-drole-113730.jpg",
         "password": this.state.password,
-        "password_confirmation": this.state.password
+        "password_confirmation": this.state.password_confirmation
       };
       registerUser(obj);
       this.props.history.push('/')
@@ -56,8 +58,9 @@ export default class UserRegisterContainer extends Component{
     render(){
         return(
             <UserRegister
-            onChangeEmailAdress={this.onChangeEmailAdress}
+            onChangeEmailAddress={this.onChangeEmailAddress}
             onChangePassword={this.onChangePassword}
+            onChangePasswordConfirm={this.onChangePasswordConfirm}
             onChangeName={this.onChangeName}
             onSubmit={this.onSubmit}
             />

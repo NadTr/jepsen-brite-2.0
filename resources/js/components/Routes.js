@@ -8,6 +8,7 @@ import HomeContainer from './HomeContainer';
 import EventListContainer from './EventListContainer';
 import EventDisplayContainer from './EventDisplayContainer';
 import EventCreateContainer from './EventCreateContainer';
+import MailInvitationContainer from './MailInvitationContainer';
 import EventEditContainer from './EventEditContainer';
 import EventDeleteContainer from './EventDeleteContainer';
 import PastEventContainer from './PastEventContainer';
@@ -29,6 +30,7 @@ export const Routes = () => {
         <Route exact path="/pastevents/page=:page" component={PastEventContainer} />
 
         <Route exact path="/event/:id" component={EventDisplayContainer} />
+        <Route exact path="/invite/:id" component={MailInvitationContainer} />
         <Route exact path="/addEvent" component={EventCreateContainer} />
         <Route exact path="/edit/:id" component={EventEditContainer} />
         <Route exact path="/delete/:id" component={EventDeleteContainer} />
