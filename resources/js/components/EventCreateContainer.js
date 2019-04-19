@@ -67,10 +67,17 @@ export default class EventCreateContainer extends Component {
      location: input.target.value
    });
   }
-  onChangeImage(input){
-    this.setState({
-     image: input.target.value
-   });
+  onChangeImage(event){
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.setState({
+        image: reader.result
+      });
+    })
+    reader.readAsDataURL(event.target.files[0]);
+   //  this.setState({
+   //   image: input.target.value
+   // });
   }
   onChangeVideo(input){
     this.setState({
