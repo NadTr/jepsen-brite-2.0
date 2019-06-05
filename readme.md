@@ -1,5 +1,6 @@
 # Jepsen-Brite-2.0
 
+You can see the website on [heroku](https://food-event-2.herokuapp.com/)
 This project follow directly the project [Jepsen-Brite](https://github.com/NadTr/jepsen-brite) but we had to take the finished project of another team : you can see it [here](https://github.com/MonticelliRomain/jepsen-brite)
 
 To see [the instructions](https://github.com/NadTr/jepsen-brite-2.0/blob/master/Instructions.md)
