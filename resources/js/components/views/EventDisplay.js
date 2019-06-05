@@ -40,7 +40,9 @@ export default class EventDisplay extends Component {
             <Card.Body>
               <Card.Text >{this.props.package.event_description}</Card.Text>
             </Card.Body>
+            {(this.context.state.logIn ) &&
             <Link to={"/invite/"+this.props.package.id}>Invite friends</Link>
+            }
             <div className="map-holder">
               <OpenStreetMap address={`${this.props.package.event_location} ${this.props.package.event_city}`} className="map-placeholder" mapId={`event-${this.props.package.id}-map`}/>
             </div>
